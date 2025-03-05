@@ -1,14 +1,23 @@
 @echo off
 SETLOCAL EnableExtensions DisableDelayedExpansion
 
+:: Display DayZ n Chill Dev Logo
+SET "ASCIIARTPATH=.\Utils\Shared\Branding.txt"
+SET "COLORS=Blue,Green,Cyan,DarkBlue,DarkGreen,DarkCyan,DarkRed,DarkMagenta,DarkYellow"
+powershell -Command "$colors = '%COLORS%'.Split(','); $randomColor = Get-Random -InputObject $colors; Get-Content -Path '%ASCIIARTPATH%' | ForEach-Object {Write-Host $_ -ForegroundColor $randomColor}"
+
+
 :: Function to check if the P:\ drive is mounted
 :CheckPDrive
 set "PDriveMounted=false"
 for /f %%d in ('powershell -Command "Get-PSDrive -Name P -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name"') do set "PDriveMounted=true"
 if not "%PDriveMounted%"=="true" (
     echo.
-    powershell -Command "Write-Host 'P:\ Drive: Not Mounted' -ForegroundColor DarkRed; Write-Host 'Exiting App' -ForegroundColor DarkYellow"
-    exit /b 1
+    powershell -Command "Write-Host 'P:\ Drive: Not Detected.' -ForegroundColor DarkRed; Write-Host 'Please mount your P Drive' -ForegroundColor DarkYellow"
+    echo.
+    powershell -Command "Write-Host 'NOTE: If you use another Drive Letter you must enter the Drive letter into the globals.cfg' -ForegroundColor DarkCyan;"
+    timeout /t 10 /nobreak
+    exit /b 0
 )
 
 :: Reading existing configuration and setting variables
@@ -20,11 +29,6 @@ if exist ".\Utils\Shared\Globals.cfg" (
     echo Globals.cfg not found. Exiting...
     exit /b 1
 )
-
-:: Display DayZ n Chill Dev Logo
-SET "ASCIIARTPATH=.\Utils\Shared\Branding.txt"
-SET "COLORS=Blue,Green,Cyan,DarkBlue,DarkGreen,DarkCyan,DarkRed,DarkMagenta,DarkYellow"
-powershell -Command "$colors = '%COLORS%'.Split(','); $randomColor = Get-Random -InputObject $colors; Get-Content -Path '%ASCIIARTPATH%' | ForEach-Object {Write-Host $_ -ForegroundColor $randomColor}"
 
 :: Begin DayZ Project Manager Setup
 echo This setup file will help you configure your project with ease so you should only have to do this once.
