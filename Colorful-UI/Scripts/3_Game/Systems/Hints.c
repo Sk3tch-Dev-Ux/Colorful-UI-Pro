@@ -46,9 +46,10 @@ modded class UiHintPanelLoading extends UiHintPanel
             // NOTE: We put the video here so that that we dont have to call it multiple times while loading.
         #else
             if (LoadVideo) {
+                // You can use a mp4 video instead of a mov video.
                 Class.CastTo(m_Video, m_RootFrame.FindAnyWidget("LoadingVid"));
-                CopyFile("Colorful-UI/GUI/video/LoadingVid.mp4", "$saves:LoadingVid.mp4");
-                m_Video.Load("$saves:LoadingVid.mp4", true);
+                CopyFile("Colorful-UI/GUI/video/LoadingVid.mov", "$saves:LoadingVid.mov");
+                m_Video.Load("$saves:LoadingVid.mov", true);
                 m_Video.Play();
             }
         #endif
