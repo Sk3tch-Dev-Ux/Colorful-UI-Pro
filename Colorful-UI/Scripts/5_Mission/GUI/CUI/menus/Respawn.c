@@ -1,6 +1,6 @@
 modded class RespawnDialogue extends UIScriptedMenu
 {
-    protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_GameOverScreenImage;
+    protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_GameOverScreenImage, m_Logo;
     protected ButtonWidget m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook, m_CancelBtn, m_RandomRespawnBtn, m_CustomRespawnBtn;
     protected Widget m_TopSpacer, m_BottomSpacer, m_GameOverScreen;
 	float m_TimerSlice;
@@ -34,6 +34,7 @@ modded class RespawnDialogue extends UIScriptedMenu
 		m_GameOverScreenImage 	= ImageWidget.Cast(m_GameOverScreen.FindAnyWidget("GameOverScreenImage"));
 		m_GameOverScreen 		= Widget.Cast(layoutRoot.FindAnyWidget("GameOverScreen"));
 
+		m_Logo 			= ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
         // Set the colors of Shader, Divider
         m_TopShader.SetColor(colorScheme.TopShader());
         m_BottomShader.SetColor(colorScheme.BottomShader());
@@ -75,7 +76,7 @@ modded class RespawnDialogue extends UIScriptedMenu
 		// m_GameOverScreen.Show(false);
 		m_GameOverScreenImage.LoadImageFile(0, GameOverScreen.GameOverScreenImage());
 		m_GameOverScreenImage.SetAlpha(0);
-
+		Branding.ApplyLogo(m_Logo);
 		return layoutRoot;
 	}
 

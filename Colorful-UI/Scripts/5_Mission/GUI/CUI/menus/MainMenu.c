@@ -1,6 +1,6 @@
 modded class MainMenu extends UIScriptedMenu
 {
-    protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_StatisticsBoxBG, m_SurvivorBox;
+    protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_StatisticsBoxBG, m_SurvivorBox, m_Logo;
     protected ButtonWidget m_Play, m_Exit, m_SettingsBtn, m_TutorialBtn, m_MessageBtn, m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook, m_CharacterBtn;
 	protected Widget m_TopSpacer, m_BottomSpacer;
     protected ProgressBarWidget m_LoadingBar;
@@ -33,6 +33,7 @@ modded class MainMenu extends UIScriptedMenu
         m_BottomSpacer      = layoutRoot.FindAnyWidget("BottomSpacer");
 
         m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
+        m_Logo              = ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
 
         // Set the colors of UI Elements
         m_StatisticsBoxBG.SetColor(UIColor.cuiDarkBlue());
@@ -82,7 +83,8 @@ modded class MainMenu extends UIScriptedMenu
             m_MenuDivider.Show(false);
             m_BottomSpacer.Show(false);
         }
-       
+
+        Branding.ApplyLogo(m_Logo);
 		return layoutRoot;
 	}	    
 }

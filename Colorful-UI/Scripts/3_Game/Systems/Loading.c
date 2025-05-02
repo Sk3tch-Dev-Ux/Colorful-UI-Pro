@@ -4,7 +4,7 @@
 // Phase 1: Loading  -------------------------------------------------------------
 modded class LoadingScreen
 {
-    protected ImageWidget m_Background, m_TopShader, m_BottomShader, m_Mask;
+    protected ImageWidget m_Background, m_TopShader, m_BottomShader, m_Mask, m_Logo;
     protected TextWidget m_LoadingMsg;
 
     void LoadingScreen(DayZGame game)
@@ -13,6 +13,7 @@ modded class LoadingScreen
         m_WidgetRoot = game.GetLoadingWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/loading/cui.loading.layout");
 
         Class.CastTo(m_Background, m_WidgetRoot.FindAnyWidget("ImageBackground"));
+        Class.CastTo(m_Logo, m_WidgetRoot.FindAnyWidget("Logo"));
         Class.CastTo(m_TopShader, m_WidgetRoot.FindAnyWidget("TopShader"));
         Class.CastTo(m_BottomShader, m_WidgetRoot.FindAnyWidget("BottomShader"));
         Class.CastTo(m_LoadingMsg, m_WidgetRoot.FindAnyWidget("LoadingMsg"));
@@ -23,13 +24,14 @@ modded class LoadingScreen
         if (m_LoadingMsg) m_LoadingMsg.SetColor(colorScheme.LoadingMsg());
         if (m_LoadingMsg) m_LoadingMsg.SetText("GAME IS LOADING!");
         if (m_ProgressLoading) m_ProgressLoading.SetColor(colorScheme.Loadingbar());
-
+        
+        Branding.ApplyLogo(m_Logo);
         ProgressAsync.SetProgressData(m_ProgressLoading);
         ProgressAsync.SetUserData(m_Background);
     }
-
+    
     override void Show()
-    {
+    {      
         if (m_Background) m_Background.LoadImageFile(0, loadscreens.GetRandomElement());
     }
 }
@@ -37,7 +39,7 @@ modded class LoadingScreen
 // Phase 2: Logging In ------------------------------------------------------------
 modded class LoginTimeBase extends LoginScreenBase
 {
-    protected ImageWidget m_Background, m_TopShader, m_BottomShader, m_ExitIcon;
+    protected ImageWidget m_Background, m_TopShader, m_BottomShader, m_ExitIcon, m_Logo;
     protected TextWidget m_LoadingMsg, m_ExitText;
     protected ProgressBarWidget m_ProgressLoading;
     
@@ -47,6 +49,7 @@ modded class LoginTimeBase extends LoginScreenBase
         layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/loading/cui.loggingIn.layout");
         
         m_Background = ImageWidget.Cast(layoutRoot.FindAnyWidget("ImageBackground"));
+        m_Logo = ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
         m_TopShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("TopShader"));
         m_BottomShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("BottomShader"));
         m_LoadingMsg = TextWidget.Cast(layoutRoot.FindAnyWidget("LoadingMsg"));
@@ -63,6 +66,7 @@ modded class LoginTimeBase extends LoginScreenBase
         if (m_ProgressLoading) m_ProgressLoading.SetColor(colorScheme.Loadingbar());
         if (m_ExitIcon) m_ExitIcon.SetColor(colorScheme.Icons());
         
+        Branding.ApplyLogo(m_Logo);
         return layoutRoot;
     }   
     

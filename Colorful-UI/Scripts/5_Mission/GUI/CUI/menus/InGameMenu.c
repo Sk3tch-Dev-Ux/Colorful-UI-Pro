@@ -1,6 +1,6 @@
 modded class InGameMenu extends UIScriptedMenu
 {
-    protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_GameOverScreenImage;
+    protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_GameOverScreenImage, m_Logo;
     protected ButtonWidget m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook;
     protected Widget m_TopSpacer, m_BottomSpacer, m_GameOverScreen;
     float m_TimerSlice;
@@ -8,9 +8,10 @@ modded class InGameMenu extends UIScriptedMenu
     override Widget Init()
     {
         layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/menus/inGame/cui.ingame.layout");
-        m_GameOverScreen = Widget.Cast(layoutRoot.FindAnyWidget("GameOverScreen"));
-        m_GameOverScreenImage = ImageWidget.Cast(m_GameOverScreen.FindAnyWidget("GameOverScreenImage"));
-        m_HintPanel = new UiHintPanel(layoutRoot.FindAnyWidget("hint_frame"));
+        m_Logo                  = ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
+        m_GameOverScreen        = Widget.Cast(layoutRoot.FindAnyWidget("GameOverScreen"));
+        m_GameOverScreenImage   = ImageWidget.Cast(m_GameOverScreen.FindAnyWidget("GameOverScreenImage"));
+        m_HintPanel             = new UiHintPanel(layoutRoot.FindAnyWidget("hint_frame"));
 
         m_ExitButton        = layoutRoot.FindAnyWidget("ExitBtn");
         m_ContinueButton    = layoutRoot.FindAnyWidget("ContinueBtn");
@@ -73,7 +74,8 @@ modded class InGameMenu extends UIScriptedMenu
         }
 
 		HudShow(false);       
-
+        
+        Branding.ApplyLogo(m_Logo);
 		m_GameOverScreen.SetAlpha(0);
 		m_GameOverScreenImage.SetAlpha(0);
 		m_GameOverScreenImage.LoadImageFile(0, GameOverScreen.GameOverScreenImage());

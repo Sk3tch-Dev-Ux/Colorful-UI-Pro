@@ -1,6 +1,6 @@
 modded class LogoutMenu extends UIScriptedMenu
 {	
-	protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider;
+	protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_Logo;
 	protected ButtonWidget m_LogoutNow, m_Cancel, m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook;
 	protected Widget m_TopSpacer, m_BottomSpacer;
 	private	Widget m_timerText
@@ -8,7 +8,8 @@ modded class LogoutMenu extends UIScriptedMenu
 	override Widget Init()
 	{
 		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-ui/gui/layouts/menus/inGame/cui.logout.layout");
-	
+		
+		m_Logo 				= ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
 		m_LogoutTimeText 	= TextWidget.Cast(layoutRoot.FindAnyWidget("txtLogoutTime"));
 
 		m_LogoutNow			= layoutRoot.FindAnyWidget("ExitBtn");
@@ -79,7 +80,8 @@ modded class LogoutMenu extends UIScriptedMenu
 			player.GetEmoteManager().CreateEmoteCBFromMenu(EmoteConstants.ID_EMOTE_LYINGDOWN);
 			player.GetEmoteManager().GetEmoteLauncher().SetForced(EmoteLauncher.FORCE_DIFFERENT);
 		}
-
+		
+		Branding.ApplyLogo(m_Logo);
 		return layoutRoot;
 	}
 
