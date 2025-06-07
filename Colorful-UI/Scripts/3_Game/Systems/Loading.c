@@ -9,12 +9,12 @@ modded class LoadingScreen
 
     void LoadingScreen(DayZGame game)
     {
-        CuiLogger.Log("LoadingScreen() - Initializing loading layout");
+        CuiLogger.Log("LoadingScreen.LoadingScreen() - Initializing loading layout");
 
         m_DayZGame = game;
         m_WidgetRoot = game.GetLoadingWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/loading/cui.loading.layout");
 
-        CuiLogger.Log("LoadingScreen initialized");
+        CuiLogger.Log("LoadingScreen.LoadingScreen() - Widget root created");
 
         Class.CastTo(m_Background, m_WidgetRoot.FindAnyWidget("ImageBackground"));
         Class.CastTo(m_Logo, m_WidgetRoot.FindAnyWidget("Logo"));
@@ -33,12 +33,12 @@ modded class LoadingScreen
         ProgressAsync.SetProgressData(m_ProgressLoading);
         ProgressAsync.SetUserData(m_Background);
 
-        CuiLogger.Log("LoadingScreen() - Layout initialized");
+        CuiLogger.Log("LoadingScreen.LoadingScreen() - Layout initialized");
     }
 
     override void Show()
     {
-        CuiLogger.Log("LoadingScreen show");
+        CuiLogger.Log("LoadingScreen.Show() - Showing loading screen");
         if (m_Background) m_Background.LoadImageFile(0, loadscreens.GetRandomElement());
     }
 }
@@ -56,8 +56,8 @@ modded class LoginTimeBase extends LoginScreenBase
 
         layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/loading/cui.loggingIn.layout");
 
-        CuiLogger.Log("LoginTimeBase Init");
-        
+        CuiLogger.Log("LoginTimeBase.Init() - Layout created");
+
         m_Background = ImageWidget.Cast(layoutRoot.FindAnyWidget("ImageBackground"));
         m_Logo = ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
         m_TopShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("TopShader"));
@@ -91,7 +91,7 @@ modded class LoginTimeBase extends LoginScreenBase
     {
         super.SetTime(time);
         m_LoadingMsg.SetText("CONNECTING TO SERVER IN " + time.ToString());
-        CuiLogger.Log("LoginTimeBase SetTime " + time.ToString());
+        CuiLogger.Log("LoginTimeBase.SetTime() - Countdown: " + time.ToString());
     }
 
     override bool OnMouseEnter(Widget w, int x, int y)
@@ -131,8 +131,7 @@ modded class LoginQueueBase extends LoginScreenBase
         CuiLogger.Log("LoginQueueBase.Init() - Setting up Priority Queue UI");
 
         layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/loading/cui.priorityQueue.layout");
-        CuiLogger.Log("LoginQueueBase Init");
-
+        CuiLogger.Log("LoginQueueBase.Init() - Layout created");
 
         m_HintPanel = new UiHintPanelLoading(layoutRoot.FindAnyWidget("hint_frame0"));
         m_txtPosition = TextWidget.Cast(layoutRoot.FindAnyWidget("LoadingMsg"));
@@ -169,15 +168,15 @@ modded class LoginQueueBase extends LoginScreenBase
         return layoutRoot;
     }
 
-	override void Show()
-	{
-                CuiLogger.Log("LoginQueueBase Show");
-		if (!NoHints)
-		{
-			layoutRoot.Show(true);
-			m_HintPanel	= new UiHintPanelLoading(layoutRoot.FindAnyWidget("hint_frame0"));
-		}
-	}
+    override void Show()
+    {
+        CuiLogger.Log("LoginQueueBase.Show() - Displaying queue screen");
+        if (!NoHints)
+        {
+            layoutRoot.Show(true);
+            m_HintPanel = new UiHintPanelLoading(layoutRoot.FindAnyWidget("hint_frame0"));
+        }
+    }
 
     override void SetPosition(int position)
     {
@@ -186,7 +185,7 @@ modded class LoginQueueBase extends LoginScreenBase
             m_iPosition = position;
             m_txtPosition.SetText("Position in Queue " + position.ToString());
             m_txtPosition.SetColor(colorScheme.LoadingMsg());
-            CuiLogger.Log("LoginQueueBase position " + position.ToString());
+            CuiLogger.Log("LoginQueueBase.SetPosition() - Queue position: " + position.ToString());
         }
     }
 
@@ -243,9 +242,8 @@ modded class DayZGame
 {
     override void ConnectLaunch()
     {
-        CuiLogger.Log("ConnectLaunch");
-        if(StartMainMenu) { MainMenuLaunch(); }
+        CuiLogger.Log("DayZGame.ConnectLaunch() - Launching game from CLI or menu");
+        if (StartMainMenu) { MainMenuLaunch(); }
         else { ConnectFromCLI(); };
     };
 };
-

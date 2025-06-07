@@ -1,10 +1,12 @@
 class CuiLogger
 {
-    protected static const string LOG_FILE = "$profile:cui_logger.log";
+    protected static string LOG_FILE;
     protected static bool m_Initialized = false;
 
     static void Log(string message)
     {
+        if (!CuiDebug) return;
+
         if (!m_Initialized)
         {
             InitCUILogger();
@@ -21,6 +23,10 @@ class CuiLogger
 
     protected static void InitCUILogger()
     {
+        if (!CuiDebug) return;
+
+        LOG_FILE = "$profile:\\ColorfulLogs\\cui_logs_" + DateAndHourMinute() + ".log";
+
         FileHandle file = OpenFile(LOG_FILE, FileMode.WRITE);
         if (file != 0)
         {
@@ -61,5 +67,14 @@ class CuiLogger
         GetHourMinuteSecond(hour, minute, second);
 
         return year.ToStringLen(4) + "-" + month.ToStringLen(2) + "-" + day.ToStringLen(2) + " " + hour.ToStringLen(2) + ":" + minute.ToStringLen(2) + ":" + second.ToStringLen(2);
+    }
+
+    protected static string DateAndHourMinute()
+    {
+        int year, month, day, hour, minute, second;
+        GetYearMonthDay(year, month, day);
+        GetHourMinuteSecond(hour, minute, second);
+
+        return year.ToStringLen(4) + "-" + month.ToStringLen(2) + "-" + day.ToStringLen(2) + "_" + hour.ToStringLen(2) + "-" + minute.ToStringLen(2);
     }
 }
