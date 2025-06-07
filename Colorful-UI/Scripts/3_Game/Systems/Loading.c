@@ -12,6 +12,8 @@ modded class LoadingScreen
         m_DayZGame = game;
         m_WidgetRoot = game.GetLoadingWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/loading/cui.loading.layout");
 
+        CuiLogger.Log("LoadingScreen initialized");
+
         Class.CastTo(m_Background, m_WidgetRoot.FindAnyWidget("ImageBackground"));
         Class.CastTo(m_TopShader, m_WidgetRoot.FindAnyWidget("TopShader"));
         Class.CastTo(m_BottomShader, m_WidgetRoot.FindAnyWidget("BottomShader"));
@@ -30,6 +32,7 @@ modded class LoadingScreen
 
     override void Show()
     {
+        CuiLogger.Log("LoadingScreen show");
         if (m_Background) m_Background.LoadImageFile(0, loadscreens.GetRandomElement());
     }
 }
@@ -45,6 +48,8 @@ modded class LoginTimeBase extends LoginScreenBase
     {
 
         layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/loading/cui.loggingIn.layout");
+
+        CuiLogger.Log("LoginTimeBase Init");
         
         m_Background = ImageWidget.Cast(layoutRoot.FindAnyWidget("ImageBackground"));
         m_TopShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("TopShader"));
@@ -69,6 +74,7 @@ modded class LoginTimeBase extends LoginScreenBase
     override void SetTime(int time) {
         super.SetTime(time);
         m_LoadingMsg.SetText("CONNECTING TO SERVER IN " + time.ToString());
+        CuiLogger.Log("LoginTimeBase SetTime " + time.ToString());
     }
  
     override bool OnMouseEnter(Widget w, int x, int y)
@@ -104,6 +110,8 @@ modded class LoginQueueBase extends LoginScreenBase
     override Widget Init()
     {    
         layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/loading/cui.priorityQueue.layout");
+        CuiLogger.Log("LoginQueueBase Init");
+
 
         m_HintPanel = new UiHintPanelLoading(layoutRoot.FindAnyWidget("hint_frame0"));
         m_txtPosition = TextWidget.Cast(layoutRoot.FindAnyWidget("LoadingMsg"));
@@ -139,6 +147,7 @@ modded class LoginQueueBase extends LoginScreenBase
 
 	override void Show()
 	{
+                CuiLogger.Log("LoginQueueBase Show");
 		if (!NoHints)
 		{
 			layoutRoot.Show(true);
@@ -153,6 +162,7 @@ modded class LoginQueueBase extends LoginScreenBase
             m_iPosition = position;
             m_txtPosition.SetText("Position in Queue " + position.ToString());
             m_txtPosition.SetColor(colorScheme.LoadingMsg());
+            CuiLogger.Log("LoginQueueBase position " + position.ToString());
         }
     }
 
@@ -202,9 +212,11 @@ modded class LoginQueueBase extends LoginScreenBase
 // Start at Main Menu  ----------------------------------------------------------
 modded class DayZGame
 {
-    override void ConnectLaunch() 
+    override void ConnectLaunch()
     {
+        CuiLogger.Log("ConnectLaunch");
         if(StartMainMenu) { MainMenuLaunch(); }
         else { ConnectFromCLI(); };
     };
 };
+
