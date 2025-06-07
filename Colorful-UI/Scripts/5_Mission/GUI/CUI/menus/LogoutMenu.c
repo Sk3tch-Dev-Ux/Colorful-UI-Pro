@@ -5,10 +5,12 @@ modded class LogoutMenu extends UIScriptedMenu
 	protected Widget m_TopSpacer, m_BottomSpacer;
 	private	Widget m_timerText
 
-	override Widget Init()
-	{
-		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-ui/gui/layouts/menus/inGame/cui.logout.layout");
-		
+        override Widget Init()
+        {
+                layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-ui/gui/layouts/menus/inGame/cui.logout.layout");
+
+                CuiLogger.Log("LogoutMenu Init");
+	
 		m_Logo 				= ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
 		m_LogoutTimeText 	= TextWidget.Cast(layoutRoot.FindAnyWidget("txtLogoutTime"));
 
@@ -85,14 +87,16 @@ modded class LogoutMenu extends UIScriptedMenu
 		return layoutRoot;
 	}
 
-	void abortMission()
-	{
-		GetGame().GetMission().AbortMission();
-	}
+        void abortMission()
+        {
+                CuiLogger.Log("LogoutMenu abortMission");
+                GetGame().GetMission().AbortMission();
+        }
 
-	void canelExit()
-	{
-		Hide();
-		Cancel();
-	}
+        void canelExit()
+        {
+                CuiLogger.Log("LogoutMenu cancelExit");
+                Hide();
+                Cancel();
+        }
 }
