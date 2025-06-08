@@ -5,7 +5,8 @@
 modded class LoadingScreen
 {
     protected ImageWidget m_Background, m_TopShader, m_BottomShader, m_Mask, m_Logo;
-    protected TextWidget m_LoadingMsg;
+    protected TextWidget m_LoadingMsg, m_Title;
+    protected ProgressBarWidget m_ProgressLoading;
 
     void LoadingScreen(DayZGame game)
     {
@@ -22,6 +23,7 @@ modded class LoadingScreen
         Class.CastTo(m_BottomShader, m_WidgetRoot.FindAnyWidget("BottomShader"));
         Class.CastTo(m_LoadingMsg, m_WidgetRoot.FindAnyWidget("LoadingMsg"));
         Class.CastTo(m_ProgressLoading, m_WidgetRoot.FindAnyWidget("LoadingBar"));
+        Class.CastTo(m_Title, m_WidgetRoot.FindAnyWidget("Title"));
 
         if (m_TopShader) m_TopShader.SetColor(colorScheme.TopShader());
         if (m_BottomShader) m_BottomShader.SetColor(colorScheme.BottomShader());
@@ -40,6 +42,24 @@ modded class LoadingScreen
     {
         CuiLogger.Log("LoadingScreen.Show() - Showing loading screen");
         if (m_Background) m_Background.LoadImageFile(0, loadscreens.GetRandomElement());
+    }
+
+    override void SetTitle(string title)
+    {
+        if (!m_Title)
+        {
+            m_Title = TextWidget.Cast(m_WidgetRoot.FindAnyWidget("Title"));
+            CuiLogger.Log("LoadingScreen.SetTitle() - Rebinding m_Title");
+        }
+
+        if (m_Title)
+        {
+            m_Title.SetText(title);
+        }
+        else
+        {
+            CuiLogger.Log("LoadingScreen.SetTitle() - m_Title is null");
+        }
     }
 }
 
@@ -87,20 +107,13 @@ modded class LoginTimeBase extends LoginScreenBase
         return layoutRoot;
     }
 
-    override void SetTime(int time)
-    {
-        super.SetTime(time);
-        m_LoadingMsg.SetText("CONNECTING TO SERVER IN " + time.ToString());
-        CuiLogger.Log("LoginTimeBase.SetTime() - Countdown: " + time.ToString());
-    }
-
     override bool OnMouseEnter(Widget w, int x, int y)
     {
         if (w == m_btnLeave)
         {
             CuiLogger.Log("LoginTimeBase.OnMouseEnter() - Hovered Leave Button");
-            m_ExitText.SetColor(colorScheme.ButtonHover());
-            m_btnLeave.SetColor(UIColor.Transparent());
+            if (m_ExitText) m_ExitText.SetColor(colorScheme.ButtonHover());
+            if (m_btnLeave) m_btnLeave.SetColor(UIColor.Transparent());
             return true;
         }
         return false;
@@ -111,12 +124,12 @@ modded class LoginTimeBase extends LoginScreenBase
         if (w == m_btnLeave)
         {
             CuiLogger.Log("LoginTimeBase.OnMouseLeave() - Left Leave Button");
-            m_ExitText.SetColor(colorScheme.PrimaryText());
+            if (m_ExitText) m_ExitText.SetColor(colorScheme.PrimaryText());
             return true;
         }
         return false;
     }
-};
+}
 
 // Phase 3: Prio Queue  -------------------------------------------------------------
 modded class LoginQueueBase extends LoginScreenBase
@@ -183,9 +196,15 @@ modded class LoginQueueBase extends LoginScreenBase
         if (position != m_iPosition)
         {
             m_iPosition = position;
-            m_txtPosition.SetText("Position in Queue " + position.ToString());
-            m_txtPosition.SetColor(colorScheme.LoadingMsg());
-            CuiLogger.Log("LoginQueueBase.SetPosition() - Queue position: " + position.ToString());
+            if (m_txtPosition)
+            {
+                m_txtPosition.SetText("Position in Queue " + position.ToString());
+                m_txtPosition.SetColor(colorScheme.LoadingMsg());
+            }
+            else
+            {
+                CuiLogger.Log("LoginQueueBase.SetPosition() - ERROR: m_txtPosition is null!");
+            }
         }
     }
 
@@ -194,15 +213,15 @@ modded class LoginQueueBase extends LoginScreenBase
         if (w == m_btnLeave)
         {
             CuiLogger.Log("LoginQueueBase.OnMouseEnter() - Hovered Leave Button");
-            m_ExitText.SetColor(colorScheme.ButtonHover());
-            m_btnLeave.SetColor(UIColor.Transparent());
+            if (m_ExitText) m_ExitText.SetColor(colorScheme.ButtonHover());
+            if (m_btnLeave) m_btnLeave.SetColor(UIColor.Transparent());
             return true;
         }
         if (w == m_PrioQBtn)
         {
             CuiLogger.Log("LoginQueueBase.OnMouseEnter() - Hovered Prio Queue Button");
-            m_PrioText.SetColor(colorScheme.ButtonHover());
-            m_PrioQBtn.SetColor(UIColor.Transparent());
+            if (m_PrioText) m_PrioText.SetColor(colorScheme.ButtonHover());
+            if (m_PrioQBtn) m_PrioQBtn.SetColor(UIColor.Transparent());
             return true;
         }
         return false;
@@ -213,13 +232,13 @@ modded class LoginQueueBase extends LoginScreenBase
         if (w == m_btnLeave)
         {
             CuiLogger.Log("LoginQueueBase.OnMouseLeave() - Left Leave Button");
-            m_ExitText.SetColor(colorScheme.PrimaryText());
+            if (m_ExitText) m_ExitText.SetColor(colorScheme.PrimaryText());
             return true;
         }
         if (w == m_PrioQBtn)
         {
             CuiLogger.Log("LoginQueueBase.OnMouseLeave() - Left Prio Queue Button");
-            m_PrioText.SetColor(colorScheme.PrimaryText());
+            if (m_PrioText) m_PrioText.SetColor(colorScheme.PrimaryText());
             return true;
         }
         return false;
@@ -235,7 +254,37 @@ modded class LoginQueueBase extends LoginScreenBase
         }
         return super.OnClick(w, x, y, button);
     }
-};
+}
+
+// Final Crash Fix — Executed by DayZ Engine
+modded class LoginTimeStatic extends LoginTimeBase
+{
+    override void SetTime(int time)
+    {
+        if (!layoutRoot)
+        {
+            CuiLogger.Log("LoginTimeStatic.SetTime() - layoutRoot is null, skipping call");
+            return;
+        }
+
+        if (!m_LoadingMsg)
+        {
+            m_LoadingMsg = TextWidget.Cast(layoutRoot.FindAnyWidget("LoadingMsg"));
+            CuiLogger.Log("LoginTimeStatic.SetTime() - Rebinding m_LoadingMsg");
+        }
+
+        if (m_LoadingMsg)
+        {
+            m_LoadingMsg.SetText("CONNECTING TO SERVER IN " + time.ToString());
+        }
+        else
+        {
+            CuiLogger.Log("LoginTimeStatic.SetTime() - m_LoadingMsg is still null");
+        }
+
+        CuiLogger.Log("LoginTimeStatic.SetTime() - Countdown: " + time.ToString());
+    }
+}
 
 // Start at Main Menu  ----------------------------------------------------------
 modded class DayZGame
@@ -246,4 +295,4 @@ modded class DayZGame
         if (StartMainMenu) { MainMenuLaunch(); }
         else { ConnectFromCLI(); };
     };
-};
+}

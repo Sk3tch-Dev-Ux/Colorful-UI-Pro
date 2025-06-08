@@ -40,7 +40,9 @@ class CuiLogger
 
     protected static string Timestamp()
     {
+        if (!GetGame()) return "[NULL_GAME]";
         float time = GetGame().GetTime();
+
         int seconds = Math.Floor(time / 1000);
         int minutes = seconds / 60;
         int hours = minutes / 60;
