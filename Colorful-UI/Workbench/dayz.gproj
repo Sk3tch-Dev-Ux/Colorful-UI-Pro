@@ -7,13 +7,13 @@ GameProjectClass {
 	 skeletonDefinitions "DZ/Anims/cfg/skeletons.anim.xml"
    FileSystem {
 		FileSystemPathClass {
-			Name "WorkDir"
+			Name "Work Directory"
 			Directory "P:/"
 		} 
 		FileSystemPathClass {  
-            Name "SteamDir"
+            Name "DayZ Directory"
             Directory "C:/Program Files (x86)/Steam/steamapps/common/DayZ"
-         }
+        }
 	 }
 	imageSets {
       "gui/imagesets/BleedingDrops.imageset"
