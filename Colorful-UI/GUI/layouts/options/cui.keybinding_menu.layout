@@ -30,7 +30,7 @@ FrameWidgetClass keybindings_root {
      vexactpos 1
      hexactsize 0
      vexactsize 0
-     imageTexture "{73620301808D311B}Colorful-UI/GUI/textures/globals/shader.edds"
+     imageTexture "{73620301808D311B}Colorful-UI/GUI/textures/Shared/shader.edds"
      mode blend
      "src alpha" 1
      "clamp mode" clamp
@@ -47,7 +47,7 @@ FrameWidgetClass keybindings_root {
      vexactpos 1
      hexactsize 0
      vexactsize 0
-     imageTexture "{73620301808D311B}Colorful-UI/GUI/textures/globals/shader.edds"
+     imageTexture "{73620301808D311B}Colorful-UI/GUI/textures/Shared/shader.edds"
      mode blend
      "src alpha" 1
      "clamp mode" clamp
@@ -66,7 +66,7 @@ FrameWidgetClass keybindings_root {
      vexactpos 1
      hexactsize 0
      vexactsize 0
-     imageTexture "{D8F330A5E09774AE}Colorful-UI/GUI/textures/globals/CUI2-Vingette.edds"
+     imageTexture "{D8F330A5E09774AE}Colorful-UI/GUI/textures/Shared/Vingette.edds"
      mode blend
      "src alpha" 1
      "clamp mode" clamp
@@ -153,10 +153,11 @@ FrameWidgetClass keybindings_root {
     }
    }
   }
-  WrapSpacerWidgetClass play_panel_root {
+  WrapSpacerWidgetClass Menu {
    visible 1
    ignorepointer 1
-   position 0.05 0.05
+   keepsafezone 1
+   position 0.05 -0.02
    size 293 297
    halign right_ref
    valign bottom_ref
@@ -193,27 +194,47 @@ FrameWidgetClass keybindings_root {
      "Size To Content H" 1
      "Size To Content V" 1
      {
-      ButtonWidgetClass back {
-       disabled 0
-       ignorepointer 0
-       color 0 0 0 1
-       position 0 88
-       size 1 90
-       halign center_ref
-       valign bottom_ref
+      ButtonWidgetClass BackBtn {
+       color 0 0 0 0
+       position 117.069 119.16
+       size 293 75
+       halign right_ref
+       valign center_ref
        hexactpos 1
        vexactpos 1
-       hexactsize 0
+       hexactsize 1
        vexactsize 1
        style Empty
        "no focus" 0
-       "next up" "apply"
-       "next down" "defaults"
-       text "#layout_pc_keybinding_play_pannel_back"
-       text_proportion 0.6
+       "next left" "news_main"
+       "next right" "news_main"
+       "next up" "choose_server"
+       "next down" "play_video"
+       text_offset 0 0
        text_halign right
-       font "colorful-ui/gui/fonts/GB-Regular.fnt"
-       switch normal
+       {
+        TextWidgetClass BackBtn_label {
+         clipchildren 0
+         ignorepointer 1
+         size 1 1
+         halign right_ref
+         valign center_ref
+         hexactpos 1
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         scaled 1
+         text "Back"
+         font "Colorful-UI/gui/fonts/GB-Regular.fnt"
+         "text sharpness" 1.5
+         "exact text" 1
+         "exact text size" 45
+         "size to text h" 1
+         "size to text v" 0
+         "text halign" right
+         "text valign" center
+        }
+       }
       }
      }
     }
@@ -248,79 +269,172 @@ FrameWidgetClass keybindings_root {
      "Size To Content V" 1
      content_valign bottom
      {
-      ButtonWidgetClass apply {
-       disabled 0
-       ignorepointer 0
-       color 0 0 0 1
-       position 0 88
-       size 1 38
-       halign center_ref
-       valign bottom_ref
+      ButtonWidgetClass ApplyBtn {
+       color 0 0 0 0
+       position 0 0
+       size 293 46
+       halign right_ref
+       valign center_ref
        hexactpos 1
        vexactpos 1
-       hexactsize 0
+       hexactsize 1
        vexactsize 1
        style Empty
        "no focus" 0
-       "next up" "reset"
-       "next down" "back"
-       text "#layout_pc_keybinding_apply"
-       text_proportion 0.55
+       "next left" "news_main"
+       "next right" "news_main"
+       "next up" "choose_server"
+       "next down" "play_video"
+       text_offset 0 0
        text_halign right
-       font "colorful-ui/gui/fonts/GB-Regular.fnt"
-       switch normal
-      }
-      ButtonWidgetClass undo {
-       disabled 0
-       ignorepointer 0
-       color 0 0 0 1
-       position 0 130
-       size 1 38
-       halign center_ref
-       valign bottom_ref
-       hexactpos 1
-       vexactpos 1
-       hexactsize 0
-       vexactsize 1
-       style Empty
-       "no focus" 0
-       "next left" ""
-       "next right" ""
-       "next up" "defaults"
-       "next down" "apply"
-       text "#menu_undo_cap"
-       text_proportion 0.55
-       text_halign right
-       font "colorful-ui/gui/fonts/GB-Regular.fnt"
-       switch normal
-      }
-      PanelWidgetClass character {
-       visible 0
-       ignorepointer 0
-       color 0.0392 0.0392 0.0392 1
-       position 0 172
-       size 1 38
-       halign center_ref
-       valign bottom_ref
-       hexactpos 1
-       vexactpos 1
-       hexactsize 0
-       vexactsize 1
-       style blank
        {
-        TextWidgetClass character_name_text {
-         inheritalpha 1
+        TextWidgetClass ApplyBtn_label {
+         clipchildren 0
          ignorepointer 1
-         size 1 0.55
-         halign center_ref
+         size 1 1
+         halign right_ref
          valign center_ref
          hexactpos 1
-         vexactpos 1
+         vexactpos 0
          hexactsize 0
          vexactsize 0
-         font "colorful-ui/gui/fonts/GB-Regular.fnt"
-         "exact text" 0
-         "text halign" center
+         scaled 1
+         text "Apply"
+         font "Colorful-UI/gui/fonts/GB-Regular.fnt"
+         "text sharpness" 1.5
+         "exact text" 1
+         "exact text size" 24
+         "size to text h" 1
+         "size to text v" 1
+         "text halign" right
+         "text valign" center
+        }
+       }
+      }
+      ButtonWidgetClass UndoBtn {
+       color 0 0 0 0
+       position 0 0
+       size 293 46
+       halign right_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       style Empty
+       "no focus" 0
+       "next left" "news_main"
+       "next right" "news_main"
+       "next up" "choose_server"
+       "next down" "play_video"
+       text_offset 0 0
+       text_halign right
+       {
+        TextWidgetClass UndoBtn_label {
+         clipchildren 0
+         ignorepointer 1
+         size 1 1
+         halign right_ref
+         valign center_ref
+         hexactpos 1
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         scaled 1
+         text "Undo"
+         font "Colorful-UI/gui/fonts/GB-Regular.fnt"
+         "text sharpness" 1.5
+         "exact text" 1
+         "exact text size" 24
+         "size to text h" 1
+         "size to text v" 1
+         "text halign" right
+         "text valign" center
+        }
+       }
+      }
+      ButtonWidgetClass ResetBtn {
+       visible 1
+       color 0 0 0 0
+       position 0 0
+       size 293 46
+       halign right_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       style Empty
+       "no focus" 0
+       "next left" "news_main"
+       "next right" "news_main"
+       "next up" "choose_server"
+       "next down" "play_video"
+       text_offset 0 0
+       text_halign right
+       {
+        TextWidgetClass ResetBtn_label {
+         clipchildren 0
+         ignorepointer 1
+         size 1 1
+         halign right_ref
+         valign center_ref
+         hexactpos 1
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         scaled 1
+         text "Reset"
+         font "Colorful-UI/gui/fonts/GB-Regular.fnt"
+         "text sharpness" 1.5
+         "exact text" 1
+         "exact text size" 24
+         "size to text h" 1
+         "size to text v" 1
+         "text halign" right
+         "text valign" center
+        }
+       }
+      }
+      ButtonWidgetClass ResetAllBtn {
+       visible 0
+       color 0 0 0 0
+       position 0 0
+       size 293 46
+       halign right_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       style Empty
+       "no focus" 0
+       "next left" "news_main"
+       "next right" "news_main"
+       "next up" "choose_server"
+       "next down" "play_video"
+       text_offset 0 0
+       text_halign right
+       {
+        TextWidgetClass ResetAllBtn_label {
+         clipchildren 0
+         ignorepointer 1
+         size 1 1
+         halign right_ref
+         valign center_ref
+         hexactpos 1
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         scaled 1
+         text "Reset All"
+         font "Colorful-UI/gui/fonts/GB-Regular.fnt"
+         "text sharpness" 1.5
+         "exact text" 1
+         "exact text size" 24
+         "size to text h" 1
+         "size to text v" 1
+         "text halign" right
          "text valign" center
         }
        }
@@ -345,48 +459,6 @@ FrameWidgetClass keybindings_root {
        "next up" "back"
        "next down" "reset"
        text "#options_reset_all"
-       text_proportion 0.55
-       text_halign right
-       font "colorful-ui/gui/fonts/GB-Regular.fnt"
-       switch normal
-      }
-     }
-    }
-    PanelWidgetClass group_header {
-     visible 1
-     clipchildren 0
-     inheritalpha 0
-     ignorepointer 1
-     color 0 0 0 0.9412
-     size 293 128
-     halign right_ref
-     hexactpos 1
-     vexactpos 1
-     hexactsize 1
-     vexactsize 1
-     priority 10
-     style blank
-     "no focus" 1
-     {
-      ButtonWidgetClass reset {
-       disabled 0
-       ignorepointer 0
-       color 0 0 0 1
-       position 0 90
-       size 1 38
-       halign center_ref
-       hexactpos 1
-       vexactpos 1
-       hexactsize 0
-       vexactsize 1
-       priority 666
-       style Empty
-       "no focus" 0
-       "next left" ""
-       "next right" ""
-       "next up" "back"
-       "next down" "reset"
-       text "#str_settings_menu_root_play_panel_root_top_reset0"
        text_proportion 0.55
        text_halign right
        font "colorful-ui/gui/fonts/GB-Regular.fnt"
@@ -450,7 +522,7 @@ FrameWidgetClass keybindings_root {
   }
   FrameWidgetClass Tabber {
    ignorepointer 1
-   position 0 0
+   position 1.19962 0
    size 1 1
    hexactpos 1
    vexactpos 1
@@ -558,7 +630,7 @@ FrameWidgetClass keybindings_root {
     FrameWidgetClass TabContentsHolder {
      visible 1
      ignorepointer 1
-     position 81.4164 160
+     position 82.2832 160.28101
      size 1760 800
      hexactpos 1
      vexactpos 1
