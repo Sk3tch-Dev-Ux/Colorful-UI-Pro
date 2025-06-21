@@ -45,10 +45,4 @@ modded class KeybindingsMenu extends UIScriptedMenu
 		
 		return layoutRoot;
 	}
-	
-    static void OnApplyPressed()
-    {
-        // Logic for applying changes
-        Print("button clicked");
-    }
 }

@@ -48,7 +48,7 @@ modded class MainMenu extends UIScriptedMenu
 		cuiElmnt.proBtnCB(m_SettingsBtn, "Settings", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenSettings");
 		cuiElmnt.proBtnCB(m_TutorialBtn, "Tutorial", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenTutorials");
 		cuiElmnt.proBtnCB(m_MessageBtn, "Credits", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenCredits");
-		cuiElmnt.proBtnCB(m_CharacterBtn, "Credits", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenMenuCustomizeCharacter");
+		cuiElmnt.proBtnCB(m_CharacterBtn, "", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenMenuCustomizeCharacter");
 
 		cuiElmnt.proBtn(m_PrioQ, "Priority Queue", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.PriorityQ);
 		cuiElmnt.proBtn(m_Website, "Visit Website", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.Website);

@@ -1253,7 +1253,7 @@ FrameWidgetClass mainmenu_root {
         }
        }
       }
-      ButtonWidgetClass characterBtn {
+      ButtonWidgetClass CharacterBtn {
        visible 1
        color 0 0 0 1
        position 20 -16
