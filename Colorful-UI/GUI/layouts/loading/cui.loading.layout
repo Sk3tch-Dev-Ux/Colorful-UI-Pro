@@ -33,6 +33,7 @@ PanelWidgetClass LoadingFrame {
   }
   VideoWidgetClass LoadingVid {
    ignorepointer 1
+   position 0 0
    size 0.16 0.09
    halign center_ref
    valign center_ref

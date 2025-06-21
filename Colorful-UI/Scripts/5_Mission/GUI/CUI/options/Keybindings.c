@@ -8,7 +8,7 @@ modded class KeybindingsMenu extends UIScriptedMenu
 	override Widget Init()
 	{
 		Input input = GetGame().GetInput();
-		layoutRoot			= GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/menus/settings/cui.keybindings.layout", null);
+		layoutRoot			= GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/menus/settings/cui.keybinding_menu.layout", null);
 		
 		m_Apply				= ButtonWidget.Cast(layoutRoot.FindAnyWidget("ApplyBtn"));
         m_ApplyBtn_Label    = TextWidget.Cast(layoutRoot.FindAnyWidget("ApplyBtn_Label"));
