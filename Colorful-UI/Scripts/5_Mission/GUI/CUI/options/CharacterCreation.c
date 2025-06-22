@@ -2,7 +2,7 @@
 modded class CharacterCreationMenu extends UIScriptedMenu
 {
 	protected Widget m_Apply, m_Save, m_RandomizeCharacter, m_BackButton;
-    protected ImageWidget m_MenuDivider
+	protected ImageWidget m_MenuDivider, m_TopShader, m_BottomShader;
 
 	override Widget Init()
 	{
@@ -14,7 +14,12 @@ modded class CharacterCreationMenu extends UIScriptedMenu
 		m_RandomizeCharacter		= layoutRoot.FindAnyWidget("RandoBtn");
 		m_BackButton				= layoutRoot.FindAnyWidget("BackBtn");
         m_MenuDivider               = ImageWidget.Cast(layoutRoot.FindAnyWidget("MenuDivider"));
+		m_TopShader                 = ImageWidget.Cast(layoutRoot.FindAnyWidget("TopShader"));
+		m_BottomShader              = ImageWidget.Cast(layoutRoot.FindAnyWidget("BottomShader"));
 		
+		m_TopShader.SetColor(colorScheme.TopShader());
+		m_BottomShader.SetColor(colorScheme.BottomShader());
+
         cuiElmnt.proBtnCB(ButtonWidget.Cast(m_Apply), "Apply", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Apply");
         cuiElmnt.proBtnCB(m_Save, "Save", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Saveback");
         cuiElmnt.proBtnCB(ButtonWidget.Cast(m_RandomizeCharacter), "",     colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "RandomizeCharacter");

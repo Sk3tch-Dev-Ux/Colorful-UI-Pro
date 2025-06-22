@@ -30,7 +30,7 @@ FrameWidgetClass rootFrame {
      vexactpos 1
      hexactsize 0
      vexactsize 0
-     imageTexture "{73620301808D311B}Colorful-UI/GUI/textures/globals/shader.edds"
+     imageTexture "{73620301808D311B}Colorful-UI/GUI/textures/Shared/shader.edds"
      mode blend
      "src alpha" 1
      "clamp mode" clamp
@@ -47,7 +47,7 @@ FrameWidgetClass rootFrame {
      vexactpos 1
      hexactsize 0
      vexactsize 0
-     imageTexture "{73620301808D311B}Colorful-UI/GUI/textures/globals/shader.edds"
+     imageTexture "{73620301808D311B}Colorful-UI/GUI/textures/Shared/shader.edds"
      mode blend
      "src alpha" 1
      "clamp mode" clamp
@@ -65,11 +65,77 @@ FrameWidgetClass rootFrame {
      vexactpos 1
      hexactsize 0
      vexactsize 0
-     imageTexture "{D8F330A5E09774AE}Colorful-UI/GUI/textures/globals/CUI2-Vingette.edds"
+     imageTexture "{D8F330A5E09774AE}Colorful-UI/GUI/textures/Shared/Vingette.edds"
      mode blend
      "src alpha" 1
      "clamp mode" clamp
      "stretch mode" stretch_w_h
+    }
+   }
+  }
+  FrameWidgetClass SafZone {
+   ignorepointer 1
+   size 0.9 0.9
+   halign center_ref
+   valign center_ref
+   hexactpos 1
+   vexactpos 1
+   hexactsize 0
+   vexactsize 0
+   {
+    TextWidgetClass TutorialsTextWidget {
+     ignorepointer 1
+     position 0 0
+     size 0.15352 50
+     halign right_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     priority 1
+     style Normal
+     text "#STR_rootFrame_TutorialsTextWidget0"
+     font "colorful-ui/gui/fonts/GB-Regular.fnt"
+     "text color" 0.8157 0.1255 0.7843 1
+     "exact text" 0
+     "text halign" right
+     "text valign" center
+    }
+    ButtonWidgetClass BackBtn {
+     color 0 0 0 0
+     position 0.00006 0
+     size 125.20499 60
+     halign right_ref
+     valign bottom_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     style Empty
+     "no focus" 0
+     "next left" "news_main"
+     "next right" "news_main"
+     "next up" "choose_server"
+     "next down" "play_video"
+     {
+      TextWidgetClass BackBtn_label {
+       clipchildren 0
+       ignorepointer 1
+       size 1 1
+       halign center_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 0
+       text "#layout_pc_keybinding_play_pannel_back"
+       font "colorful-ui/gui/fonts/GB-Regular.fnt"
+       "exact text" 1
+       "exact text size" 52
+       "text halign" right
+       "text valign" center
+      }
+     }
     }
    }
   }
@@ -1368,7 +1434,6 @@ FrameWidgetClass rootFrame {
    }
   }
   PanelWidgetClass Tabber {
-   position 0 0
    size 1 1
    hexactpos 1
    vexactpos 1
@@ -1381,7 +1446,7 @@ FrameWidgetClass rootFrame {
      visible 1
      clipchildren 0
      ignorepointer 1
-     position 0.05 0.06
+     position 0.05 0.05
      size 890 60
      hexactpos 0
      vexactpos 0
@@ -1408,7 +1473,7 @@ FrameWidgetClass rootFrame {
          vexactpos 0
          hexactsize 0
          vexactsize 0
-         imageTexture "{5A89D58DD2276E85}gui/textures/SerratedBlack2.edds"
+         imageTexture "{5A89D58DD2276E85}gui/textures/serratedblack2.edds"
          mode blend
          "src alpha" 1
          "clamp mode" clamp
@@ -1478,7 +1543,7 @@ FrameWidgetClass rootFrame {
              hexactsize 1
              vexactsize 0
              draggable 0
-             imageTexture "{5A89D58DD2276E85}gui/textures/SerratedBlack2.edds"
+             imageTexture "{5A89D58DD2276E85}gui/textures/serratedblack2.edds"
              mode blend
              "src alpha" 1
              "clamp mode" clamp
@@ -1538,7 +1603,7 @@ FrameWidgetClass rootFrame {
              hexactsize 1
              vexactsize 0
              draggable 0
-             imageTexture "{5A89D58DD2276E85}gui/textures/SerratedBlack2.edds"
+             imageTexture "{5A89D58DD2276E85}gui/textures/serratedblack2.edds"
              mode blend
              "src alpha" 1
              "clamp mode" clamp
@@ -1598,7 +1663,7 @@ FrameWidgetClass rootFrame {
              hexactsize 1
              vexactsize 0
              draggable 0
-             imageTexture "{5A89D58DD2276E85}gui/textures/SerratedBlack2.edds"
+             imageTexture "{5A89D58DD2276E85}gui/textures/serratedblack2.edds"
              mode blend
              "src alpha" 1
              "clamp mode" clamp
@@ -1658,7 +1723,7 @@ FrameWidgetClass rootFrame {
              hexactsize 1
              vexactsize 0
              draggable 0
-             imageTexture "{5A89D58DD2276E85}gui/textures/SerratedBlack2.edds"
+             imageTexture "{5A89D58DD2276E85}gui/textures/serratedblack2.edds"
              mode blend
              "src alpha" 1
              "clamp mode" clamp
@@ -1718,7 +1783,7 @@ FrameWidgetClass rootFrame {
              hexactsize 1
              vexactsize 0
              draggable 0
-             imageTexture "{5A89D58DD2276E85}gui/textures/SerratedBlack2.edds"
+             imageTexture "{5A89D58DD2276E85}gui/textures/serratedblack2.edds"
              mode blend
              "src alpha" 1
              "clamp mode" clamp
@@ -1778,7 +1843,7 @@ FrameWidgetClass rootFrame {
              hexactsize 1
              vexactsize 0
              draggable 0
-             imageTexture "{5A89D58DD2276E85}gui/textures/SerratedBlack2.edds"
+             imageTexture "{5A89D58DD2276E85}gui/textures/serratedblack2.edds"
              mode blend
              "src alpha" 1
              "clamp mode" clamp
@@ -1873,7 +1938,7 @@ FrameWidgetClass rootFrame {
        visible 1
        clipchildren 0
        ignorepointer 1
-       position 0 0
+       position 1.30501 0
        size 1 1
        hexactpos 1
        vexactpos 1
@@ -5102,113 +5167,6 @@ FrameWidgetClass rootFrame {
        vexactsize 1
        imageTexture "{F0E95E39B3D3FE0C}gui/textures/tutorials/loot.edds"
        "stretch mode" stretch_w_h
-      }
-     }
-    }
-   }
-  }
-  TextWidgetClass TutorialsTextWidget {
-   ignorepointer 1
-   position 0.05 0.065
-   size 0.35 50
-   halign right_ref
-   hexactpos 0
-   vexactpos 0
-   hexactsize 0
-   vexactsize 1
-   priority 1
-   style Normal
-   text "#STR_rootFrame_TutorialsTextWidget0"
-   font "colorful-ui/gui/fonts/GB-Regular.fnt"
-   "text color" 0.8157 0.1255 0.7843 1
-   "exact text" 0
-   "text halign" right
-   "text valign" center
-  }
-  WrapSpacerWidgetClass play_panel_root {
-   visible 1
-   ignorepointer 1
-   position 0.05 0.05
-   size 293 60
-   halign right_ref
-   valign bottom_ref
-   hexactpos 0
-   vexactpos 0
-   hexactsize 1
-   vexactsize 1
-   priority 2
-   Padding 0
-   Margin 0
-   content_halign center
-   content_valign bottom
-   {
-    WrapSpacerWidgetClass bottom {
-     color 0 0 0 0.549
-     position 0 0
-     size 1 60
-     halign center_ref
-     valign bottom_ref
-     hexactpos 1
-     vexactpos 1
-     hexactsize 0
-     vexactsize 1
-     style Empty
-     "no focus" 0
-     "next left" "news_main"
-     "next right" "news_main"
-     "next up" ""
-     "next down" "exit_button"
-     Padding 0
-     Margin 0
-     "Size To Content H" 1
-     "Size To Content V" 1
-     {
-      ButtonWidgetClass back {
-       color 0 0 0 0
-       position 0 0
-       size 1 1
-       halign center_ref
-       valign bottom_ref
-       hexactpos 1
-       vexactpos 1
-       hexactsize 0
-       vexactsize 0
-       style Empty
-       "no focus" 0
-       "next left" "news_main"
-       "next right" "news_main"
-       "next up" "choose_server"
-       "next down" "play_video"
-       {
-        PanelWidgetClass back_panel {
-         ignorepointer 1
-         color 0 0 0 0
-         position 0 0
-         size 1 1
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 0
-         style DayZDefaultPanel
-        }
-        TextWidgetClass back_label {
-         clipchildren 0
-         ignorepointer 1
-         size 1 1
-         halign center_ref
-         valign center_ref
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 0
-         text "#layout_pc_keybinding_play_pannel_back"
-         font "colorful-ui/gui/fonts/GB-Regular.fnt"
-         "exact text" 1
-         "exact text size" 52
-         "text halign" right
-         "text valign" center
-        }
-       }
       }
      }
     }
