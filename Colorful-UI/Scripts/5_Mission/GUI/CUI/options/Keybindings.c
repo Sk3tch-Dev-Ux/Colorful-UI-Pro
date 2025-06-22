@@ -3,11 +3,11 @@ modded class KeybindingsMenu extends UIScriptedMenu
 	private Widget m_TopShader, m_BottomShader, m_MenuDivider;
     private TextWidget m_ApplyBtn_Label;
 	protected ProgressBarWidget m_LoadingBar;
-		
+
 	override Widget Init()
 	{
 		Input input = GetGame().GetInput();
-		layoutRoot			= GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/menus/settings/cui.keybindings.layout", null);
+		layoutRoot			= GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/options/cui.keybindings.layout", null);
 		
 		m_Apply     = ButtonWidget.Cast(layoutRoot.FindAnyWidget("ApplyBtn"));
 		m_Back      = ButtonWidget.Cast(layoutRoot.FindAnyWidget("BackBtn"));
@@ -26,7 +26,7 @@ modded class KeybindingsMenu extends UIScriptedMenu
 		m_MenuDivider  = layoutRoot.FindAnyWidget( "MenuDivider" );
 
 		// Note that this is just used as a visual trim, not a real loading bar.
-		m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
+		m_LoadingBar      = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
 		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 
 		m_TopShader.SetColor(colorScheme.TopShader());
