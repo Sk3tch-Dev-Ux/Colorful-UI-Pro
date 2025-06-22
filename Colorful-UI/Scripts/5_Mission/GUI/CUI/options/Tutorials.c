@@ -1,17 +1,18 @@
 modded class TutorialsMenu extends UIScriptedMenu
 {
-	private	Widget m_shader
-	private Widget m_TopShader;
-	private Widget m_BottomShader;
+	private	Widget m_shader, m_TopShader, m_BottomShader;
+	private ButtonWidget m_Back;
+	protected ProgressBarWidget m_LoadingBar;
+
 	override Widget Init()
 	{
-		layoutRoot	= GetGame().GetWorkspace().CreateWidgets("Colorful-UI/gui/layouts/options/cui.tutorials.layout");
+		layoutRoot	= GetGame().GetWorkspace().CreateWidgets("Colorful-UI/gui/layouts/menus/settings/tutorials.layout");
 	
 		m_InfoTextLeft	= layoutRoot.FindAnyWidget("InfoTextLeft");
 		m_InfoTextRight	= layoutRoot.FindAnyWidget("InfoTextRight");
 		
-		m_Back			= ButtonWidget.Cast(layoutRoot.FindAnyWidget("back"));
-        cuiElmnt.proBtnCB(ButtonWidget.Cast(m_Back), "Apply", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Back");
+		m_Back			= ButtonWidget.Cast(layoutRoot.FindAnyWidget("BackBtn"));
+        cuiElmnt.proBtnCB(ButtonWidget.Cast(m_Back), "Back", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Back");
 		
 		layoutRoot.FindAnyWidget("Tabber").GetScript(m_TabScript);
 		m_TabScript.m_OnTabSwitch.Insert(DrawConnectingLines);
@@ -21,6 +22,10 @@ modded class TutorialsMenu extends UIScriptedMenu
 		m_tab_images[2] = ImageWidget.Cast(layoutRoot.FindAnyWidget("InventoryTabBackdropImageWidget"));
 		m_tab_images[3] = ImageWidget.Cast(layoutRoot.FindAnyWidget("MenusTabBackdropImageWidget"));
 		
+		// Note that this is just used as a visual trim, not a real loading bar.
+		m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
+		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
+
 		m_TopShader     = layoutRoot.FindAnyWidget( "TopShader" );
 		m_BottomShader  = layoutRoot.FindAnyWidget( "BottomShader" );
 		
@@ -34,33 +39,4 @@ modded class TutorialsMenu extends UIScriptedMenu
 
 		return layoutRoot;
 	}
-		
-	// //Coloring functions (Until WidgetStyles are useful)
-	// override void ColorHighlight( Widget w )
-	// {
-	// 	if( !w )
-	// 		return;
-
-	// 	int color_pnl = UIColor.Transparent();
-	// 	int color_lbl = colorScheme.ButtonHover();
-	// 	int color_img = UIColor.Transparent();
-			
-	// 	ButtonSetColor(w, color_pnl);
-	// 	ButtonSetTextColor(w, color_lbl);
-	// 	ImagenSetColor(w, color_img);
-	// }
-	
-	// override void ColorNormal( Widget w )
-	// {
-	// 	if( !w )
-	// 		return;
-		
-	// 	int color_pnl = UIColor.Transparent();
-	// 	int color_lbl = colorScheme.PrimaryText(); 
-	// 	int color_img = colorScheme.PrimaryText(); 
-		
-	// 	ButtonSetColor(w, color_pnl);
-	// 	ButtonSetTextColor(w, color_lbl);
-	// 	ImagenSetColor(w, color_img);
-	// }
 }

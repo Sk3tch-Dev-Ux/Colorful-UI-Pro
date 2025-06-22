@@ -55,7 +55,7 @@ FrameWidgetClass keybindings_root {
      "flip v" 1
     }
     ImageWidgetClass Vingette {
-     visible 0
+     visible 1
      clipchildren 0
      ignorepointer 1
      position 0 0
@@ -638,6 +638,21 @@ FrameWidgetClass keybindings_root {
      vexactsize 1
     }
    }
+  }
+  ProgressBarWidgetClass LoadingBar {
+   ignorepointer 1
+   size 1 8
+   halign center_ref
+   valign bottom_ref
+   hexactpos 1
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Stamina
+   minimum 100
+   current 100
+   vertical 0
+   flipped 0
   }
  }
 }

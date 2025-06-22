@@ -3,6 +3,7 @@ modded class CharacterCreationMenu extends UIScriptedMenu
 {
 	protected Widget m_Apply, m_Save, m_RandomizeCharacter, m_BackButton;
 	protected ImageWidget m_MenuDivider, m_TopShader, m_BottomShader;
+	protected ProgressBarWidget m_LoadingBar;
 
 	override Widget Init()
 	{
@@ -19,6 +20,10 @@ modded class CharacterCreationMenu extends UIScriptedMenu
 		
 		m_TopShader.SetColor(colorScheme.TopShader());
 		m_BottomShader.SetColor(colorScheme.BottomShader());
+
+		// Note that this is just used as a visual trim, not a real loading bar.
+		m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
+		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 
         cuiElmnt.proBtnCB(ButtonWidget.Cast(m_Apply), "Apply", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Apply");
         cuiElmnt.proBtnCB(m_Save, "Save", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Saveback");

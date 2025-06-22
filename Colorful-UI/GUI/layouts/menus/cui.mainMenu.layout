@@ -1619,7 +1619,6 @@ FrameWidgetClass mainmenu_root {
   }
   ProgressBarWidgetClass LoadingBar {
    ignorepointer 1
-   color 0.8118 0.8118 0.8118 1
    size 1 8
    halign center_ref
    valign bottom_ref
@@ -1628,6 +1627,7 @@ FrameWidgetClass mainmenu_root {
    hexactsize 0
    vexactsize 1
    style Stamina
+   minimum 100
    current 100
   }
  }

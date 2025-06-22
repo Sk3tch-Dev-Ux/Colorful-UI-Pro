@@ -73,7 +73,6 @@ modded class MainMenu extends UIScriptedMenu
 			m_MenuDivider.Show(false);
 			if (m_BottomSpacer) m_BottomSpacer.Show(false);
 		}
-
 		Branding.ApplyLogo(m_Logo);
 		return layoutRoot;
 	}
@@ -81,12 +80,9 @@ modded class MainMenu extends UIScriptedMenu
 	override void OnShow()
 	{
 		CuiLogger.Log("MainMenu.OnShow() - Validating UI elements");
-
 		if (!m_LoadingBar) m_LoadingBar = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
 		if (!m_Logo) m_Logo = ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
 		if (!m_TopShader) m_TopShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("TopShader"));
-		if (!m_BottomShader) m_BottomShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("BottomShader"));
-
-		if (m_LoadingBar) m_LoadingBar.SetCurrent(0);
+		if (!m_BottomShader) m_BottomShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("BottomShader"));		
 	}
 }

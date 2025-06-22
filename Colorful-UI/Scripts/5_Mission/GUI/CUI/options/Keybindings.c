@@ -2,6 +2,7 @@ modded class KeybindingsMenu extends UIScriptedMenu
 {
 	private Widget m_TopShader, m_BottomShader, m_MenuDivider;
     private TextWidget m_ApplyBtn_Label;
+	protected ProgressBarWidget m_LoadingBar;
 		
 	override Widget Init()
 	{
@@ -23,6 +24,10 @@ modded class KeybindingsMenu extends UIScriptedMenu
 		m_TopShader    = layoutRoot.FindAnyWidget( "TopShader" );
 		m_BottomShader = layoutRoot.FindAnyWidget( "BottomShader" );
 		m_MenuDivider  = layoutRoot.FindAnyWidget( "MenuDivider" );
+
+		// Note that this is just used as a visual trim, not a real loading bar.
+		m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
+		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 
 		m_TopShader.SetColor(colorScheme.TopShader());
 		m_BottomShader.SetColor(colorScheme.BottomShader());
