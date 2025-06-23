@@ -28,51 +28,71 @@ modded class OptionsMenu extends UIScriptedMenu
 		m_Reset			= ButtonWidget.Cast(layoutRoot.FindAnyWidget("reset"));
 		m_Defaults		= ButtonWidget.Cast(layoutRoot.FindAnyWidget("defaults"));
 		
-		m_TopShader 			    = layoutRoot.FindAnyWidget( "TopShader" );
-		m_BottomShader 			    = layoutRoot.FindAnyWidget( "BottomShader" );
-		m_MenuDivider				= layoutRoot.FindAnyWidget( "MenuDivider" );
+		m_TopShader 	= layoutRoot.FindAnyWidget( "TopShader" );
+		m_BottomShader 	= layoutRoot.FindAnyWidget( "BottomShader" );
+		m_MenuDivider	= layoutRoot.FindAnyWidget( "MenuDivider" );
 		
-
+		cuiElmnt.proBtnCB(m_Back, "Back", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Back");
+		cuiElmnt.proBtnCB(m_Defaults, "Defaults", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "ResetToDefaults");
+		
 		m_TopShader.SetColor(colorScheme.TopShader());
 		m_BottomShader.SetColor(colorScheme.BottomShader());
 		m_MenuDivider.SetColor(colorScheme.Separator());
 
-
 		m_ModalLock = false;
 		m_CanApplyOrReset = false;
-		
-		string version;
-		m_Version.SetText( version );
-		
-		SetFocus( layoutRoot );
-		ToggleFocus();
+		SetFocus(null);
 			
 		OnChanged();
 		Class.CastTo(m_shader, layoutRoot.FindAnyWidget("Colorful_Shader"));
-		// m_shader.SetColor(colorScheme.ShaderColor());
-
 		m_Separator 	= layoutRoot.FindAnyWidget( "colorful_separator" );
-		// m_Separator.SetColor(colorScheme.SeparatorColor());
 		
 		return layoutRoot;
 	}
 
-	override void Back()
+	//  Due to the states of the buttons it seems I will have to use some vanilla methods a bit.
+	//  I willl work on refactoring this later. (This will be a v3.1 update) 
+	override void ColorDisable(Widget w)
 	{
-		if (!g_Game.GetUIManager().IsDialogVisible() && !g_Game.GetUIManager().IsModalVisible())
+		SetFocus(null);
+		w.SetAlpha(0.5);
+		if (w)
 		{
-			if (IsAnyTabChanged())
+			Widget label = w.FindAnyWidget(w.GetName() + "_label");
+			if (label && label.IsInherited(TextWidget))
 			{
-				EnterScriptedMenu( COLORFUL_CONFIGURE );
-				//g_Game.GetUIManager().ShowDialog("#main_menu_configure", "#main_menu_configure_desc", 1337, DBT_YESNO, DBB_YES, DMT_QUESTION, this);
-			}
-			else
-			{
-				m_Options.Revert();
-				GetGame().EndOptionsVideo();
-				GetGame().GetUIManager().Back();
+				TextWidget.Cast(label).SetColor(colorScheme.DisabledText());
 			}
 		}
 	}
-	
+
+	override void ColorNormal(Widget w)
+	{
+		if ((w.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER)
+		{
+			return;
+		}
+
+		w.SetAlpha(1);
+		Widget label = w.FindAnyWidget(w.GetName() + "_label");
+		if (label && label.IsInherited(TextWidget))
+		{
+			TextWidget.Cast(label).SetColor(colorScheme.PrimaryText());
+		}
+	}
+
+	override void ColorHighlight(Widget w)
+	{
+		if ((w.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER)
+		{
+			return;
+		}
+
+		w.SetAlpha(1);
+		Widget label = w.FindAnyWidget(w.GetName() + "_label");
+		if (label && label.IsInherited(TextWidget))
+		{
+			TextWidget.Cast(label).SetColor(colorScheme.ButtonHover());
+		}
+	}
 }

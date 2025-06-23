@@ -41,7 +41,7 @@ FrameWidgetClass settings_menu_root {
      clipchildren 0
      ignorepointer 1
      position 0 0
-     size 1.01 1
+     size 1 1
      halign center_ref
      hexactpos 1
      vexactpos 1
@@ -55,7 +55,7 @@ FrameWidgetClass settings_menu_root {
      "flip v" 1
     }
     ImageWidgetClass Vingette {
-     visible 1
+     visible 0
      clipchildren 0
      ignorepointer 1
      position 0 0
@@ -486,8 +486,7 @@ FrameWidgetClass settings_menu_root {
     WrapSpacerWidgetClass play_panel_root {
      visible 1
      ignorepointer 1
-     position 0 0
-     size 293 207
+     size 293 233
      halign right_ref
      valign bottom_ref
      hexactpos 0
@@ -523,8 +522,8 @@ FrameWidgetClass settings_menu_root {
        {
         ButtonWidgetClass back {
          color 0.0392 0.0392 0.0392 1
-         position 0 88
-         size 1 90
+         position 0 0
+         size 1 80
          halign center_ref
          valign bottom_ref
          hexactpos 1
@@ -532,16 +531,41 @@ FrameWidgetClass settings_menu_root {
          hexactsize 0
          vexactsize 1
          style Empty
-         "no focus" 0
-         "next up" "reset"
-         "next down" "apply"
-         text "#STR_settings_menu_root_play_panel_root_top_back0"
+         "no focus" 1
+         "next up" ""
+         "next down" ""
          text_proportion 0.6
          text_halign right
-         font "colorful-ui/gui/fonts/GB-Regular.fnt"
          switch normal
+         {
+          TextWidgetClass back_label {
+           ignorepointer 1
+           position 0 0
+           size 1 1
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+           text "#STR_settings_menu_root_play_panel_root_top_back0"
+           font "colorful-ui/gui/fonts/GB-Regular.fnt"
+           "exact text" 1
+           "exact text size" 60
+           "text halign" right
+           "text valign" center
+          }
+         }
         }
        }
+      }
+      FrameWidgetClass TopSpacer {
+       visible 1
+       ignorepointer 1
+       position 174.92999 0.3113
+       size 1 15
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
       }
       ImageWidgetClass MenuDivider {
        visible 1
@@ -558,15 +582,26 @@ FrameWidgetClass settings_menu_root {
        "flip u" 1
        "flip v" 0
       }
-      WrapSpacerWidgetClass top {
+      FrameWidgetClass BottomSpacer {
+       visible 1
        ignorepointer 1
-       color 0 0 0 0.549
-       position 0 0
-       size 1 48
+       position 174.92999 0.3113
+       size 1 15
        hexactpos 1
        vexactpos 1
        hexactsize 0
        vexactsize 1
+      }
+      WrapSpacerWidgetClass top {
+       ignorepointer 1
+       color 0 0 0 0.549
+       size 0 0
+       halign center_ref
+       valign bottom_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
        style Empty
        "no focus" 1
        Padding 0
@@ -579,7 +614,7 @@ FrameWidgetClass settings_menu_root {
          ignorepointer 0
          color 0 0 0 1
          position 0 0
-         size 1 38
+         size 1 40
          halign center_ref
          valign bottom_ref
          hexactpos 1
@@ -591,11 +626,26 @@ FrameWidgetClass settings_menu_root {
          "no focus" 0
          "next up" "reset"
          "next down" "back"
-         text "#STR_settings_menu_root_play_panel_root_bottom_apply0"
          text_proportion 0.55
          text_halign right
-         font "colorful-ui/gui/fonts/GB-Regular.fnt"
          switch normal
+         {
+          TextWidgetClass apply_label {
+           ignorepointer 1
+           position 0 0
+           size 1 1
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+           text "#STR_settings_menu_root_play_panel_root_bottom_apply0"
+           font "colorful-ui/gui/fonts/GB-Regular.fnt"
+           "exact text" 1
+           "exact text size" 24
+           "text halign" right
+           "text valign" center
+          }
+         }
         }
         ButtonWidgetClass reset {
          visible 1
@@ -603,7 +653,7 @@ FrameWidgetClass settings_menu_root {
          ignorepointer 0
          color 0 0 0 1
          position 0 130
-         size 1 38
+         size 1 40
          halign center_ref
          valign bottom_ref
          hexactpos 1
@@ -616,18 +666,33 @@ FrameWidgetClass settings_menu_root {
          "next right" ""
          "next up" "defaults"
          "next down" "back"
-         text "#menu_undo_cap"
          text_proportion 0.55
          text_halign right
-         font "colorful-ui/gui/fonts/GB-Regular.fnt"
          switch normal
+         {
+          TextWidgetClass reset_label {
+           ignorepointer 1
+           position 0 0
+           size 1 1
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+           text "#menu_undo_cap"
+           font "colorful-ui/gui/fonts/GB-Regular.fnt"
+           "exact text" 1
+           "exact text size" 24
+           "text halign" right
+           "text valign" center
+          }
+         }
         }
         ButtonWidgetClass defaults {
          disabled 0
          ignorepointer 0
          color 0 0 0 1
          position 0 130
-         size 1 38
+         size 1 40
          halign center_ref
          valign bottom_ref
          hexactpos 1
@@ -640,11 +705,26 @@ FrameWidgetClass settings_menu_root {
          "next right" ""
          "next up" "back"
          "next down" "reset"
-         text "#menu_default_cap"
          text_proportion 0.55
          text_halign right
-         font "colorful-ui/gui/fonts/GB-Regular.fnt"
          switch normal
+         {
+          TextWidgetClass defaults_label {
+           ignorepointer 1
+           position 0 0
+           size 1 1
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+           text "#menu_default_cap"
+           font "colorful-ui/gui/fonts/GB-Regular.fnt"
+           "exact text" 1
+           "exact text size" 24
+           "text halign" right
+           "text valign" center
+          }
+         }
         }
         PanelWidgetClass character {
          visible 0

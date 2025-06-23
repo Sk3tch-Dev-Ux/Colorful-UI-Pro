@@ -11,6 +11,7 @@ class colorScheme
 	static int PrimaryText()         { return UIColor.White(); }        // Primary text color
 	static int SecondaryText()       { return UIColor.Grey(); }         // Color for secondary text, e.g., subtitles or info
 	static int TextHover()           { return BrandColor(); }           // Text color for hover effects
+	static int DisabledText()        { return ARGB(180, 130, 130, 130); };        // Color for secondary text, e.g., subtitles or info
 
 	// Global UI Elements 
 	static int ButtonHover()         { return BrandColor(); }           // Button color on hover
