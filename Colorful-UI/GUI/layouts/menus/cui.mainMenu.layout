@@ -137,7 +137,7 @@ FrameWidgetClass mainmenu_root {
        hexactsize 1
        vexactsize 1
        style Empty
-       "no focus" 0
+       "no focus" 1
        "next left" ""
        "next right" ""
        "next up" ""
@@ -205,7 +205,7 @@ FrameWidgetClass mainmenu_root {
        hexactsize 1
        vexactsize 1
        style Empty
-       "no focus" 0
+       "no focus" 1
        "next left" ""
        "next right" ""
        "next up" ""
@@ -275,7 +275,7 @@ FrameWidgetClass mainmenu_root {
        hexactsize 1
        vexactsize 1
        style Empty
-       "no focus" 0
+       "no focus" 1
        "next left" ""
        "next right" ""
        "next up" ""
@@ -348,7 +348,7 @@ FrameWidgetClass mainmenu_root {
        vexactsize 1
        scriptclass ""
        style Empty
-       "no focus" 0
+       "no focus" 1
        "next left" ""
        "next right" ""
        "next up" ""
