@@ -1,10 +1,6 @@
 modded class OptionsMenu extends UIScriptedMenu
 {
-	private Widget m_Separator
-	private	Widget m_shader
-	private Widget m_TopShader;
-	private Widget m_BottomShader;
-	private Widget m_MenuDivider;
+	private Widget m_Separator, m_shader, m_TopShader, m_BottomShader, m_MenuDivider, m_LoadingBar;
 		
 	override Widget Init()
 	{
@@ -31,6 +27,9 @@ modded class OptionsMenu extends UIScriptedMenu
 		m_TopShader 	= layoutRoot.FindAnyWidget( "TopShader" );
 		m_BottomShader 	= layoutRoot.FindAnyWidget( "BottomShader" );
 		m_MenuDivider	= layoutRoot.FindAnyWidget( "MenuDivider" );
+		m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
+		
+		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 		
 		cuiElmnt.proBtnCB(m_Back, "Back", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Back");
 		cuiElmnt.proBtnCB(m_Defaults, "Defaults", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "ResetToDefaults");
@@ -52,6 +51,7 @@ modded class OptionsMenu extends UIScriptedMenu
 
 	//  Due to the states of the buttons it seems I will have to use some vanilla methods a bit.
 	//  I willl work on refactoring this later. (This will be a v3.1 update) 
+	// These style a few of the Menu Buttons in the bottom of the Options Menu.  
 	override void ColorDisable(Widget w)
 	{
 		SetFocus(null);

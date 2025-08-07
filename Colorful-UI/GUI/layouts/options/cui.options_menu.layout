@@ -76,6 +76,7 @@ FrameWidgetClass settings_menu_root {
   }
   FrameWidgetClass Tabber {
    ignorepointer 1
+   position 0 0
    size 0.9 0.9
    halign center_ref
    valign center_ref
@@ -86,10 +87,11 @@ FrameWidgetClass settings_menu_root {
    priority 1
    scriptclass "TabberUI"
    {
-    SpacerWidgetClass TabControls {
+    GridSpacerWidgetClass TabControls {
      visible 1
      clipchildren 0
      ignorepointer 1
+     position 0 0
      size 710 60
      hexactpos 0
      vexactpos 0
@@ -155,6 +157,7 @@ FrameWidgetClass settings_menu_root {
            visible 1
            clipchildren 1
            color 0 0 0 0.549
+           position 0 0
            size 160 1
            hexactpos 1
            vexactpos 1
@@ -179,6 +182,8 @@ FrameWidgetClass settings_menu_root {
              priority 250
              text "#STR_settings_menu_root_Tabber_TabControls_TabBar_Tab_Control_Container_Tab_Control_0_Tab_Control_0_Title0"
              font "colorful-ui/gui/fonts/GB-Regular.fnt"
+             "size to text h" 1
+             "size to text v" 0
              "text halign" center
              "text valign" center
             }
@@ -236,6 +241,8 @@ FrameWidgetClass settings_menu_root {
              priority 250
              text "#STR_settings_menu_root_Tabber_TabControls_TabBar_Tab_Control_Container_Tab_Control_1_Tab_Control_1_Title0"
              font "colorful-ui/gui/fonts/GB-Regular.fnt"
+             "size to text h" 1
+             "size to text v" 0
              "text halign" center
              "text valign" center
             }
@@ -293,6 +300,8 @@ FrameWidgetClass settings_menu_root {
              priority 250
              text "#STR_settings_menu_root_Tabber_TabControls_TabBar_Tab_Control_Container_Tab_Control_2_Tab_Control_2_Title0"
              font "colorful-ui/gui/fonts/GB-Regular.fnt"
+             "size to text h" 1
+             "size to text v" 0
              "text halign" center
              "text valign" center
             }
@@ -350,6 +359,7 @@ FrameWidgetClass settings_menu_root {
              priority 250
              text "#STR_settings_menu_root_Tabber_TabControls_TabBar_Tab_Control_Container_Tab_Control_3_Tab_Control_3_Title0"
              font "colorful-ui/gui/fonts/GB-Regular.fnt"
+             "size to text h" 1
              "text halign" center
              "text valign" center
             }
@@ -774,7 +784,7 @@ FrameWidgetClass settings_menu_root {
      font "colorful-ui/gui/fonts/GB-Regular.fnt"
      "text color" 0.8157 0.1255 0.7843 1
      "exact text" 1
-     "exact text size" 40
+     "exact text size" 60
      "text halign" right
      "text valign" center
     }
@@ -1199,6 +1209,21 @@ FrameWidgetClass settings_menu_root {
      }
     }
    }
+  }
+  ProgressBarWidgetClass LoadingBar {
+   ignorepointer 1
+   size 1 8
+   halign center_ref
+   valign bottom_ref
+   hexactpos 1
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Stamina
+   minimum 100
+   current 100
+   vertical 0
+   flipped 0
   }
  }
 }

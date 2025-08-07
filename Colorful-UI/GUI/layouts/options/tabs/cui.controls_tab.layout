@@ -28,7 +28,7 @@ FrameWidgetClass controls_tab_root {
      vexactsize 0
      priority 3
      "no focus" 1
-     Padding 8
+     Padding 16
      Margin 0
      "Size To Content H" 1
      "Size To Content V" 1
@@ -40,7 +40,7 @@ FrameWidgetClass controls_tab_root {
        ignorepointer 1
        color 0 0 0 0.549
        position 0 0
-       size 1 473
+       size 1 475
        hexactpos 1
        vexactpos 1
        hexactsize 0
@@ -57,7 +57,7 @@ FrameWidgetClass controls_tab_root {
          ignorepointer 1
          color 0 0 0 1
          position 0 0
-         size 1 36
+         size 1 45
          hexactpos 1
          vexactpos 1
          hexactsize 0
@@ -77,7 +77,8 @@ FrameWidgetClass controls_tab_root {
            style Normal
            text "#layout_pc_controls_keyboard"
            font "colorful-ui/gui/fonts/GB-Regular.fnt"
-           "exact text" 0
+           "exact text" 1
+           "exact text size" 24
            "text halign" center
            "text valign" center
           }
@@ -92,7 +93,7 @@ FrameWidgetClass controls_tab_root {
          vexactpos 1
          hexactsize 0
          vexactsize 0
-         style DayZDefaultPanel
+         style Empty
          "no focus" 0
          Padding 0
          Margin 0
@@ -105,7 +106,7 @@ FrameWidgetClass controls_tab_root {
            clipchildren 0
            ignorepointer 1
            position 0 0
-           size 1 30
+           size 1 60
            hexactpos 1
            vexactpos 1
            hexactsize 0
@@ -113,6 +114,8 @@ FrameWidgetClass controls_tab_root {
            style Normal
            text "#layout_pc_controls_configure_keys"
            font "gui/fonts/sdf_MetronLight24"
+           "exact text" 1
+           "exact text size" 20
            text_proportion 0.55
            "text halign" center
            "text valign" center
@@ -125,7 +128,7 @@ FrameWidgetClass controls_tab_root {
        visible 1
        ignorepointer 1
        position 0 0
-       size 1 473
+       size 1 475
        hexactpos 1
        vexactpos 1
        hexactsize 0
@@ -141,7 +144,7 @@ FrameWidgetClass controls_tab_root {
          ignorepointer 1
          color 0 0 0 1
          position 0 0
-         size 1 36
+         size 1 45
          hexactpos 1
          vexactpos 1
          hexactsize 0
@@ -161,7 +164,8 @@ FrameWidgetClass controls_tab_root {
            style Normal
            text "#STR_sensitivity_options_header"
            font "colorful-ui/gui/fonts/GB-Regular.fnt"
-           "exact text" 0
+           "exact text" 1
+           "exact text size" 24
            "text halign" center
            "text valign" center
           }
@@ -185,10 +189,24 @@ FrameWidgetClass controls_tab_root {
          Columns 1
          Rows 1
          {
+          ButtonWidgetClass Spacer_03 {
+           disabled 1
+           ignorepointer 1
+           position 0 0
+           size 1 10
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           style Colorable
+           "no focus" 0
+           "next up" "hsensitivity_button"
+           "next down" "vsensitivity_button"
+          }
           ButtonWidgetClass mouse_invert_container {
            ignorepointer 0
            position 0 0
-           size 1 30
+           size 1 40
            hexactpos 1
            vexactpos 1
            hexactsize 0
@@ -202,7 +220,7 @@ FrameWidgetClass controls_tab_root {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
-             size 1 30
+             size 1 40
              hexactpos 1
              vexactpos 1
              hexactsize 0
@@ -218,7 +236,7 @@ FrameWidgetClass controls_tab_root {
               FrameWidgetClass mouse_invert_setting_panel {
                ignorepointer 1
                position 0 0
-               size 0.5 0.6
+               size 0.5 1
                hexactpos 1
                vexactpos 1
                hexactsize 0
@@ -227,7 +245,8 @@ FrameWidgetClass controls_tab_root {
                 TextWidgetClass mouse_invert_setting_label {
                  clipchildren 0
                  ignorepointer 1
-                 size 1 0.6
+                 position 0 0
+                 size 1 1
                  valign center_ref
                  hexactpos 1
                  vexactpos 1
@@ -235,9 +254,12 @@ FrameWidgetClass controls_tab_root {
                  vexactsize 0
                  text "#STR_Invert_Vertical"
                  font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
+                 "text offset" 16 0
+                 "bold text" 1
+                 "exact text" 1
+                 "exact text size" 20
+                 "size to text h" 0
+                 "size to text v" 0
                  "text valign" center
                 }
                }
@@ -283,7 +305,7 @@ FrameWidgetClass controls_tab_root {
           }
           ButtonWidgetClass mouse_vsensitivity_container {
            position 0 0
-           size 1 30
+           size 1 40
            hexactpos 1
            vexactpos 1
            hexactsize 0
@@ -297,7 +319,7 @@ FrameWidgetClass controls_tab_root {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
-             size 1 30
+             size 1 40
              hexactpos 1
              vexactpos 1
              hexactsize 0
@@ -322,7 +344,7 @@ FrameWidgetClass controls_tab_root {
                 TextWidgetClass mouse_vsensitivity_setting_label {
                  clipchildren 0
                  ignorepointer 1
-                 size 1 0.6
+                 size 1 1
                  valign center_ref
                  hexactpos 1
                  vexactpos 1
@@ -330,9 +352,12 @@ FrameWidgetClass controls_tab_root {
                  vexactsize 0
                  text "#STR_Camera_V_Sensitivity"
                  font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
+                 "text offset" 16 0
+                 "bold text" 1
+                 "exact text" 1
+                 "exact text size" 20
+                 "size to text h" 0
+                 "size to text v" 0
                  "text valign" center
                 }
                }
@@ -365,7 +390,7 @@ FrameWidgetClass controls_tab_root {
           ButtonWidgetClass mouse_hsensitivity_container {
            ignorepointer 0
            position 0 0
-           size 1 30
+           size 1 40
            hexactpos 1
            vexactpos 1
            hexactsize 0
@@ -379,7 +404,7 @@ FrameWidgetClass controls_tab_root {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
-             size 1 30
+             size 1 40
              hexactpos 1
              vexactpos 1
              hexactsize 0
@@ -404,7 +429,7 @@ FrameWidgetClass controls_tab_root {
                 TextWidgetClass mouse_hsensitivity_setting_label {
                  clipchildren 0
                  ignorepointer 1
-                 size 1 0.55
+                 size 1 1
                  valign center_ref
                  hexactpos 1
                  vexactpos 1
@@ -412,9 +437,12 @@ FrameWidgetClass controls_tab_root {
                  vexactsize 0
                  text "#STR_Camera_H_Sensitivity"
                  font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
+                 "text offset" 16 0
+                 "bold text" 1
+                 "exact text" 1
+                 "exact text size" 20
+                 "size to text h" 0
+                 "size to text v" 0
                  "text valign" center
                 }
                }
@@ -460,7 +488,7 @@ FrameWidgetClass controls_tab_root {
           }
           ButtonWidgetClass mouse_aimmod_vsensitivity_button {
            position 0 0
-           size 1 30
+           size 1 40
            hexactpos 1
            vexactpos 1
            hexactsize 0
@@ -474,7 +502,7 @@ FrameWidgetClass controls_tab_root {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
-             size 1 30
+             size 1 40
              hexactpos 1
              vexactpos 1
              hexactsize 0
@@ -497,7 +525,7 @@ FrameWidgetClass controls_tab_root {
                 TextWidgetClass mouse_aimmod_vsensitivity_setting_label {
                  clipchildren 0
                  ignorepointer 1
-                 size 1 0.6
+                 size 1 1
                  valign center_ref
                  hexactpos 1
                  vexactpos 1
@@ -505,9 +533,11 @@ FrameWidgetClass controls_tab_root {
                  vexactsize 0
                  text "#STR_Aiming_V_Sensitivity"
                  font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
+                 "text offset" 16 0
+                 "exact text" 1
+                 "exact text size" 20
+                 "size to text h" 0
+                 "size to text v" 0
                  "text valign" center
                 }
                }
@@ -542,7 +572,7 @@ FrameWidgetClass controls_tab_root {
           ButtonWidgetClass mouse_aimmod_hsensitivity_button {
            ignorepointer 0
            position 0 0
-           size 1 30
+           size 1 40
            hexactpos 1
            vexactpos 1
            hexactsize 0
@@ -556,7 +586,7 @@ FrameWidgetClass controls_tab_root {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
-             size 1 30
+             size 1 40
              hexactpos 1
              vexactpos 1
              hexactsize 0
@@ -579,7 +609,7 @@ FrameWidgetClass controls_tab_root {
                 TextWidgetClass mouse_aimmod_hsensitivity_setting_label {
                  clipchildren 0
                  ignorepointer 1
-                 size 1 0.6
+                 size 1 1
                  valign center_ref
                  hexactpos 1
                  vexactpos 1
@@ -587,9 +617,12 @@ FrameWidgetClass controls_tab_root {
                  vexactsize 0
                  text "#STR_Aiming_H_Sensitivity"
                  font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
+                 "text offset" 16 0
+                 "bold text" 1
+                 "exact text" 1
+                 "exact text size" 20
+                 "size to text h" 0
+                 "size to text v" 0
                  "text valign" center
                 }
                }
@@ -620,6 +653,20 @@ FrameWidgetClass controls_tab_root {
              style rover_sim_colorable
             }
            }
+          }
+          ButtonWidgetClass Spacer_00 {
+           disabled 1
+           ignorepointer 1
+           position 0 0
+           size 1 10
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           style Colorable
+           "no focus" 0
+           "next up" "hsensitivity_button"
+           "next down" "vsensitivity_button"
           }
          }
         }
