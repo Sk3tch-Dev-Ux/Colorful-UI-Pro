@@ -1,13 +1,29 @@
-modded class UiHintPanel extends ScriptedWidgetEventHandler
-{	
-	protected const string m_DataPath = "Colorful-UI/Scripts/data/hints.json";
-	protected string m_RootPath       = "Colorful-UI/Gui/layouts/loading/hints/cui.ingamehints.layout";	
-}
-
 modded class UiHintPanelLoading extends UiHintPanel
 {
- 	protected ImageWidget m_TipLineL;
+	protected ImageWidget m_TipLineL;
 	protected ImageWidget m_TipLineR;
+	protected VideoWidget m_Video;
+
+	void ~UiHintPanelLoading()
+	{
+		CuiLogger.Log("UiHintPanelLoading.~UiHintPanelLoading() - Cleaning up video resources");
+		
+		if (m_Video)
+		{
+			m_Video.Stop();
+			m_Video.Unload();
+	
+			CuiLogger.Log("UiHintPanelLoading.~UiHintPanelLoading() - Video stopped and unloaded");
+		}
+		
+		// #ifndef WORKBENCH
+		// 	if (LoadVideo && FileExist("$saves:" + m_LoadingVideo))
+		// 	{
+		// 		DeleteFile("$saves:" + m_LoadingVideo);
+		// 		CuiLogger.Log("UiHintPanelLoading.~UiHintPanelLoading() - Temporary video file deleted");
+		// 	}
+		// #endif
+	}
 
 	override void Init(DayZGame game)
     {
@@ -42,32 +58,22 @@ modded class UiHintPanelLoading extends UiHintPanel
         CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Creating layout");
 
         protected ImageWidget m_TopShader;
-        protected ImageWidget m_BottomShader;
+	    protected ImageWidget m_BottomShader;
         protected ImageWidget m_Icon;
-        VideoWidget m_Video;
 
-        m_RootFrame = m_Game.GetWorkspace().CreateWidgets(m_RootPath, parent_widget);
+		m_RootFrame = m_Game.GetWorkspace().CreateWidgets(m_RootPath, parent_widget);
 
         #ifdef WORKBENCH
             CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Skipping video in Workbench mode");
         #else
             if (LoadVideo) {
                 CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Loading and playing video");
-                Class.CastTo(m_Video, m_RootFrame.FindAnyWidget("LoadingVid"));
-                CopyFile("Colorful-UI/GUI/video/LoadingVid.mov", "$saves:LoadingVid.mov");
-                m_Video.Load("$saves:LoadingVid.mov", true);
-                m_Video.Play();
-            }
 
-            override void ~UiHintPanelLoading()
-            {
-                if (m_Video)
-                {
-                    m_Video.Stop();
-                    m_Video.Load("", true);
-                    m_Video = null;
-                }
-                if (!FileExist("$saves:LoadingVid.mov")) CopyFile("Colorful-UI/GUI/video/LoadingVid.mov", "$saves:LoadingVid.mov");
+                Class.CastTo(m_Video, m_RootFrame.FindAnyWidget("LoadingVid"));
+                if (!FileExist("$saves:" + m_LoadingVideo))
+                    CopyFile("Colorful-UI/GUI/video/" + m_LoadingVideo, "$saves:" + m_LoadingVideo);
+                m_Video.Load("$saves:" + m_LoadingVideo, true);
+                m_Video.Play();
             }
         #endif
 
