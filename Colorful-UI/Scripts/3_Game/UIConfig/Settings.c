@@ -15,6 +15,10 @@ static bool RandomDeathScreens = false;  // If set to true, a random game over v
 static const string SERVER_IP = "127.0.0.1";
 static const int SERVER_PORT = 2302;
 
+// Video Settings
+static const string m_LoadingVideo  = "LoadingVid.mov"; // Video file name for loading screen video. 
+static const string m_MainMenuVideo = "MainMenuVid.mov"; // Video file name for Main Menu screen video. 
+
 // Loading Screens
 ref TStringArray loadscreens = {
     "Colorful-UI/GUI/textures/LoadScreens/Cui3-BG1.edds",

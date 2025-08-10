@@ -120,22 +120,4 @@ class CUIButtonHandler
         }
         return true;
     }
-
-    void ~CUIButtonHandler()
-    {
-        auto handler = WidgetEventHandler.GetInstance();
-        if (m_Button)
-        {
-            handler.UnregisterOnMouseEnter(m_Button, this, "OnMouseEnter");
-            handler.UnregisterOnMouseLeave(m_Button, this, "OnMouseLeave");
-            handler.UnregisterOnClick(m_Button, this, "OnClick");
-            handler.UnregisterOnFocus(m_Button, this, "OnFocus");
-            handler.UnregisterOnFocusLost(m_Button, this, "OnFocusLost");
-        }
-        m_Button = null;
-        m_TextWidget = null;
-        m_ImageWidget = null;
-    }
 }
-
-
