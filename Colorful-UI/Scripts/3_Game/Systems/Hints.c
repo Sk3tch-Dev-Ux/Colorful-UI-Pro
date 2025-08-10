@@ -42,22 +42,32 @@ modded class UiHintPanelLoading extends UiHintPanel
         CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Creating layout");
 
         protected ImageWidget m_TopShader;
-	    protected ImageWidget m_BottomShader;
+        protected ImageWidget m_BottomShader;
         protected ImageWidget m_Icon;
         VideoWidget m_Video;
 
-		m_RootFrame = m_Game.GetWorkspace().CreateWidgets( m_RootPath, parent_widget );
+        m_RootFrame = m_Game.GetWorkspace().CreateWidgets(m_RootPath, parent_widget);
 
         #ifdef WORKBENCH
             CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Skipping video in Workbench mode");
         #else
             if (LoadVideo) {
                 CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Loading and playing video");
-
                 Class.CastTo(m_Video, m_RootFrame.FindAnyWidget("LoadingVid"));
                 CopyFile("Colorful-UI/GUI/video/LoadingVid.mov", "$saves:LoadingVid.mov");
                 m_Video.Load("$saves:LoadingVid.mov", true);
                 m_Video.Play();
+            }
+
+            override void ~UiHintPanelLoading()
+            {
+                if (m_Video)
+                {
+                    m_Video.Stop();
+                    m_Video.Load("", true);
+                    m_Video = null;
+                }
+                if (!FileExist("$saves:LoadingVid.mov")) CopyFile("Colorful-UI/GUI/video/LoadingVid.mov", "$saves:LoadingVid.mov");
             }
         #endif
 
