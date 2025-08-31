@@ -1,3 +1,4 @@
+// ========================= CUIButtonHandler.c =========================
 class CUIButtonHandler
 {
     private ButtonWidget m_Button;
@@ -11,9 +12,14 @@ class CUIButtonHandler
     private string       m_ServerIP;
     private int          m_ServerPort;
 
-    void CUIButtonHandler(ButtonWidget button, TextWidget textWidget, ImageWidget imageWidget,
-                          int textColor, int hoverColor, string clickAction = "", Class targetClass = null,
-                          string callbackMethod = "", string serverIP = "", int serverPort = 0)
+    // Icon-only support
+    private bool         m_IconOnly = false;
+    private int          m_IconImageIndex = -1;
+
+    void CUIButtonHandler(
+        ButtonWidget button, TextWidget textWidget, ImageWidget imageWidget,
+        int textColor, int hoverColor, string clickAction = "", Class targetClass = null,
+        string callbackMethod = "", string serverIP = "", int serverPort = 0)
     {
         m_Button         = button;
         m_TextWidget     = textWidget;
@@ -30,13 +36,40 @@ class CUIButtonHandler
         RegisterEvents();
     }
 
+    void SetIconOnly(bool isIconOnly, int imageIdx = -1)
+    {
+        m_IconOnly = isIconOnly;
+        m_IconImageIndex = imageIdx;
+        ApplyBaseStyles();
+    }
+
     private void ApplyBaseStyles()
     {
+        if (!m_Button) return;
+
+        if (m_IconOnly)
+        {
+            if (m_TextWidget) m_TextWidget.Show(false);
+            m_Button.SetText("");
+
+            if (m_ImageWidget)
+            {
+                if (m_IconImageIndex >= 0) m_ImageWidget.SetImage(m_IconImageIndex);
+                m_ImageWidget.Show(true);
+                m_ImageWidget.SetColor(m_TextColor);
+            }
+
+            // keep button bg/outline invisible for icon-only
+            m_Button.SetColor(UIColor.Transparent());
+            return;
+        }
+
         if (!m_TextWidget && !m_ImageWidget)
         {
             m_Button.SetTextColor(m_TextColor);
             return;
         }
+
         if (m_TextWidget)
         {
             m_TextWidget.SetColor(m_TextColor);
@@ -45,39 +78,69 @@ class CUIButtonHandler
         {
             m_Button.SetTextColor(m_TextColor);
         }
+
         if (m_ImageWidget)
         {
-            m_ImageWidget.SetColor(m_HoverColor);
-            m_ImageWidget.SetImage(1);
+            if (m_IconImageIndex >= 0) m_ImageWidget.SetImage(m_IconImageIndex);
+            m_ImageWidget.SetColor(m_TextColor);
         }
+
+        m_Button.SetColor(UIColor.Transparent());
     }
 
     private void ApplyHoverStyles()
     {
+        if (!m_Button) return;
+
+        if (m_IconOnly)
+        {
+            if (m_ImageWidget) m_ImageWidget.SetColor(m_HoverColor);
+            m_Button.SetColor(UIColor.Transparent());
+            return;
+        }
+
         if (!m_TextWidget && !m_ImageWidget)
         {
             m_Button.SetColor(m_HoverColor);
             return;
         }
-        if (m_TextWidget)
-        {
-            m_TextWidget.SetColor(m_HoverColor);
-        }
-        if (m_ImageWidget)
-        {
-            m_ImageWidget.SetColor(m_HoverColor);
-        }
+
+        if (m_TextWidget) m_TextWidget.SetColor(m_HoverColor);
+        if (m_ImageWidget) m_ImageWidget.SetColor(m_HoverColor);
+
         m_Button.SetColor(UIColor.Transparent());
     }
 
     private void RegisterEvents()
     {
         auto handler = WidgetEventHandler.GetInstance();
+
+        // Core button widget
         handler.RegisterOnMouseEnter(m_Button, this, "OnMouseEnter");
         handler.RegisterOnMouseLeave(m_Button, this, "OnMouseLeave");
         handler.RegisterOnClick(m_Button, this, "OnClick");
         handler.RegisterOnFocus(m_Button, this, "OnFocus");
         handler.RegisterOnFocusLost(m_Button, this, "OnFocusLost");
+
+        // Mirror events on image child so icon-only buttons still behave like buttons
+        if (m_ImageWidget)
+        {
+            handler.RegisterOnMouseEnter(m_ImageWidget, this, "OnMouseEnter");
+            handler.RegisterOnMouseLeave(m_ImageWidget, this, "OnMouseLeave");
+            handler.RegisterOnClick(m_ImageWidget, this, "OnClick");
+            handler.RegisterOnFocus(m_ImageWidget, this, "OnFocus");
+            handler.RegisterOnFocusLost(m_ImageWidget, this, "OnFocusLost");
+        }
+
+        // If text is a child widget, mirror there too
+        if (m_TextWidget)
+        {
+            handler.RegisterOnMouseEnter(m_TextWidget, this, "OnMouseEnter");
+            handler.RegisterOnMouseLeave(m_TextWidget, this, "OnMouseLeave");
+            handler.RegisterOnClick(m_TextWidget, this, "OnClick");
+            handler.RegisterOnFocus(m_TextWidget, this, "OnFocus");
+            handler.RegisterOnFocusLost(m_TextWidget, this, "OnFocusLost");
+        }
     }
 
     bool OnMouseEnter(Widget w, int x, int y)
