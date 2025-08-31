@@ -21,14 +21,6 @@ modded class UiHintPanelLoading extends UiHintPanel
 	
 			CuiLogger.Log("UiHintPanelLoading.~UiHintPanelLoading() - Video stopped and unloaded");
 		}
-		
-		// #ifndef WORKBENCH
-		// 	if (LoadVideo && FileExist("$saves:" + m_LoadingVideo))
-		// 	{
-		// 		DeleteFile("$saves:" + m_LoadingVideo);
-		// 		CuiLogger.Log("UiHintPanelLoading.~UiHintPanelLoading() - Temporary video file deleted");
-		// 	}
-		// #endif
 	}
 
 	override void Init(DayZGame game)
