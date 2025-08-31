@@ -70,8 +70,8 @@ modded class MainMenu extends UIScriptedMenu
 		cuiElmnt.proBtn(m_Reddit, "Reddit", colorScheme.PrimaryText(), UIColor.Reddit(), SocialURL.Reddit);
 		cuiElmnt.proBtn(m_Facebook, "Facebook", colorScheme.PrimaryText(), UIColor.Facebook(), SocialURL.Facebook);
 
-		// Test button hookups
-		if (m_TestBtn) cuiElmnt.proBtnCB(m_TestBtn, "Text Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OnTest1");
+		// Test button hookups (Only used in Proto.Layout but was left here for refrence)
+		if (m_TestBtn) cuiElmnt.proSolidBtn(m_TestBtn, "Solid Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "", this, "OnTest1");
 		if (m_TestBtn2) cuiElmnt.proBtnURL(m_TestBtn2, "Test Btn with URL", colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
 		if (m_TestBtn3) cuiElmnt.proBtnDC(m_TestBtn3, "Test Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
 		if (m_TestBtn4) cuiElmnt.proIconBtn(m_TestBtn4, 1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");

@@ -38,8 +38,8 @@ FrameWidgetClass MainMenu_Root {
    vexactsize 0
    style DayZDefaultPanel
    {
-    ButtonWidgetClass testBtn {
-     position 0 -116.2
+    ButtonWidgetClass testBtn1 {
+     position 0 -120
      size 200 48
      halign center_ref
      valign center_ref
@@ -47,13 +47,30 @@ FrameWidgetClass MainMenu_Root {
      vexactpos 1
      hexactsize 1
      vexactsize 1
-     style Default
-     text "Button Text"
-     text_proportion 0.5
-     "text color" 0 0 0 1
+     style DayZDefaultButtonNoBorder
+     {
+      TextWidgetClass testBtn1_label {
+       ignorepointer 1
+       size 131.08701 48
+       halign center_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "Solid Button"
+       font "Colorful-UI/gui/fonts/GB-Regular.fnt"
+       "text sharpness" 1.5
+       "exact text" 1
+       "size to text h" 1
+       "size to text v" 1
+       "text halign" center
+       "text valign" center
+      }
+     }
     }
     ButtonWidgetClass testBtn2 {
-     position 0 -41.2
+     position 0 -40
      size 200 48
      halign center_ref
      valign center_ref
@@ -83,7 +100,7 @@ FrameWidgetClass MainMenu_Root {
      }
     }
     ButtonWidgetClass testBtn3 {
-     position 0 33.8
+     position 0 30
      size 200 48
      halign center_ref
      valign center_ref
@@ -139,6 +156,7 @@ FrameWidgetClass MainMenu_Root {
      {
       ImageWidgetClass testBtn4_img {
        ignorepointer 1
+       position 0 0
        size 1 1
        halign right_ref
        valign center_ref
