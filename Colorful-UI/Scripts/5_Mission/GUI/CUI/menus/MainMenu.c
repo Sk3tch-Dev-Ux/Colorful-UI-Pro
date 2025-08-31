@@ -4,6 +4,7 @@ modded class MainMenu extends UIScriptedMenu
 	protected ButtonWidget m_Play, m_Exit, m_SettingsBtn, m_TutorialBtn, m_MessageBtn, m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook, m_CharacterBtn;
 	protected Widget m_TopSpacer, m_BottomSpacer;
 	protected ProgressBarWidget m_LoadingBar;
+	protected VideoWidget m_MenuVid;
 
 	override Widget Init()
 	{
@@ -74,6 +75,21 @@ modded class MainMenu extends UIScriptedMenu
 			if (m_BottomSpacer) m_BottomSpacer.Show(false);
 		}
 		Branding.ApplyLogo(m_Logo);
+
+		#ifdef WORKBENCH
+		CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Skipping video in Workbench mode");
+		#else
+			if (EnableMenuVideo) {
+				Class.CastTo(m_MenuVid, layoutRoot.FindAnyWidget("MenuVideo"));
+				if (m_MenuVid) {
+					if (!FileExist("$saves:" + m_MainMenuVideo))
+						CopyFile("Colorful-UI/GUI/video/" + m_MainMenuVideo, "$saves:" + m_MainMenuVideo);
+					m_MenuVid.Load("$saves:" + m_MainMenuVideo, true);
+					m_MenuVid.Play();
+				}
+			}
+		#endif
+
 		return layoutRoot;
 	}
 
