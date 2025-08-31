@@ -121,5 +121,3 @@ class CUIButtonHandler
         return true;
     }
 }
-
-

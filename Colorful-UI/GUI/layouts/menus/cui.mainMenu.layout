@@ -137,7 +137,7 @@ FrameWidgetClass mainmenu_root {
        hexactsize 1
        vexactsize 1
        style Empty
-       "no focus" 0
+       "no focus" 1
        "next left" ""
        "next right" ""
        "next up" ""
@@ -205,7 +205,7 @@ FrameWidgetClass mainmenu_root {
        hexactsize 1
        vexactsize 1
        style Empty
-       "no focus" 0
+       "no focus" 1
        "next left" ""
        "next right" ""
        "next up" ""
@@ -275,7 +275,7 @@ FrameWidgetClass mainmenu_root {
        hexactsize 1
        vexactsize 1
        style Empty
-       "no focus" 0
+       "no focus" 1
        "next left" ""
        "next right" ""
        "next up" ""
@@ -348,7 +348,7 @@ FrameWidgetClass mainmenu_root {
        vexactsize 1
        scriptclass ""
        style Empty
-       "no focus" 0
+       "no focus" 1
        "next left" ""
        "next right" ""
        "next up" ""
@@ -1253,7 +1253,7 @@ FrameWidgetClass mainmenu_root {
         }
        }
       }
-      ButtonWidgetClass characterBtn {
+      ButtonWidgetClass CharacterBtn {
        visible 1
        color 0 0 0 1
        position 20 -16
@@ -1619,7 +1619,6 @@ FrameWidgetClass mainmenu_root {
   }
   ProgressBarWidgetClass LoadingBar {
    ignorepointer 1
-   color 0.8118 0.8118 0.8118 1
    size 1 8
    halign center_ref
    valign bottom_ref
@@ -1628,6 +1627,7 @@ FrameWidgetClass mainmenu_root {
    hexactsize 0
    vexactsize 1
    style Stamina
+   minimum 100
    current 100
   }
  }

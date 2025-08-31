@@ -2,6 +2,15 @@ class cuiElmnt
 {
     static ref array<ref CUIButtonHandler> s_Handlers = new array<ref CUIButtonHandler>();
 
+    static void Cleanup()
+    {
+        for (int i = 0; i < s_Handlers.Count(); i++)
+        {
+            delete s_Handlers[i];
+        }
+        s_Handlers.Clear();
+    }
+
     // Pro Buttons ---------------------------------------------------------------
     static void proBtn(ButtonWidget button, string text, int textColor, int hoverColor,
                        string clickAction = "", Class targetClass = null, string callbackMethod = "",

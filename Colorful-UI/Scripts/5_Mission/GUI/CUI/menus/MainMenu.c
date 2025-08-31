@@ -48,7 +48,7 @@ modded class MainMenu extends UIScriptedMenu
 		cuiElmnt.proBtnCB(m_SettingsBtn, "Settings", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenSettings");
 		cuiElmnt.proBtnCB(m_TutorialBtn, "Tutorial", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenTutorials");
 		cuiElmnt.proBtnCB(m_MessageBtn, "Credits", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenCredits");
-		cuiElmnt.proBtnCB(m_CharacterBtn, "Credits", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenMenuCustomizeCharacter");
+		cuiElmnt.proBtnCB(m_CharacterBtn, "", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenMenuCustomizeCharacter");
 
 		cuiElmnt.proBtn(m_PrioQ, "Priority Queue", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.PriorityQ);
 		cuiElmnt.proBtn(m_Website, "Visit Website", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.Website);
@@ -73,7 +73,6 @@ modded class MainMenu extends UIScriptedMenu
 			m_MenuDivider.Show(false);
 			if (m_BottomSpacer) m_BottomSpacer.Show(false);
 		}
-
 		Branding.ApplyLogo(m_Logo);
 		return layoutRoot;
 	}
@@ -81,12 +80,9 @@ modded class MainMenu extends UIScriptedMenu
 	override void OnShow()
 	{
 		CuiLogger.Log("MainMenu.OnShow() - Validating UI elements");
-
 		if (!m_LoadingBar) m_LoadingBar = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
 		if (!m_Logo) m_Logo = ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
 		if (!m_TopShader) m_TopShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("TopShader"));
-		if (!m_BottomShader) m_BottomShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("BottomShader"));
-
-		if (m_LoadingBar) m_LoadingBar.SetCurrent(0);
+		if (!m_BottomShader) m_BottomShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("BottomShader"));		
 	}
 }
