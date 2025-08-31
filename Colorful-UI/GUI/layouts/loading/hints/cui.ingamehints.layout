@@ -104,7 +104,7 @@ GridSpacerWidgetClass rootFrame {
          text "HINT HEADLINE"
          font "colorful-ui/gui/fonts/GB-Regular.fnt"
          "exact text" 1
-         "exact text size" 24
+         "exact text size" 20
          "size to text h" 0
          "size to text v" 0
          "text halign" center
@@ -187,7 +187,6 @@ GridSpacerWidgetClass rootFrame {
      hexactsize 1
      vexactsize 1
      fixaspect outside
-     imageTexture ""
      mode blend
      "src alpha" 1
      "clamp mode" clamp
@@ -208,7 +207,7 @@ GridSpacerWidgetClass rootFrame {
      "text spacing" 0 5
      "italic text" 0
      "exact text" 1
-     "exact text size" 18
+     "exact text size" 16
      "size to text h" 0
      "size to text v" 1
      wrap 1
