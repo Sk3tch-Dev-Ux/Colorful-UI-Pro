@@ -1,6 +1,6 @@
 FrameWidgetClass rootFrame {
  clipchildren 0
- position 0.00081 0
+ position 0 0
  size 1 1
  halign center_ref
  hexactpos 0
@@ -12,7 +12,7 @@ FrameWidgetClass rootFrame {
    visible 1
    ignorepointer 1
    position 0 0
-   size 0.18 0.09
+   size 0.16 0.09
    halign center_ref
    valign center_ref
    hexactpos 1
@@ -165,7 +165,7 @@ FrameWidgetClass rootFrame {
      ignorepointer 1
      color 0 0 0 0
      position 0 0
-     size 1 40
+     size 1 45
      halign center_ref
      valign bottom_ref
      hexactpos 1
@@ -224,7 +224,7 @@ FrameWidgetClass rootFrame {
          "shadow offset" 3 3
          "shadow opacity" 0.5
          "exact text" 1
-         "exact text size" 20
+         "exact text size" 24
          "size to text h" 1
          "size to text v" 1
          "text halign" center
@@ -276,7 +276,7 @@ FrameWidgetClass rootFrame {
      "bold text" 0
      "text sharpness" 1.5
      "exact text" 1
-     "exact text size" 22
+     "exact text size" 20
      "size to text h" 1
      "size to text v" 0
      "text halign" center

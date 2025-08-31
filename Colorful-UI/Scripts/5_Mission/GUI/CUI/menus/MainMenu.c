@@ -4,7 +4,7 @@ modded class MainMenu extends UIScriptedMenu
 	protected ButtonWidget m_Play, m_Exit, m_SettingsBtn, m_TutorialBtn, m_MessageBtn, m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook, m_CharacterBtn;
 
 	// Test buttons
-	protected ButtonWidget m_TestBtn1, m_TestBtn2, m_TestBtn3, m_TestBtn4;
+	protected ButtonWidget m_TestBtn0, m_TestBtn1, m_TestBtn2, m_TestBtn3, m_TestBtn4;
 
 	protected Widget m_TopSpacer, m_BottomSpacer;
 	protected ProgressBarWidget m_LoadingBar;
@@ -30,6 +30,7 @@ modded class MainMenu extends UIScriptedMenu
 		m_Facebook          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("FacebookBtn"));
 
 		// Test buttons
+		m_TestBtn0          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn0"));
 		m_TestBtn1          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn1"));
 		m_TestBtn2          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn2"));
 		m_TestBtn3          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn3"));
@@ -70,9 +71,10 @@ modded class MainMenu extends UIScriptedMenu
 		cuiElmnt.proBtn(m_Reddit, "Reddit", colorScheme.PrimaryText(), UIColor.Reddit(), SocialURL.Reddit);
 		cuiElmnt.proBtn(m_Facebook, "Facebook", colorScheme.PrimaryText(), UIColor.Facebook(), SocialURL.Facebook);
 
-		// Test button hookups
-		if (m_TestBtn1) cuiElmnt.proBtnCB(m_TestBtn1, "Generic Text Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OnTest1");
-		if (m_TestBtn2) cuiElmnt.proBtnURL(m_TestBtn2, "Test Button with URL", colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
+		// Test button hookups (Only used in Proto.Layout but was left here for refrence)
+		if (m_TestBtn0) cuiElmnt.proSolidBtn(m_TestBtn0, "Icon Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
+		if (m_TestBtn1) cuiElmnt.proSolidBtn(m_TestBtn1, "Solid Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
+		if (m_TestBtn2) cuiElmnt.proBtnURL(m_TestBtn2, "Test Btn with URL", colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
 		if (m_TestBtn3) cuiElmnt.proBtnDC(m_TestBtn3, "Test Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
 		if (m_TestBtn4) cuiElmnt.proIconBtn(m_TestBtn4, 1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
 
