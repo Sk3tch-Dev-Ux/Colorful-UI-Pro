@@ -29,8 +29,7 @@ FrameWidgetClass MainMenu_Root {
   PanelWidgetClass "Button Test Frame" {
    ignorepointer 1
    color 0.3843 0.3843 0.3843 1
-   position -694.33502 -359.85898
-   size 0.15 0.25
+   size 0.20031 0.33523
    halign center_ref
    valign center_ref
    hexactpos 1
@@ -40,7 +39,7 @@ FrameWidgetClass MainMenu_Root {
    style DayZDefaultPanel
    {
     ButtonWidgetClass testBtn {
-     position 0 -75
+     position 0 -116.2
      size 200 48
      halign center_ref
      valign center_ref
@@ -54,7 +53,7 @@ FrameWidgetClass MainMenu_Root {
      "text color" 0 0 0 1
     }
     ButtonWidgetClass testBtn2 {
-     position 0 0
+     position 0 -41.2
      size 200 48
      halign center_ref
      valign center_ref
@@ -84,7 +83,7 @@ FrameWidgetClass MainMenu_Root {
      }
     }
     ButtonWidgetClass testBtn3 {
-     position 0 75
+     position 0 33.8
      size 200 48
      halign center_ref
      valign center_ref
@@ -114,6 +113,28 @@ FrameWidgetClass MainMenu_Root {
       ImageWidgetClass testBtn3_img {
        ignorepointer 1
        size 0.2 1
+       halign right_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 0
+      }
+     }
+    }
+    ButtonWidgetClass testBtn4 {
+     position 0 114.29499
+     size 48 48
+     halign center_ref
+     valign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     {
+      ImageWidgetClass testBtn4_img {
+       ignorepointer 1
+       size 1 1
        halign right_ref
        valign center_ref
        hexactpos 1
