@@ -1,3 +1,9 @@
+modded class UiHintPanel extends ScriptedWidgetEventHandler
+{	
+	protected const string m_DataPath = "Colorful-UI/Scripts/data/hints.json";
+	protected string m_RootPath       = "Colorful-UI/Gui/layouts/loading/hints/cui.ingamehints.layout";	
+}
+
 modded class UiHintPanelLoading extends UiHintPanel
 {
 	protected ImageWidget m_TipLineL;
