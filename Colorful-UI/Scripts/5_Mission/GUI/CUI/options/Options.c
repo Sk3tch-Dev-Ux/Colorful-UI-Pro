@@ -2,33 +2,38 @@ modded class OptionsMenu extends UIScriptedMenu
 {
 	private Widget m_Separator, m_shader, m_TopShader, m_BottomShader, m_MenuDivider, m_LoadingBar;
 	protected VideoWidget m_MenuVid;
+
+	private bool IsMainMenuContext()
+	{
+		Mission m = GetGame().GetMission();
+		return m && m.IsInherited(MissionMainMenu);
+	}
 		
 	override Widget Init()
 	{
-		m_Options		= new GameOptions();
+		m_Options = new GameOptions();
 		
-		layoutRoot		= GetGame().GetWorkspace().CreateWidgets("Colorful-ui/gui/layouts/options/cui.options_menu.layout", null);
+		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-ui/gui/layouts/options/cui.options_menu.layout", null);
 		
 		layoutRoot.FindAnyWidget("Tabber").GetScript(m_Tabber);
 		
-		m_Details		= layoutRoot.FindAnyWidget("settings_details");
-		m_Version		= TextWidget.Cast(layoutRoot.FindAnyWidget("version"));
+		m_Details  = layoutRoot.FindAnyWidget("settings_details");
+		m_Version  = TextWidget.Cast(layoutRoot.FindAnyWidget("version"));
 		
-		m_GameTab		= new OptionsMenuGame(layoutRoot.FindAnyWidget("Tab_0"), m_Details, m_Options, this);
-		m_SoundsTab		= new OptionsMenuSounds(layoutRoot.FindAnyWidget("Tab_1"), m_Details, m_Options, this);
-		
-		m_VideoTab		= new OptionsMenuVideo(layoutRoot.FindAnyWidget("Tab_2"), m_Details, m_Options, this);
-		m_ControlsTab	= new OptionsMenuControls(layoutRoot.FindAnyWidget("Tab_3"), m_Details, m_Options, this);
+		m_GameTab     = new OptionsMenuGame(layoutRoot.FindAnyWidget("Tab_0"), m_Details, m_Options, this);
+		m_SoundsTab   = new OptionsMenuSounds(layoutRoot.FindAnyWidget("Tab_1"), m_Details, m_Options, this);
+		m_VideoTab    = new OptionsMenuVideo(layoutRoot.FindAnyWidget("Tab_2"), m_Details, m_Options, this);
+		m_ControlsTab = new OptionsMenuControls(layoutRoot.FindAnyWidget("Tab_3"), m_Details, m_Options, this);
 
-		m_Apply			= ButtonWidget.Cast(layoutRoot.FindAnyWidget("apply"));
-		m_Back			= ButtonWidget.Cast(layoutRoot.FindAnyWidget("back"));
-		m_Reset			= ButtonWidget.Cast(layoutRoot.FindAnyWidget("reset"));
-		m_Defaults		= ButtonWidget.Cast(layoutRoot.FindAnyWidget("defaults"));
+		m_Apply    = ButtonWidget.Cast(layoutRoot.FindAnyWidget("apply"));
+		m_Back     = ButtonWidget.Cast(layoutRoot.FindAnyWidget("back"));
+		m_Reset    = ButtonWidget.Cast(layoutRoot.FindAnyWidget("reset"));
+		m_Defaults = ButtonWidget.Cast(layoutRoot.FindAnyWidget("defaults"));
 		
-		m_TopShader 	= layoutRoot.FindAnyWidget( "TopShader" );
-		m_BottomShader 	= layoutRoot.FindAnyWidget( "BottomShader" );
-		m_MenuDivider	= layoutRoot.FindAnyWidget( "MenuDivider" );
-		m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
+		m_TopShader    = layoutRoot.FindAnyWidget("TopShader");
+		m_BottomShader = layoutRoot.FindAnyWidget("BottomShader");
+		m_MenuDivider  = layoutRoot.FindAnyWidget("MenuDivider");
+		m_LoadingBar   = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
 		
 		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 		
@@ -45,14 +50,17 @@ modded class OptionsMenu extends UIScriptedMenu
 			
 		OnChanged();
 		Class.CastTo(m_shader, layoutRoot.FindAnyWidget("Colorful_Shader"));
-		m_Separator 	= layoutRoot.FindAnyWidget( "colorful_separator" );
+		m_Separator = layoutRoot.FindAnyWidget("colorful_separator");
 		
 		#ifdef WORKBENCH
-		CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Skipping video in Workbench mode");
+			CuiLogger.Log("OptionsMenu.Init() - Skipping video in Workbench mode");
 		#else
-			if (EnableOptionsVideo) {
+			// Only show options video when opened from MAIN MENU, never from in-game pause/options.
+			if (EnableOptionsVideo && IsMainMenuContext())
+			{
 				Class.CastTo(m_MenuVid, layoutRoot.FindAnyWidget("MenuVideo"));
-				if (m_MenuVid) {
+				if (m_MenuVid)
+				{
 					if (!FileExist("$saves:" + m_MainMenuVideo))
 						CopyFile("Colorful-UI/GUI/video/" + m_MainMenuVideo, "$saves:" + m_MainMenuVideo);
 					m_MenuVid.Load("$saves:" + m_MainMenuVideo, true);
@@ -64,9 +72,7 @@ modded class OptionsMenu extends UIScriptedMenu
 		return layoutRoot;
 	}
 
-	//  Due to the states of the buttons it seems I will have to use some vanilla methods a bit.
-	//  I willl work on refactoring this later. (This will be a v3.1 update) 
-	// These style a few of the Menu Buttons in the bottom of the Options Menu.  
+	// vanilla color helpers (unchanged)
 	override void ColorDisable(Widget w)
 	{
 		SetFocus(null);
@@ -84,9 +90,7 @@ modded class OptionsMenu extends UIScriptedMenu
 	override void ColorNormal(Widget w)
 	{
 		if ((w.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER)
-		{
 			return;
-		}
 
 		w.SetAlpha(1);
 		Widget label = w.FindAnyWidget(w.GetName() + "_label");
@@ -99,9 +103,7 @@ modded class OptionsMenu extends UIScriptedMenu
 	override void ColorHighlight(Widget w)
 	{
 		if ((w.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER)
-		{
 			return;
-		}
 
 		w.SetAlpha(1);
 		Widget label = w.FindAnyWidget(w.GetName() + "_label");
