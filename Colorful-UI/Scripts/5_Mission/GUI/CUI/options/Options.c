@@ -1,6 +1,7 @@
 modded class OptionsMenu extends UIScriptedMenu
 {
 	private Widget m_Separator, m_shader, m_TopShader, m_BottomShader, m_MenuDivider, m_LoadingBar;
+	protected VideoWidget m_MenuVid;
 		
 	override Widget Init()
 	{
@@ -46,6 +47,20 @@ modded class OptionsMenu extends UIScriptedMenu
 		Class.CastTo(m_shader, layoutRoot.FindAnyWidget("Colorful_Shader"));
 		m_Separator 	= layoutRoot.FindAnyWidget( "colorful_separator" );
 		
+		#ifdef WORKBENCH
+		CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Skipping video in Workbench mode");
+		#else
+			if (EnableOptionsVideo) {
+				Class.CastTo(m_MenuVid, layoutRoot.FindAnyWidget("MenuVideo"));
+				if (m_MenuVid) {
+					if (!FileExist("$saves:" + m_MainMenuVideo))
+						CopyFile("Colorful-UI/GUI/video/" + m_MainMenuVideo, "$saves:" + m_MainMenuVideo);
+					m_MenuVid.Load("$saves:" + m_MainMenuVideo, true);
+					m_MenuVid.Play();
+				}
+			}
+		#endif
+
 		return layoutRoot;
 	}
 
