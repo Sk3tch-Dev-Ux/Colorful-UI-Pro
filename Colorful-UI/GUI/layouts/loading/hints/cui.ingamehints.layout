@@ -49,7 +49,7 @@ GridSpacerWidgetClass rootFrame {
         ButtonWidgetClass LeftButton {
          color 0.3922 0.3922 0.3922 0.3922
          position 0 0
-         size 0.8 0.8
+         size 0.6 0.6
          halign center_ref
          valign center_ref
          hexactpos 1
@@ -125,7 +125,7 @@ GridSpacerWidgetClass rootFrame {
          clipchildren 1
          color 0.3922 0.3922 0.3922 0.3922
          position 0 0
-         size 0.8 0.8
+         size 0.6 0.6
          halign center_ref
          valign center_ref
          hexactpos 1
