@@ -108,6 +108,7 @@ modded class UiHintPanelLoading extends UiHintPanel
                 m_SpacerFrame.Show(false);
             }
 
+            
             CuiLogger.Log("UiHintPanelLoading.BuildLayout() - Layout successfully built");
 		}
         else
