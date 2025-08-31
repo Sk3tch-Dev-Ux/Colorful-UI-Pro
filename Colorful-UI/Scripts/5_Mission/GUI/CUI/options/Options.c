@@ -61,9 +61,9 @@ modded class OptionsMenu extends UIScriptedMenu
 				Class.CastTo(m_MenuVid, layoutRoot.FindAnyWidget("MenuVideo"));
 				if (m_MenuVid)
 				{
-					if (!FileExist("$saves:" + m_MainMenuVideo))
-						CopyFile("Colorful-UI/GUI/video/" + m_MainMenuVideo, "$saves:" + m_MainMenuVideo);
-					m_MenuVid.Load("$saves:" + m_MainMenuVideo, true);
+					if (!FileExist("$saves:" + m_OptionsMenuVideo))
+						CopyFile("Colorful-UI/GUI/video/" + m_OptionsMenuVideo, "$saves:" + m_OptionsMenuVideo);
+					m_MenuVid.Load("$saves:" + m_OptionsMenuVideo, true);
 					m_MenuVid.Play();
 				}
 			}
