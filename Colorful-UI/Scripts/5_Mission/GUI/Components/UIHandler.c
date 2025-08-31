@@ -1,3 +1,4 @@
+// ============================== cuiElmnt.c ==============================
 class cuiElmnt
 {
     static ref array<ref CUIButtonHandler> s_Handlers = new array<ref CUIButtonHandler>();
@@ -11,14 +12,16 @@ class cuiElmnt
         s_Handlers.Clear();
     }
 
-    // Pro Buttons ---------------------------------------------------------------
-    static void proBtn(ButtonWidget button, string text, int textColor, int hoverColor,
-                       string clickAction = "", Class targetClass = null, string callbackMethod = "",
-                       string serverIP = "", int serverPort = 0)
+    // ----------------------------- Pro Buttons -----------------------------
+    static void proBtn(
+        ButtonWidget button, string text, int textColor, int hoverColor,
+        string clickAction = "", Class targetClass = null, string callbackMethod = "",
+        string serverIP = "", int serverPort = 0)
     {
         if (!button) return;
 
         button.SetText(text);
+
         TextWidget textWidget = TextWidget.Cast(button.FindAnyWidget(button.GetName() + "_label"));
         if (textWidget)
         {
@@ -28,10 +31,33 @@ class cuiElmnt
 
         ImageWidget imageWidget = ImageWidget.Cast(button.FindAnyWidget(button.GetName() + "_img"));
 
-        CUIButtonHandler handler = new CUIButtonHandler(button, textWidget, imageWidget,
-                                                        textColor, hoverColor, clickAction, targetClass,
-                                                        callbackMethod, serverIP, serverPort);
+        CUIButtonHandler handler = new CUIButtonHandler(
+            button, textWidget, imageWidget,
+            textColor, hoverColor, clickAction, targetClass, callbackMethod, serverIP, serverPort);
 
+        s_Handlers.Insert(handler);
+    }
+
+    // Icon-only variant. Child image must be named "<buttonName>_img".
+    static void proIconBtn(
+        ButtonWidget button, int iconImageIndex, int iconColor, int hoverColor,
+        string clickAction = "", Class targetClass = null, string callbackMethod = "",
+        string serverIP = "", int serverPort = 0)
+    {
+        if (!button) return;
+
+        button.SetText("");
+
+        TextWidget textWidget = TextWidget.Cast(button.FindAnyWidget(button.GetName() + "_label"));
+        if (textWidget) textWidget.Show(false);
+
+        ImageWidget imageWidget = ImageWidget.Cast(button.FindAnyWidget(button.GetName() + "_img"));
+
+        CUIButtonHandler handler = new CUIButtonHandler(
+            button, textWidget, imageWidget,
+            iconColor, hoverColor, clickAction, targetClass, callbackMethod, serverIP, serverPort);
+
+        handler.SetIconOnly(true, iconImageIndex);
         s_Handlers.Insert(handler);
     }
 
@@ -50,10 +76,6 @@ class cuiElmnt
         proBtn(button, text, textColor, hoverColor, "", targetClass, callbackMethod, "", 0);
     }
 
-
-    // Pro Dialogs ---------------------------------------------------------------
-
+    // ----------------------------- Pro Dialogs -----------------------------
     // Coming Soon
-
 }
-
