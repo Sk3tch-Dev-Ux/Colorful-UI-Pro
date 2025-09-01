@@ -12,7 +12,7 @@ modded class MainMenu extends UIScriptedMenu
 
 	override Widget Init()
 	{
-		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/menus/cui.mainMenu.layout");
+		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/proto/testing.layout");
 
 		m_Play              = ButtonWidget.Cast(layoutRoot.FindAnyWidget("PlayBtn"));
 		m_Exit              = ButtonWidget.Cast(layoutRoot.FindAnyWidget("ExitBtn"));
@@ -54,37 +54,37 @@ modded class MainMenu extends UIScriptedMenu
 		if (m_MenuDivider) m_MenuDivider.SetColor(colorScheme.Separator());
 		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 
-		cuiElmnt.proBtnDC(m_Play, "#main_menu_play", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
+		// cuiElmnt.proBtnDC(m_Play, "#main_menu_play", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
 
-		cuiElmnt.proBtnCB(m_Exit, "#main_menu_exit", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Exit");
-		cuiElmnt.proBtnCB(m_SettingsBtn, "Settings", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenSettings");
-		cuiElmnt.proBtnCB(m_TutorialBtn, "Tutorial", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenTutorials");
-		cuiElmnt.proBtnCB(m_MessageBtn, "Credits", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenCredits");
-		cuiElmnt.proBtnCB(m_CharacterBtn, "", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenMenuCustomizeCharacter");
+		// cuiElmnt.proBtnCB(m_Exit, "#main_menu_exit", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Exit");
+		// cuiElmnt.proBtnCB(m_SettingsBtn, "Settings", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenSettings");
+		// cuiElmnt.proBtnCB(m_TutorialBtn, "Tutorial", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenTutorials");
+		// cuiElmnt.proBtnCB(m_MessageBtn, "Credits", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenCredits");
+		// cuiElmnt.proBtnCB(m_CharacterBtn, "", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenMenuCustomizeCharacter");
 
-		cuiElmnt.proBtn(m_PrioQ, "Priority Queue", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.PriorityQ);
-		cuiElmnt.proBtn(m_Website, "Visit Website", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.Website);
+		// cuiElmnt.proBtn(m_PrioQ, "Priority Queue", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.PriorityQ);
+		// cuiElmnt.proBtn(m_Website, "Visit Website", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.Website);
 
-		cuiElmnt.proBtn(m_Discord, "Discord", colorScheme.PrimaryText(), UIColor.Discord(), SocialURL.Discord);
-		cuiElmnt.proBtn(m_Twitter, "Twitter", colorScheme.PrimaryText(), UIColor.Twitter(), SocialURL.Twitter);
-		cuiElmnt.proBtn(m_Youtube, "Youtube", colorScheme.PrimaryText(), UIColor.YouTube(), SocialURL.Youtube);
-		cuiElmnt.proBtn(m_Reddit, "Reddit", colorScheme.PrimaryText(), UIColor.Reddit(), SocialURL.Reddit);
-		cuiElmnt.proBtn(m_Facebook, "Facebook", colorScheme.PrimaryText(), UIColor.Facebook(), SocialURL.Facebook);
+		// cuiElmnt.proBtn(m_Discord, "Discord", colorScheme.PrimaryText(), UIColor.Discord(), SocialURL.Discord);
+		// cuiElmnt.proBtn(m_Twitter, "Twitter", colorScheme.PrimaryText(), UIColor.Twitter(), SocialURL.Twitter);
+		// cuiElmnt.proBtn(m_Youtube, "Youtube", colorScheme.PrimaryText(), UIColor.YouTube(), SocialURL.Youtube);
+		// cuiElmnt.proBtn(m_Reddit, "Reddit", colorScheme.PrimaryText(), UIColor.Reddit(), SocialURL.Reddit);
+		// cuiElmnt.proBtn(m_Facebook, "Facebook", colorScheme.PrimaryText(), UIColor.Facebook(), SocialURL.Facebook);
 
 		// Test button hookups (Only used in Proto.Layout but was left here for refrence)
-		if (m_TestBtn0) cuiElmnt.proSolidBtn(m_TestBtn0, "Icon Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
-		if (m_TestBtn1) cuiElmnt.proSolidBtn(m_TestBtn1, "Solid Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
-		if (m_TestBtn2) cuiElmnt.proBtnURL(m_TestBtn2, "Test Btn with URL", colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
-		if (m_TestBtn3) cuiElmnt.proBtnDC(m_TestBtn3, "Test Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
-		if (m_TestBtn4) cuiElmnt.proIconBtn(m_TestBtn4, 1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
+		// if (m_TestBtn0) cuiElmnt.proSolidBtn(m_TestBtn0, "Icon Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
+		// if (m_TestBtn1) cuiElmnt.proSolidBtn(m_TestBtn1, "Solid Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
+		// if (m_TestBtn2) cuiElmnt.proBtnURL(m_TestBtn2, "Test Btn with URL", colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
+		// if (m_TestBtn3) cuiElmnt.proBtnDC(m_TestBtn3, "Test Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
+		// if (m_TestBtn4) cuiElmnt.proIconBtn(m_TestBtn4, 1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
 
-		CheckURL(m_PrioQ, CustomURL.PriorityQ);
-		CheckURL(m_Website, CustomURL.Website);
-		CheckSocials(m_Discord, SocialURL.Discord);
-		CheckSocials(m_Twitter, SocialURL.Twitter);
-		CheckSocials(m_Youtube, SocialURL.Youtube);
-		CheckSocials(m_Reddit, SocialURL.Reddit);
-		CheckSocials(m_Facebook, SocialURL.Facebook);
+		// CheckURL(m_PrioQ, CustomURL.PriorityQ);
+		// CheckURL(m_Website, CustomURL.Website);
+		// CheckSocials(m_Discord, SocialURL.Discord);
+		// CheckSocials(m_Twitter, SocialURL.Twitter);
+		// CheckSocials(m_Youtube, SocialURL.Youtube);
+		// CheckSocials(m_Reddit, SocialURL.Reddit);
+		// CheckSocials(m_Facebook, SocialURL.Facebook);
 
 		if (allInvalid && m_MenuDivider)
 		{
