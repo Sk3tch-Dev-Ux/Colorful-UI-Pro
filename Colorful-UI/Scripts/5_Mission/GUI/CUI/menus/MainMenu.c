@@ -72,11 +72,11 @@ modded class MainMenu extends UIScriptedMenu
 		// cuiElmnt.proBtn(m_Facebook, "Facebook", colorScheme.PrimaryText(), UIColor.Facebook(), SocialURL.Facebook);
 
 		// Test button hookups (Only used in Proto.Layout but was left here for refrence)
-		// if (m_TestBtn0) cuiElmnt.proSolidBtn(m_TestBtn0, "Icon Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
-		// if (m_TestBtn1) cuiElmnt.proSolidBtn(m_TestBtn1, "Solid Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
-		// if (m_TestBtn2) cuiElmnt.proBtnURL(m_TestBtn2, "Test Btn with URL", colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
-		// if (m_TestBtn3) cuiElmnt.proBtnDC(m_TestBtn3, "Test Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
-		// if (m_TestBtn4) cuiElmnt.proIconBtn(m_TestBtn4, 1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
+		if (m_TestBtn0) cuiElmnt.proSolidBtn(m_TestBtn0, "Icon Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
+		if (m_TestBtn1) cuiElmnt.proSolidBtn(m_TestBtn1, "Solid Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
+		if (m_TestBtn2) cuiElmnt.proBtnURL(m_TestBtn2, "Test Btn with URL", colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
+		if (m_TestBtn3) cuiElmnt.proBtnDC(m_TestBtn3, "Test Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
+		if (m_TestBtn4) cuiElmnt.proIconBtn(m_TestBtn4, 1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
 
 		// CheckURL(m_PrioQ, CustomURL.PriorityQ);
 		// CheckURL(m_Website, CustomURL.Website);
