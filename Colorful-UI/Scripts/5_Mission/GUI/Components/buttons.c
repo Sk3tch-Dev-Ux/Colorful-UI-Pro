@@ -1,4 +1,8 @@
-class CUIButtonHandler
+// File: Components/buttons.c
+// Your handler + facade. Solid, transparent, icon-only.
+// Fix: direct-connect buttons now work (deferred + closes menus).
+
+class CUIButtonHandler : ScriptedWidgetEventHandler
 {
     private ButtonWidget m_Button;
     private TextWidget   m_TextWidget;
@@ -16,9 +20,18 @@ class CUIButtonHandler
     private int          m_IconImageIndex = -1;
     private bool         m_SolidBg = false;
 
-    void CUIButtonHandler(ButtonWidget button, TextWidget textWidget, ImageWidget imageWidget,
-                          int textColor, int hoverColor, string clickAction = "", Class targetClass = null,
-                          string callbackMethod = "", string serverIP = "", int serverPort = 0)
+    void CUIButtonHandler(
+        ButtonWidget button,
+        TextWidget textWidget,
+        ImageWidget imageWidget,
+        int textColor,
+        int hoverColor,
+        string clickAction,
+        Class targetClass,
+        string callbackMethod,
+        string serverIP,
+        int serverPort,
+    )
     {
         m_Button         = button;
         m_TextWidget     = textWidget;
@@ -31,11 +44,19 @@ class CUIButtonHandler
         m_ServerIP       = serverIP;
         m_ServerPort     = serverPort;
 
+        if (m_Button) m_Button.SetHandler(this);
         ApplyBaseStyles();
-        RegisterEvents();
     }
 
-    void SetIconOnly(bool isIconOnly, int imageIdx = -1)
+    void Dispose()
+    {
+        if (m_Button) m_Button.SetHandler(null);
+        m_Button = null;
+        m_TextWidget = null;
+        m_ImageWidget = null;
+    }
+
+    void SetIconOnly(bool isIconOnly, int imageIdx)
     {
         m_IconOnly = isIconOnly;
         m_IconImageIndex = imageIdx;
@@ -50,17 +71,21 @@ class CUIButtonHandler
 
     private void ApplyBaseStyles()
     {
+        if (!m_Button) return;
+
         // Icon-only
         if (m_IconOnly)
         {
             if (m_TextWidget) m_TextWidget.Show(false);
             m_Button.SetText("");
+
             if (m_ImageWidget)
             {
                 if (m_IconImageIndex >= 0) m_ImageWidget.SetImage(m_IconImageIndex);
                 m_ImageWidget.Show(true);
-                m_ImageWidget.SetColor(ARGB(255,255,255,255)); // white icon by default
+                m_ImageWidget.SetColor(UIColor.White());
             }
+
             m_Button.SetColor(UIColor.Transparent());
             return;
         }
@@ -68,33 +93,42 @@ class CUIButtonHandler
         // Solid background mode
         if (m_SolidBg)
         {
-            if (m_TextWidget) m_TextWidget.SetColor(ARGB(255,255,255,255)); // readable text
-            else m_Button.SetTextColor(ARGB(255,255,255,255));
+            if (m_TextWidget) m_TextWidget.SetColor(UIColor.White());
+            else m_Button.SetTextColor(UIColor.White());
 
-            if (m_ImageWidget) { m_ImageWidget.SetColor(ARGB(255,255,255,255)); m_ImageWidget.SetImage(1); }
+            if (m_ImageWidget)
+            {
+                if (m_IconImageIndex >= 0) m_ImageWidget.SetImage(m_IconImageIndex);
+                m_ImageWidget.SetColor(UIColor.White());
+            }
 
-            m_Button.SetColor(m_TextColor); // idle solid bg
+            m_Button.SetColor(m_TextColor);
             return;
         }
 
-        // Original behavior (transparent bg)
+        // Transparent bg: tint text/icon only
         if (!m_TextWidget && !m_ImageWidget)
         {
             m_Button.SetTextColor(m_TextColor);
             return;
         }
+
         if (m_TextWidget) m_TextWidget.SetColor(m_TextColor);
         else m_Button.SetTextColor(m_TextColor);
 
         if (m_ImageWidget)
         {
             m_ImageWidget.SetColor(m_HoverColor);
-            m_ImageWidget.SetImage(1);
+            if (m_IconImageIndex >= 0) m_ImageWidget.SetImage(m_IconImageIndex);
         }
+
+        m_Button.SetColor(UIColor.Transparent());
     }
 
     private void ApplyHoverStyles()
     {
+        if (!m_Button) return;
+
         if (m_IconOnly)
         {
             if (m_ImageWidget) m_ImageWidget.SetColor(m_HoverColor);
@@ -104,42 +138,243 @@ class CUIButtonHandler
 
         if (m_SolidBg)
         {
-            // keep text/icon white, flip solid background
             m_Button.SetColor(m_HoverColor);
             return;
         }
 
-        // Original behavior (transparent bg; just tint text/icon)
         if (!m_TextWidget && !m_ImageWidget)
         {
             m_Button.SetColor(m_HoverColor);
             return;
         }
+
         if (m_TextWidget) m_TextWidget.SetColor(m_HoverColor);
         if (m_ImageWidget) m_ImageWidget.SetColor(m_HoverColor);
         m_Button.SetColor(UIColor.Transparent());
     }
 
-    private void RegisterEvents()
+    // Engine event overrides
+    override bool OnMouseEnter(Widget w, int x, int y)
     {
-        auto handler = WidgetEventHandler.GetInstance();
-        handler.RegisterOnMouseEnter(m_Button, this, "OnMouseEnter");
-        handler.RegisterOnMouseLeave(m_Button, this, "OnMouseLeave");
-        handler.RegisterOnClick(m_Button, this, "OnClick");
-        handler.RegisterOnFocus(m_Button, this, "OnFocus");
-        handler.RegisterOnFocusLost(m_Button, this, "OnFocusLost");
+        if (w != m_Button) return false;
+        ApplyHoverStyles();
+        return true;
     }
 
-    bool OnMouseEnter(Widget w, int x, int y) { ApplyHoverStyles(); return true; }
-    bool OnMouseLeave(Widget w, Widget enterW, int x, int y) { ApplyBaseStyles(); return true; }
-    bool OnFocus(Widget w, int x, int y) { ApplyHoverStyles(); return true; }
-    bool OnFocusLost(Widget w, int x, int y) { ApplyBaseStyles(); return true; }
-
-    bool OnClick(Widget w, int x, int y, int button)
+    override bool OnMouseLeave(Widget w, Widget enterW, int x, int y)
     {
-        if (m_ClickAction) GetGame().OpenURL(m_ClickAction);
-        else if (m_TargetClass && m_CallbackMethod) GetGame().GameScript.CallFunction(m_TargetClass, m_CallbackMethod, null, 0);
-        else if (m_ServerIP != "" && m_ServerPort > 0) g_Game.ConnectFromServerBrowser(m_ServerIP, m_ServerPort, "");
+        if (w != m_Button) return false;
+        ApplyBaseStyles();
         return true;
+    }
+
+    override bool OnFocus(Widget w, int x, int y)
+    {
+        if (w != m_Button) return false;
+        ApplyHoverStyles();
+        return true;
+    }
+
+    override bool OnFocusLost(Widget w, int x, int y)
+    {
+        if (w != m_Button) return false;
+        ApplyBaseStyles();
+        return true;
+    }
+
+    override bool OnClick(Widget w, int x, int y, int button)
+    {
+        if (w != m_Button) return false;
+
+        if (m_ClickAction != "")
+        {
+            GetGame().OpenURL(m_ClickAction);
+            return true;
+        }
+
+        if (m_TargetClass && m_CallbackMethod != "")
+        {
+            GetGame().GameScript.CallFunction(m_TargetClass, m_CallbackMethod, null, 0);
+            return true;
+        }
+
+        if (m_ServerIP != "" && m_ServerPort > 0)
+        {
+            // defer and close menus first
+            GetGame().GetCallQueue(CALL_CATEGORY_GUI).CallLater(this.DoDirectConnect, 100, false);
+            return true;
+        }
+
+        return true;
+    }
+
+    override bool OnMouseButtonUp(Widget w, int x, int y, int button)
+    {
+        if (w != m_Button || button != MouseState.LEFT) return false;
+
+        if (m_ServerIP != "" && m_ServerPort > 0)
+        {
+            GetGame().GetCallQueue(CALL_CATEGORY_GUI).CallLater(this.DoDirectConnect, 1, false);
+            return true;
+        }
+
+        return false;
+    }
+
+    void DoDirectConnect()
+    {
+        if (m_ServerIP != "" && m_ServerPort > 0)
+        {
+            GetGame().GetUIManager().CloseAll();
+            g_Game.ConnectFromServerBrowser(m_ServerIP, m_ServerPort, "");
+        }
+    }
+}
+
+// ======================================================================
+// Facade: simple functions that wire buttons like your old calls.
+// ======================================================================
+class cuiElmnt
+{
+    static ref array<ref CUIButtonHandler> s_Handlers = new array<ref CUIButtonHandler>();
+
+    static void Cleanup()
+    {
+        for (int i = 0; i < s_Handlers.Count(); i++)
+        {
+            if (s_Handlers[i]) s_Handlers[i].Dispose();
+            delete s_Handlers[i];
+        }
+        s_Handlers.Clear();
+    }
+
+    protected static void GetParts(ButtonWidget button, out TextWidget label, out ImageWidget icon)
+    {
+        label = null; icon = null;
+        if (!button) return;
+        label = TextWidget.Cast(button.FindAnyWidget(button.GetName() + "_label"));
+        icon  = ImageWidget.Cast(button.FindAnyWidget(button.GetName() + "_img"));
+    }
+
+    static void proSolidBtn(ButtonWidget button, string text, int bgColor, int hoverBgColor, string clickAction)
+    {
+        if (!button) return;
+
+        button.SetText(text);
+        TextWidget label; ImageWidget icon; GetParts(button, label, icon);
+        if (label) { label.SetText(text); button.SetText(""); }
+
+        CUIButtonHandler h = new CUIButtonHandler(
+            button,
+            label,
+            icon,
+            bgColor,
+            hoverBgColor,
+            clickAction,
+            null,
+            "",
+            "",
+            0,
+        );
+        h.SetSolidBg(true);
+        s_Handlers.Insert(h);
+    }
+
+    static void proBtnURL(ButtonWidget button, string text, int textColor, int hoverColor, string clickAction)
+    {
+        if (!button) return;
+
+        button.SetText(text);
+        TextWidget label; ImageWidget icon; GetParts(button, label, icon);
+        if (label) { label.SetText(text); button.SetText(""); }
+        if (icon) icon.SetColor(colorScheme.Icons());
+
+        CUIButtonHandler h = new CUIButtonHandler(
+            button,
+            label,
+            NULL,
+            textColor,
+            hoverColor,
+            clickAction,
+            null,
+            "",
+            "",
+            0,
+        );
+        s_Handlers.Insert(h);
+    }
+
+    static void proBtnDC(ButtonWidget button, string text, int textColor, int hoverColor, string serverIP, int serverPort)
+    {
+        if (!button) return;
+
+        button.SetText(text);
+        TextWidget label; ImageWidget icon; GetParts(button, label, icon);
+        if (label) { label.SetText(text); button.SetText(""); }
+        if (icon) icon.SetColor(colorScheme.Icons());
+
+        CUIButtonHandler h = new CUIButtonHandler(
+            button,
+            label,
+            NULL,
+            textColor,
+            hoverColor,
+            "",
+            null,
+            "",
+            serverIP,
+            serverPort,
+        );
+        s_Handlers.Insert(h);
+    }
+
+    static void proIconBtn(ButtonWidget button, int iconImageIndex, int iconColor, int hoverColor, string clickAction)
+    {
+        if (!button) return;
+
+        button.SetText("");
+        TextWidget label; ImageWidget icon; GetParts(button, label, icon);
+        if (label) label.Show(false);
+
+        CUIButtonHandler h = new CUIButtonHandler(
+            button,
+            NULL,
+            icon,
+            iconColor,
+            hoverColor,
+            clickAction,
+            null,
+            "",
+            "",
+            0,
+        );
+        h.SetIconOnly(true, iconImageIndex);
+        if (icon) icon.SetColor(iconColor);
+
+        s_Handlers.Insert(h);
+    }
+
+    static void proBtnCB(ButtonWidget button, string text, int textColor, int hoverColor, Class targetClass, string callbackMethod)
+    {
+        if (!button) return;
+
+        button.SetText(text);
+        TextWidget label; ImageWidget icon; GetParts(button, label, icon);
+        if (label) { label.SetText(text); button.SetText(""); }
+        if (icon) icon.SetColor(colorScheme.Icons());
+
+        CUIButtonHandler h = new CUIButtonHandler(
+            button,
+            label,
+            NULL,
+            textColor,
+            hoverColor,
+            "",
+            targetClass,
+            callbackMethod,
+            "",
+            0,
+        );
+        s_Handlers.Insert(h);
     }
 }

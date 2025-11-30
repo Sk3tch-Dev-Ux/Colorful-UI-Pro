@@ -29,8 +29,7 @@ FrameWidgetClass MainMenu_Root {
   PanelWidgetClass "Button Test Frame" {
    ignorepointer 1
    color 0.3843 0.3843 0.3843 1
-   position 0 -8.75198
-   size 0.20031 0.31902
+   size 0.39388 0.5204
    halign center_ref
    valign center_ref
    hexactpos 1
@@ -41,7 +40,7 @@ FrameWidgetClass MainMenu_Root {
    {
     ButtonWidgetClass testBtn0 {
      position 0 -101.62099
-     size 200 48
+     size 270 48
      halign center_ref
      valign center_ref
      hexactpos 1
@@ -59,7 +58,7 @@ FrameWidgetClass MainMenu_Root {
        vexactpos 1
        hexactsize 1
        vexactsize 1
-       text "Solid Button"
+       text "Solid Button with Icon"
        font "Colorful-UI/gui/fonts/GB-Regular.fnt"
        "text sharpness" 1.5
        "exact text" 1
@@ -192,7 +191,7 @@ FrameWidgetClass MainMenu_Root {
      }
     }
     ButtonWidgetClass testBtn4 {
-     position 0 128.37901
+     position 0 128.37903
      size 24 24
      halign center_ref
      valign center_ref
@@ -218,6 +217,19 @@ FrameWidgetClass MainMenu_Root {
        "stretch mode" stretch_w_h
       }
      }
+    }
+    ButtonWidgetClass testBtn5 {
+     position 0 -162.78102
+     size 200 48
+     halign center_ref
+     valign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     style Default
+     text "Vanilla Btn"
+     text_proportion 0.5
     }
    }
   }
