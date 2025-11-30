@@ -18,8 +18,20 @@ class colorScheme
 	static int Icons()         		 { return BrandColor(); }           	// Primary Color for all icons
 	static int LogOutTimer()         { return BrandColor(); }           	// Timer color for logout on logout Screen
 	static int Separator()           { return BrandColor(); }           	// Divider color to segment UI sections
-	static int TabHover()            { return BrandColor(); }           	// Tab color on hover
 	static int Loadingbar()          { return BrandColor(); }           	// Loading bar color
+	
+	// Buttons
+	static int BtnText()          { return PrimaryText(); }
+	static int BtnHoverText()     { return TextHover(); }
+	static int BtnSolidBG()       { return BrandColor(); }
+	static int BtnSolidHoverBG()  { return AccentColor(); }
+	static int BtnIcon()          { return Icons(); }
+
+	// Tabs
+	static int TabIdle()           { return PrimaryText(); }
+	static int TabHoverColor()     { return BrandColor(); }
+	static int TabSelectedColor()  { return BrandColor(); }
+	static int TabBackground()     { return UIColor.Black(); }
 
 	// Shader Colors 
 	static int TopShader()           {return UIColor.Black();}  			// Top shader on layouts
@@ -43,4 +55,7 @@ class colorScheme
 	static int OptionSliderColors()  { return BrandColor(); }           	// Slider color in options
 	static int OptionCaretColors()   { return BrandColor(); }           	// Caret color for dropdowns
 	static int OptionBGHover()       { return UIColor.cuiDarkBlue(); }  	// Background color for hovered options
+
+
+
 }

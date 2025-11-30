@@ -1,7 +1,3 @@
-// File: Components/buttons.c
-// Your handler + facade. Solid, transparent, icon-only.
-// Fix: direct-connect buttons now work (deferred + closes menus).
-
 class CUIButtonHandler : ScriptedWidgetEventHandler
 {
     private ButtonWidget m_Button;
@@ -15,7 +11,6 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     private string       m_ServerIP;
     private int          m_ServerPort;
 
-    // Modes
     private bool         m_IconOnly = false;
     private int          m_IconImageIndex = -1;
     private bool         m_SolidBg = false;
@@ -73,7 +68,6 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     {
         if (!m_Button) return;
 
-        // Icon-only
         if (m_IconOnly)
         {
             if (m_TextWidget) m_TextWidget.Show(false);
@@ -90,7 +84,6 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
             return;
         }
 
-        // Solid background mode
         if (m_SolidBg)
         {
             if (m_TextWidget) m_TextWidget.SetColor(UIColor.White());
@@ -106,7 +99,6 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
             return;
         }
 
-        // Transparent bg: tint text/icon only
         if (!m_TextWidget && !m_ImageWidget)
         {
             m_Button.SetTextColor(m_TextColor);
@@ -118,7 +110,7 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
 
         if (m_ImageWidget)
         {
-            m_ImageWidget.SetColor(m_HoverColor);
+            m_ImageWidget.SetColor(m_TextColor);
             if (m_IconImageIndex >= 0) m_ImageWidget.SetImage(m_IconImageIndex);
         }
 
@@ -150,10 +142,10 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
 
         if (m_TextWidget) m_TextWidget.SetColor(m_HoverColor);
         if (m_ImageWidget) m_ImageWidget.SetColor(m_HoverColor);
+
         m_Button.SetColor(UIColor.Transparent());
     }
 
-    // Engine event overrides
     override bool OnMouseEnter(Widget w, int x, int y)
     {
         if (w != m_Button) return false;
@@ -200,7 +192,6 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
 
         if (m_ServerIP != "" && m_ServerPort > 0)
         {
-            // defer and close menus first
             GetGame().GetCallQueue(CALL_CATEGORY_GUI).CallLater(this.DoDirectConnect, 100, false);
             return true;
         }
@@ -231,9 +222,6 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     }
 }
 
-// ======================================================================
-// Facade: simple functions that wire buttons like your old calls.
-// ======================================================================
 class cuiElmnt
 {
     static ref array<ref CUIButtonHandler> s_Handlers = new array<ref CUIButtonHandler>();
