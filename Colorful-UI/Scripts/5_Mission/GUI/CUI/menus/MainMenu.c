@@ -2,9 +2,6 @@ modded class MainMenu extends UIScriptedMenu
 {
 	protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_StatisticsBoxBG, m_SurvivorBox, m_Logo;
 	protected ButtonWidget m_Play, m_Exit, m_SettingsBtn, m_TutorialBtn, m_MessageBtn, m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook, m_CharacterBtn;
-
-	protected ButtonWidget m_TestBtn0, m_TestBtn1, m_TestBtn2, m_TestBtn3, m_TestBtn4;
-
 	protected Widget m_TopSpacer, m_BottomSpacer;
 	protected ProgressBarWidget m_LoadingBar;
 	protected VideoWidget m_MenuVid;
@@ -27,12 +24,6 @@ modded class MainMenu extends UIScriptedMenu
 		m_Youtube           = ButtonWidget.Cast(layoutRoot.FindAnyWidget("YoutubeBtn"));
 		m_Reddit            = ButtonWidget.Cast(layoutRoot.FindAnyWidget("RedditBtn"));
 		m_Facebook          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("FacebookBtn"));
-
-		m_TestBtn0          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn0"));
-		m_TestBtn1          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn1"));
-		m_TestBtn2          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn2"));
-		m_TestBtn3          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn3"));
-		m_TestBtn4          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn4"));
 
 		m_TopShader         = ImageWidget.Cast(layoutRoot.FindAnyWidget("TopShader"));
 		m_BottomShader      = ImageWidget.Cast(layoutRoot.FindAnyWidget("BottomShader"));
@@ -68,13 +59,6 @@ modded class MainMenu extends UIScriptedMenu
 		cuiElmnt.proBtnURL(m_Youtube, "Youtube", colorScheme.PrimaryText(), UIColor.YouTube(), SocialURL.Youtube);
 		cuiElmnt.proBtnURL(m_Reddit, "Reddit", colorScheme.PrimaryText(), UIColor.Reddit(), SocialURL.Reddit);
 		cuiElmnt.proBtnURL(m_Facebook, "Facebook", colorScheme.PrimaryText(), UIColor.Facebook(), SocialURL.Facebook);
-		
-		// Test button hookups (Only used in Proto.Layout but was left here for refrence)
-		if (m_TestBtn0) cuiElmnt.proSolidBtn(m_TestBtn0, "Icon Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
-		if (m_TestBtn1) cuiElmnt.proSolidBtn(m_TestBtn1, "Solid Button", colorScheme.BrandColor(), colorScheme.ButtonHover(), "https://example.com");
-		if (m_TestBtn2) cuiElmnt.proBtnURL(m_TestBtn2, "Test Btn with URL", colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
-		if (m_TestBtn3) cuiElmnt.proBtnDC(m_TestBtn3, "Test Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
-		if (m_TestBtn4) cuiElmnt.proIconBtn(m_TestBtn4, 1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "https://example.com");
 
 		CheckURL(m_PrioQ, CustomURL.PriorityQ);
 		CheckURL(m_Website, CustomURL.Website);
@@ -83,15 +67,16 @@ modded class MainMenu extends UIScriptedMenu
 		CheckSocials(m_Youtube, SocialURL.Youtube);
 		CheckSocials(m_Reddit, SocialURL.Reddit);
 		CheckSocials(m_Facebook, SocialURL.Facebook);
-
+		
 		if (allInvalid && m_MenuDivider)
 		{
 			if (m_TopSpacer) m_TopSpacer.Show(false);
 			m_MenuDivider.Show(false);
 			if (m_BottomSpacer) m_BottomSpacer.Show(false);
 		}
-
-		Branding.ApplyLogo(m_Logo);
+		
+		Branding.ApplyLogo(m_Logo);	
+		// void PlayBtn() { g_Game.ConnectFromJoin(SERVER_IP, SERVER_PORT); }
 
 		#ifdef WORKBENCH
 		CuiLogger.Log("Skipping video in Workbench mode");
@@ -108,8 +93,7 @@ modded class MainMenu extends UIScriptedMenu
 				m_MenuVid.Play();
 			}
 		}
-		#endif
-
+		#endif		
 		return layoutRoot;
 	}
 
