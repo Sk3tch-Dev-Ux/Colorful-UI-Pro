@@ -14,7 +14,7 @@ class CuiLogger
         }
 
         FileHandle handle = OpenFile(LOG_FILE, FileMode.APPEND);
-        if (handle)
+        if (handle != 0)
         {
             FPrintln(handle, Timestamp() + " [" + RealDateTime() + "] - " + message);
             CloseFile(handle);
@@ -25,7 +25,14 @@ class CuiLogger
     {
         if (!CuiDebug) return;
 
-        LOG_FILE = "$profile:\\ColorfulLogs\\cui_logs_" + DateAndHourMinute() + ".log";
+        // Create directory if it doesn't exist
+        string logDir = "$profile:\\ColorfulLogs";
+        if (!FileExist(logDir))
+        {
+            MakeDirectory(logDir);
+        }
+
+        LOG_FILE = logDir + "\\cui_logs_" + DateAndHourMinute() + ".log";
 
         FileHandle file = OpenFile(LOG_FILE, FileMode.WRITE);
         if (file != 0)
