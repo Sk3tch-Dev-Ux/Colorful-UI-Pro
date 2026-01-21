@@ -76,7 +76,6 @@ modded class MainMenu extends UIScriptedMenu
 		}
 		
 		Branding.ApplyLogo(m_Logo);	
-		void PlayBtn() { g_Game.ConnectFromJoin(SERVER_IP, SERVER_PORT); }
 
 		#ifdef WORKBENCH
 		CuiLogger.Log("Skipping video in Workbench mode");
@@ -96,7 +95,9 @@ modded class MainMenu extends UIScriptedMenu
 		#endif		
 		return layoutRoot;
 	}
-
+		
+	void PlayBtn() { g_Game.ConnectFromJoin(SERVER_IP, SERVER_PORT); }
+	
 	override void OnShow()
 	{
 		CuiLogger.Log("MainMenu.OnShow() - Validating UI elements");
