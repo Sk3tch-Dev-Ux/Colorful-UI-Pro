@@ -26,13 +26,9 @@ class CuiLogger
         if (!CuiDebug) return;
 
         // Create directory if it doesn't exist
-        string logDir = "$profile:\\ColorfulLogs";
-        if (!FileExist(logDir))
-        {
-            MakeDirectory(logDir);
-        }
+        string logDir = "$profile:";
 
-        LOG_FILE = logDir + "\\cui_logs_" + DateAndHourMinute() + ".log";
+        LOG_FILE = logDir + "cui_logs_" + DateAndHourMinute() + ".log";
 
         FileHandle file = OpenFile(LOG_FILE, FileMode.WRITE);
         if (file != 0)

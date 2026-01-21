@@ -46,6 +46,9 @@ SET "PROFILES=%PROJECTDIR%\Servers\Cherno\Profiles"
 ::  If you need to use server side mods you will need to add this line to the start local server "-mod=%GLOBALSERVERMODS%"
 :: ====================================================================================================================
 
+:: Run Log Burner to clean up old logs
+call "..\..\Utils\Batch\LogBurner.cmd"
+
 :: Start local server.
 start /D "%GAMEDIR%\" DayZDiag_x64.exe -server -filePatching "-mod=%GLOBALMODS%%MODS%" "-profiles=%PROFILES%" "-mission=%MISSIONDIR%" "-config=%SERVERCFG%" "-newErrorsAreWarnings=1"
 :: Play on local server.
