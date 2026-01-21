@@ -95,8 +95,6 @@ modded class MainMenu extends UIScriptedMenu
 		#endif		
 		return layoutRoot;
 	}
-		
-	void PlayBtn() { g_Game.ConnectFromJoin(SERVER_IP, SERVER_PORT); }
 	
 	override void OnShow()
 	{

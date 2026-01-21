@@ -178,20 +178,25 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     {
         if (w != m_Button) return false;
 
+        CuiLogger.Log("[CuiButton] Clicked: " + w.GetName());
+
         if (m_ClickAction != "")
         {
+            CuiLogger.Log("   >> Opening URL: " + m_ClickAction);
             GetGame().OpenURL(m_ClickAction);
             return true;
         }
 
         if (m_TargetClass && m_CallbackMethod != "")
         {
+            CuiLogger.Log("   >> Calling Method: " + m_CallbackMethod);
             GetGame().GameScript.CallFunction(m_TargetClass, m_CallbackMethod, null, 0);
             return true;
         }
 
         if (m_ServerIP != "" && m_ServerPort > 0)
         {
+            CuiLogger.Log("   >> Connecting to: " + m_ServerIP + ":" + m_ServerPort);
             GetGame().GetCallQueue(CALL_CATEGORY_GUI).CallLater(this.DoDirectConnect, 100, false);
             return true;
         }
@@ -201,14 +206,6 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
 
     override bool OnMouseButtonUp(Widget w, int x, int y, int button)
     {
-        if (w != m_Button || button != MouseState.LEFT) return false;
-
-        if (m_ServerIP != "" && m_ServerPort > 0)
-        {
-            GetGame().GetCallQueue(CALL_CATEGORY_GUI).CallLater(this.DoDirectConnect, 1, false);
-            return true;
-        }
-
         return false;
     }
 
