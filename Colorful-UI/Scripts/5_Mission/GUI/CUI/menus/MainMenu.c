@@ -43,7 +43,7 @@ modded class MainMenu extends UIScriptedMenu
 		if (m_MenuDivider) m_MenuDivider.SetColor(colorScheme.Separator());
 		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 
-		cuiElmnt.proBtnDC(m_Play, "#main_menu_play", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
+		cuiElmnt.proBtnDC(m_Play, "#main_menu_play", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT, SER	);
 
 		cuiElmnt.proBtnCB(m_Exit, "#main_menu_exit", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Exit");
 		cuiElmnt.proBtnCB(m_SettingsBtn, "Settings", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenSettings");
@@ -76,7 +76,7 @@ modded class MainMenu extends UIScriptedMenu
 		}
 		
 		Branding.ApplyLogo(m_Logo);	
-		// void PlayBtn() { g_Game.ConnectFromJoin(SERVER_IP, SERVER_PORT); }
+		void PlayBtn() { g_Game.ConnectFromJoin(SERVER_IP, SERVER_PORT); }
 
 		#ifdef WORKBENCH
 		CuiLogger.Log("Skipping video in Workbench mode");
