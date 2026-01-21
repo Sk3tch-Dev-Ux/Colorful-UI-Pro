@@ -1,5 +1,5 @@
 // Constants.c v3.0.0
-static bool StartMainMenu      = true;  // If set to true, the main menu will be forced to show on startup.
+static bool StartMainMenu      = false;  // If set to true, the main menu will be forced to show on startup.
 static bool NoHints			   = false; // If set to true, the hints will not be shown during load screens.
 static bool LoadVideo          = true;  // If set to true, a video will be shown during load screens along with tips.
 static bool ShowDeadScreen     = false;  // If set to true, a custom game over screen will be shown when the player dies. if false, the default game over screen will be shown.
@@ -69,17 +69,17 @@ class Branding
 //        This way it shows only the buttons you want to use.
 
 class CustomURL {
-	static string Website    = "#"; 
-	static string PriorityQ  = "#";
-	static string Custom     = "#";
+	static string Website    = "test"; 
+	static string PriorityQ  = "test";
+	static string Custom     = "test";
 }
 
 class SocialURL {
-	static string Discord    = "#";
-	static string Facebook   = "#";
-	static string Twitter    = "#";
-	static string Reddit     = "#";
-	static string Youtube    = "#";
+	static string Discord    = "test";
+	static string Facebook   = "test";
+	static string Twitter    = "test";
+	static string Reddit     = "test";
+	static string Youtube    = "test";
 }
 
 // Menu IDs
