@@ -49,8 +49,12 @@ SET "PROFILES=%PROJECTDIR%\Servers\Cherno\Profiles"
 :: Run Log Burner to clean up old logs
 call "..\..\Utils\Batch\LogBurner.cmd"
 
-:: Start Log Viewer
-start "CUI Log Viewer" "%~dp0..\..\Utils\Batch\LogViewer.cmd"
+:: Check for CuiDebug in Settings.c
+findstr /R /C:"static bool CuiDebug.*=.*true" "P:\Colorful-UI\Scripts\3_Game\Config\Settings.c" >nul
+IF %ERRORLEVEL% EQU 0 (
+    :: Start Log Viewer
+    start "CUI Log Viewer" "%~dp0..\..\Utils\Batch\LogViewer.cmd"
+)
 
 :: Start local server.
 start /D "%GAMEDIR%\" DayZDiag_x64.exe -server -filePatching "-mod=%GLOBALMODS%%MODS%" "-profiles=%PROFILES%" "-mission=%MISSIONDIR%" "-config=%SERVERCFG%" "-newErrorsAreWarnings=1"
