@@ -275,7 +275,7 @@ class cuiElmnt
         button.SetText(text);
         TextWidget label; ImageWidget icon; GetParts(button, label, icon);
         if (label) { label.SetText(text); button.SetText(""); }
-        if (icon) icon.SetColor(colorScheme.Icons());
+        if (icon) icon.SetColor(hoverColor);
 
         CUIButtonHandler h = new CUIButtonHandler(
             button,
