@@ -49,10 +49,7 @@ class CfgSoundSets
 {
 	class Music_Menu_SoundSet
 	{
-		soundShaders[]=
-		{
-			"DZNC_Music_Menu_SoundShader"
-		};
+		soundShaders[]=	{ "DZNC_Music_Menu_SoundShader" };
 		volumeFactor=1;
 		frequencyFactor=1;
 		spatial=0;
@@ -63,11 +60,11 @@ class CfgSoundShaders
 {
 	class DZNC_Music_Menu_SoundShader
 	{
+		// If you want to use more than one song to override the new vanilla main menu music that is based on time of day, 
+		// you can add more lines like the one above. But using just one song will override all of them
 		samples[] = 
 		{
-			{"\Colorful-UI\GUI\sounds\MainMenu.ogg", 1}
-			// If you want to use more than one song to override the new vanilla main menu music that is based on time of day, 
-			// you can add more lines like the one above. But using just one song will override all of them
+			{"\Colorful-UI\GUI\sounds\Main_Menu.ogg", 1}
 			// {"\Colorful-UI\GUI\sounds\MainMenu_1.ogg", 1},
 			// {"\Colorful-UI\GUI\sounds\MainMenu_2.ogg", 1},
 			// {"\Colorful-UI\GUI\sounds\MainMenu_3.ogg", 1},
