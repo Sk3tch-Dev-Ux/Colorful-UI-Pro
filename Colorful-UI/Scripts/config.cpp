@@ -49,13 +49,10 @@ class CfgSoundSets
 {
 	class Music_Menu_SoundSet
 	{
-		soundShaders[]=
-		{
-			"DZNC_Music_Menu_SoundShader"
-		};
-		volumeFactor=1;
-		frequencyFactor=1;
-		spatial=0;
+		soundShaders[] = {"DZNC_Music_Menu_SoundShader"};
+		volumeFactor = 1;
+		frequencyFactor = 1;
+		spatial = 0;
 	};
 };	
 
@@ -63,18 +60,20 @@ class CfgSoundShaders
 {
 	class DZNC_Music_Menu_SoundShader
 	{
+		// To use multiple songs and override the vanilla main menu music,
+		// Just add additional lines following the format above. 
+		// Providing a single song will override all time-of-day variations.
+		// The music will play in a random order.
 		samples[] = 
-		{
-			{"\Colorful-UI\GUI\sounds\MainMenu.ogg", 1}
-			// If you want to use more than one song to override the new vanilla main menu music that is based on time of day, 
-			// you can add more lines like the one above. But using just one song will override all of them
-			// {"\Colorful-UI\GUI\sounds\MainMenu_1.ogg", 1},
-			// {"\Colorful-UI\GUI\sounds\MainMenu_2.ogg", 1},
-			// {"\Colorful-UI\GUI\sounds\MainMenu_3.ogg", 1},
-			// {"\Colorful-UI\GUI\sounds\MainMenu_4.ogg", 1},
-			// {"\Colorful-UI\GUI\sounds\MainMenu_5.ogg", 1},
-			// {"\Colorful-UI\GUI\sounds\MainMenu_6.ogg", 1}
+		{	
+			{"\Colorful-UI\GUI\sounds\MainMenu\Battle", 1},
+			{"\Colorful-UI\GUI\sounds\MainMenu\Cello", 1},
+			{"\Colorful-UI\GUI\sounds\MainMenu\Cinematic", 1},
+			{"\Colorful-UI\GUI\sounds\MainMenu\Emotional_Piano", 1},
+			{"\Colorful-UI\GUI\sounds\MainMenu\Piano", 1},
+			{"\Colorful-UI\GUI\sounds\MainMenu\Horror_Suspense", 1},
+			{"\Colorful-UI\GUI\sounds\MainMenu\Guitar_Reverb", 1}
 		};
-		volume = 0.0;
+		volume = 0.8;
 	};
 };
