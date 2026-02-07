@@ -29,6 +29,15 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 
 	override bool OnMouseLeave(Widget w, Widget enterW, int x, int y)
 	{
+		Widget p = enterW;
+		while (p)
+		{
+			if (p == w)
+			{
+				return true;
+			}
+			p = p.GetParent();
+		}
 		if (m_ParentClass)
 		{
 			m_ParentClass.OnFocus(null, x, y);
@@ -108,7 +117,7 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 			return;
 
 		int color_pnl = UIColor.Transparent();
-		int color_lbl = ARGB(255, 255, 255, 255); // White text
+		int color_lbl = colorScheme.PrimaryText(); // White text
 
 		ButtonSetColor(w, color_pnl);
 
@@ -166,7 +175,7 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 			return;
 
 		int color_pnl = colorScheme.OptionBGHover(); // Background hover color
-		int color_lbl = ARGB(255, 255, 255, 0); // Yellow text
+		int color_lbl = colorScheme.TextHover(); // Text hover color
 
 		ButtonSetColorConsole(w, color_pnl);
 		ButtonSetAlphaAnimConsole(null);
@@ -179,7 +188,7 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 			return;
 
 		int color_pnl = UIColor.Transparent();
-		int color_lbl = ARGB(255, 255, 255, 255); // White text
+		int color_lbl = colorScheme.PrimaryText(); // White text
 
 		ButtonSetColorConsole(w, color_pnl);
 		ButtonSetAlphaAnimConsole(null);

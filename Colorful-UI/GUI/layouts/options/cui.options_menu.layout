@@ -807,11 +807,11 @@ FrameWidgetClass settings_menu_root {
    }
   }
   GridSpacerWidgetClass settings_details {
-   visible 1
+   visible 0
    clipchildren 1
    ignorepointer 1
    color 0 0 0 0.549
-   position 730 160
+   position 800 160
    size 600 200
    hexactpos 1
    vexactpos 1

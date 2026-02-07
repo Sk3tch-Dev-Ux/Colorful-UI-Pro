@@ -933,6 +933,7 @@ FrameWidgetClass character_creation_root {
      }
     }
     TextWidgetClass CharacterCreationTextWidget {
+     clipchildren 0
      ignorepointer 1
      size 0.33 50
      halign right_ref
