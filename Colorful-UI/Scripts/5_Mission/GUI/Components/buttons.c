@@ -67,6 +67,8 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     private void ApplyBaseStyles()
     {
         if (!m_Button) return;
+        
+        if ((m_Button.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER) return;
 
         if (m_IconOnly)
         {
@@ -120,6 +122,8 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     private void ApplyHoverStyles()
     {
         if (!m_Button) return;
+
+        if ((m_Button.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER) return;
 
         if (m_IconOnly)
         {

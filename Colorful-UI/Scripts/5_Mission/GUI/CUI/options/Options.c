@@ -38,7 +38,7 @@ modded class OptionsMenu extends UIScriptedMenu
 		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 		
 		cuiElmnt.proBtnCB(m_Back, "Back", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Back");
-		cuiElmnt.proBtnCB(m_Defaults, "Defaults", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "ResetToDefaults");
+		cuiElmnt.proBtnCB(m_Defaults, "Defaults", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "PerformSetToDefaults");
 		cuiElmnt.proBtnCB(m_Apply, "Apply", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Apply");
 		cuiElmnt.proBtnCB(m_Reset, "Reset", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "Reset");
 		
@@ -74,7 +74,7 @@ modded class OptionsMenu extends UIScriptedMenu
 		return layoutRoot;
 	}
 
-	// vanilla color helpers (unchanged)
+	// // vanilla color helpers (unchanged)
 	override void ColorDisable(Widget w)
 	{
 		SetFocus(null);
@@ -89,29 +89,4 @@ modded class OptionsMenu extends UIScriptedMenu
 		}
 	}
 
-	override void ColorNormal(Widget w)
-	{
-		if ((w.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER)
-			return;
-
-		w.SetAlpha(1);
-		Widget label = w.FindAnyWidget(w.GetName() + "_label");
-		if (label && label.IsInherited(TextWidget))
-		{
-			TextWidget.Cast(label).SetColor(colorScheme.PrimaryText());
-		}
-	}
-
-	override void ColorHighlight(Widget w)
-	{
-		if ((w.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER)
-			return;
-
-		w.SetAlpha(1);
-		Widget label = w.FindAnyWidget(w.GetName() + "_label");
-		if (label && label.IsInherited(TextWidget))
-		{
-			TextWidget.Cast(label).SetColor(colorScheme.ButtonHover());
-		}
-	}
 }
