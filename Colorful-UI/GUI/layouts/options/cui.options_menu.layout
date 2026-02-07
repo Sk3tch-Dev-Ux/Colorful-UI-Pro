@@ -808,6 +808,7 @@ FrameWidgetClass settings_menu_root {
   }
   GridSpacerWidgetClass settings_details {
    visible 0
+   disabled 1
    clipchildren 1
    ignorepointer 1
    color 0 0 0 0.549

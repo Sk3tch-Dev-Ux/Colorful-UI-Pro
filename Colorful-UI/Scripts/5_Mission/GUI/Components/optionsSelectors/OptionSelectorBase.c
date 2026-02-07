@@ -109,6 +109,7 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 			return;
 
 		ButtonSetColor(w, colorScheme.OptionBGHover());
+		ButtonSetIconColor(w, colorScheme.OptionIconHover());
 	}
 
 	void ColorNormal(Widget w)
@@ -120,6 +121,7 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 		int color_lbl = colorScheme.PrimaryText(); // White text
 
 		ButtonSetColor(w, color_pnl);
+		ButtonSetIconColor(w, colorScheme.OptionIconNormal());
 
 		Widget title_label = w.FindAnyWidget(w.GetName() + "_label");
 		Widget option_label = w.FindAnyWidget("option_label");
@@ -144,6 +146,8 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 		int color_lbl = colorScheme.DisabledText();
 
 		ButtonSetColor(w, color_pnl);
+		// Icon disabled color? Maybe DisabledText() too?
+		ButtonSetIconColor(w, colorScheme.DisabledText()); // Assuming disabled text color for disabled icon
 
 		Widget title_label = w.FindAnyWidget(w.GetName() + "_label");
 		Widget option_label = w.FindAnyWidget("option_label");
@@ -168,6 +172,28 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 			option.SetColor(color);
 		}
 	}
+	
+	void ButtonSetIconColor(Widget w, int color)
+	{
+		if (!w) return;
+		
+		Widget child = w.GetChildren();
+		while (child)
+		{
+			// Check if it is an image widget OR item preview (generated icons might be items)
+			if (child.IsInherited(ImageWidget) || child.IsInherited(ItemPreviewWidget))
+			{
+				// Exclude known background images if they have specific names or styles?
+				// For now, color all ImageWidgets found.
+				child.SetColor(color);
+			}
+			
+			// Recursively check children of child
+			ButtonSetIconColor(child, color);
+			
+			child = child.GetSibling();
+		}
+	}
 
 	void ColorHighlightConsole(Widget w)
 	{
@@ -180,6 +206,7 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 		ButtonSetColorConsole(w, color_pnl);
 		ButtonSetAlphaAnimConsole(null);
 		ButtonSetTextColorConsole(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconHover());
 	}
 
 	void ColorNormalConsole(Widget w)
@@ -193,6 +220,7 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 		ButtonSetColorConsole(w, color_pnl);
 		ButtonSetAlphaAnimConsole(null);
 		ButtonSetTextColorConsole(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconNormal());
 	}
 
 	void ColorDisabledConsole(Widget w)
@@ -206,6 +234,7 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 		ButtonSetColorConsole(w, color_pnl);
 		ButtonSetAlphaAnimConsole(null);
 		ButtonSetTextColorConsole(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.DisabledText());
 	}
 
 	void ButtonSetColorConsole(Widget w, int color)

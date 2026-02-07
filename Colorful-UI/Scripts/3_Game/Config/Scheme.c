@@ -54,5 +54,8 @@ class colorScheme
 	static int OptionInputColors()   { return BrandColor(); }           	// Input fields color
 	static int OptionSliderColors()  { return BrandColor(); }           	// Slider color in options
 	static int OptionCaretColors()   { return BrandColor(); }           	// Caret color for dropdowns
+	static int OptionIconHover()     { return TextHover(); }
+	static int OptionIconNormal()    { return PrimaryText(); } // Or Icons() if that exists
+
 	static int OptionBGHover()       { return UIColor.cuiDarkBlue(); }  	// Background color for hovered options
 }
