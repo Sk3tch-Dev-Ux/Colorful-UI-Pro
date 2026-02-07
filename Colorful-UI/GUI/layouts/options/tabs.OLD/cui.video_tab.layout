@@ -1,4 +1,4 @@
-FrameWidgetClass game_tab_root {
+FrameWidgetClass video_tab_root {
  ignorepointer 1
  position 0 0
  size 1 1
@@ -7,17 +7,17 @@ FrameWidgetClass game_tab_root {
  hexactsize 0
  vexactsize 0
  {
-  ScrollWidgetClass game_settings_scroll {
-   ignorepointer 1
-   position 0 0
+  ScrollWidgetClass video_settings_scroll {
+   ignorepointer 0
    size 650 1
    hexactpos 1
    vexactpos 1
    hexactsize 1
    vexactsize 0
+   style blank
    "Scrollbar V" 1
    {
-    GridSpacerWidgetClass game_settings_root {
+    GridSpacerWidgetClass video_settings_root {
      visible 1
      ignorepointer 1
      color 0 0 0 0
@@ -36,7 +36,7 @@ FrameWidgetClass game_tab_root {
      Columns 1
      Rows 2
      {
-      WrapSpacerWidgetClass general_settings_root {
+      WrapSpacerWidgetClass screen_settings_root {
        visible 1
        ignorepointer 1
        position 0 0
@@ -51,7 +51,7 @@ FrameWidgetClass game_tab_root {
        "Size To Content H" 1
        "Size To Content V" 1
        {
-        PanelWidgetClass general_settings_header {
+        PanelWidgetClass screen_settings_header {
          visible 1
          ignorepointer 1
          color 0 0 0 1
@@ -63,551 +63,26 @@ FrameWidgetClass game_tab_root {
          vexactsize 1
          style DayZDefaultPanel
          {
-          TextWidgetClass general_text {
+          TextWidgetClass screen_text {
            visible 1
            ignorepointer 1
            position 0 0
-           size 1 22
+           size 1 0.5
            valign center_ref
            hexactpos 1
            vexactpos 1
            hexactsize 0
-           vexactsize 1
+           vexactsize 0
            style Normal
-           text "#layout_options_pc_general"
-           font "gui/fonts/sdf_MetronLight72"
+           text "#STR_video_tab_root_video_settings_scroll_video_settings_root_screen_settings_root_screen_settings_header_screen_text0"
+           font "Colorful-UI/gui/fonts/GB-Regular.fnt"
            "exact text" 0
            "text halign" center
            "text valign" center
           }
          }
         }
-        GridSpacerWidgetClass general_settings_content {
-         ignorepointer 1
-         color 0 0 0 0.549
-         position 0 0
-         size 1 1
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 0
-         style DayZDefaultPanel
-         Padding 0
-         Margin 0
-         "Size To Content H" 1
-         "Size To Content V" 1
-         Columns 1
-         Rows 1
-         {
-          FrameWidgetClass language_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
-           position 0 0
-           size 1 30
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           {
-            GridSpacerWidgetClass language_setting {
-             ignorepointer 0
-             color 0 0 0 0
-             position 0 0
-             size 1 30
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 1
-             style DayZDefaultPanel
-             "no focus" 1
-             Padding 0
-             Margin 0
-             "Size To Content H" 1
-             Columns 2
-             Rows 1
-             {
-              FrameWidgetClass language_setting_panel {
-               ignorepointer 1
-               position 0 0
-               size 0.5 0.6
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-               {
-                TextWidgetClass language_setting_label {
-                 ignorepointer 1
-                 size 1 0.55
-                 valign center_ref
-                 hexactpos 1
-                 vexactpos 1
-                 hexactsize 0
-                 vexactsize 0
-                 text "#layout_options_pc_language"
-                 font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
-                 "text valign" center
-                }
-               }
-              }
-              FrameWidgetClass language_setting_option {
-               ignorepointer 1
-               position 0 0
-               size 0.5 1
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-              }
-             }
-            }
-            PanelWidgetClass language_setting_disable {
-             visible 0
-             ignorepointer 1
-             color 0.1569 0.1569 0.1569 0.902
-             position 0 0
-             size 1 1
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 0
-             style rover_sim_colorable
-            }
-           }
-          }
-          FrameWidgetClass pause_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
-           position 0 0
-           size 1 30
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           {
-            GridSpacerWidgetClass pause_setting {
-             ignorepointer 0
-             color 0 0 0 0
-             position 0 0
-             size 1 30
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 1
-             style DayZDefaultPanel
-             "no focus" 1
-             Padding 0
-             Margin 0
-             "Size To Content H" 1
-             Columns 2
-             Rows 1
-             {
-              FrameWidgetClass pause_setting_panel {
-               ignorepointer 1
-               position 0 0
-               size 0.5 0.6
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-               {
-                TextWidgetClass pause_setting_label {
-                 ignorepointer 1
-                 size 1 0.55
-                 valign center_ref
-                 hexactpos 1
-                 vexactpos 1
-                 hexactsize 0
-                 vexactsize 0
-                 text "#STR_option_game_nopause"
-                 font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
-                 "text valign" center
-                }
-               }
-              }
-              FrameWidgetClass pause_setting_option {
-               ignorepointer 1
-               position 0 0
-               size 0.5 1
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-              }
-             }
-            }
-            PanelWidgetClass pause_setting_disable {
-             visible 0
-             ignorepointer 1
-             color 0.1569 0.1569 0.1569 0.902
-             position 0 0
-             size 1 1
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 0
-             style rover_sim_colorable
-            }
-           }
-          }
-          FrameWidgetClass bleeding_indication_container {
-           ignorepointer 1
-           color 0 0 0 0
-           position 0 0
-           size 1 30
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           {
-            GridSpacerWidgetClass bleeding_indication_setting {
-             ignorepointer 0
-             color 0 0 0 0
-             position 0 0
-             size 1 30
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 1
-             style DayZDefaultPanel
-             "no focus" 1
-             Padding 0
-             Margin 0
-             "Size To Content H" 1
-             Columns 2
-             Rows 1
-             {
-              FrameWidgetClass bleeding_indication_setting_panel {
-               ignorepointer 1
-               position 0 0
-               size 0.5 0.6
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-               {
-                TextWidgetClass bleeding_indication_setting_label {
-                 visible 1
-                 ignorepointer 1
-                 size 1 0.55
-                 valign center_ref
-                 hexactpos 1
-                 vexactpos 1
-                 hexactsize 0
-                 vexactsize 0
-                 text "#layout_options_pc_bleeding_indication"
-                 font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
-                 "text valign" center
-                }
-               }
-              }
-              FrameWidgetClass bleeding_indication_setting_option {
-               ignorepointer 1
-               position 0 0
-               size 0.5 1
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-              }
-             }
-            }
-            PanelWidgetClass bleeding_indication_setting_disable {
-             visible 0
-             ignorepointer 1
-             color 0.1569 0.1569 0.1569 0.902
-             position 0 0
-             size 1 1
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 0
-             style rover_sim_colorable
-            }
-           }
-          }
-          FrameWidgetClass connectivity_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
-           position 0 0
-           size 1 30
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           {
-            GridSpacerWidgetClass connectivity_setting {
-             ignorepointer 0
-             color 0 0 0 0
-             position 0 0
-             size 1 30
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 1
-             style DayZDefaultPanel
-             "no focus" 1
-             Padding 0
-             Margin 0
-             "Size To Content H" 1
-             Columns 2
-             Rows 1
-             {
-              FrameWidgetClass connectivity_setting_panel {
-               ignorepointer 1
-               position 0 0
-               size 0.5 0.6
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-               {
-                TextWidgetClass connectivity_setting_label {
-                 ignorepointer 1
-                 size 1 0.55
-                 valign center_ref
-                 hexactpos 1
-                 vexactpos 1
-                 hexactsize 0
-                 vexactsize 0
-                 text "#layout_options_pc_connectivity_info"
-                 font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
-                 "text valign" center
-                }
-               }
-              }
-              FrameWidgetClass connectivity_setting_option {
-               ignorepointer 1
-               position 0 0
-               size 0.5 1
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-              }
-             }
-            }
-            PanelWidgetClass connectivity_setting_disable {
-             visible 0
-             ignorepointer 1
-             color 0.1569 0.1569 0.1569 0.902
-             position 0 0
-             size 1 1
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 0
-             style rover_sim_colorable
-            }
-           }
-          }
-         }
-        }
-       }
-      }
-      WrapSpacerWidgetClass camera_settings_root {
-       visible 1
-       ignorepointer 1
-       position 0 0
-       size 1 473
-       hexactpos 1
-       vexactpos 1
-       hexactsize 0
-       vexactsize 1
-       "no focus" 1
-       Padding 0
-       Margin 0
-       "Size To Content H" 1
-       "Size To Content V" 1
-       {
-        PanelWidgetClass camera_settings_header {
-         visible 1
-         ignorepointer 1
-         color 0 0 0 1
-         position 0 0
-         size 1 36
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style DayZDefaultPanel
-         {
-          TextWidgetClass camera_text {
-           visible 1
-           ignorepointer 1
-           position 0 0
-           size 1 22
-           valign center_ref
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           style Normal
-           text "#layout_options_pc_camera"
-           font "gui/fonts/sdf_MetronLight72"
-           "exact text" 0
-           "text halign" center
-           "text valign" center
-          }
-         }
-        }
-        GridSpacerWidgetClass camera_settings_content {
-         ignorepointer 1
-         color 0 0 0 0.549
-         position 0 0
-         size 1 1
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 0
-         style DayZDefaultPanel
-         Padding 0
-         Margin 0
-         "Size To Content H" 1
-         "Size To Content V" 1
-         Columns 1
-         Rows 1
-         {
-          FrameWidgetClass fov_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
-           position 0 0
-           size 1 30
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           {
-            GridSpacerWidgetClass fov_setting {
-             ignorepointer 0
-             color 0 0 0 0
-             position 0 0
-             size 1 30
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 1
-             style DayZDefaultPanel
-             "no focus" 1
-             Padding 0
-             Margin 0
-             "Size To Content H" 1
-             Columns 2
-             Rows 1
-             {
-              FrameWidgetClass fov_setting_panel {
-               ignorepointer 1
-               position 0 0
-               size 0.5 0.6
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-               {
-                TextWidgetClass fov_setting_label {
-                 ignorepointer 1
-                 size 1 0.55
-                 valign center_ref
-                 hexactpos 1
-                 vexactpos 1
-                 hexactsize 0
-                 vexactsize 0
-                 text "#layout_options_pc_fow"
-                 font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
-                 "text valign" center
-                }
-               }
-              }
-              FrameWidgetClass fov_setting_option {
-               ignorepointer 1
-               position 0 0
-               size 0.5 1
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-              }
-             }
-            }
-            PanelWidgetClass fov_setting_disable {
-             visible 0
-             ignorepointer 1
-             color 0.1569 0.1569 0.1569 0.902
-             position 0 0
-             size 1 1
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 0
-             style rover_sim_colorable
-            }
-           }
-          }
-         }
-        }
-       }
-      }
-      WrapSpacerWidgetClass hud_settings_root {
-       visible 1
-       ignorepointer 1
-       position 0 0
-       size 1 473
-       hexactpos 1
-       vexactpos 1
-       hexactsize 0
-       vexactsize 1
-       "no focus" 1
-       Padding 0
-       Margin 0
-       "Size To Content H" 1
-       "Size To Content V" 1
-       {
-        PanelWidgetClass hud_settings_header {
-         visible 1
-         ignorepointer 1
-         color 0 0 0 1
-         position 0 0
-         size 1 36
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style DayZDefaultPanel
-         {
-          TextWidgetClass hud_text {
-           visible 1
-           ignorepointer 1
-           position 0 0
-           size 1 22
-           valign center_ref
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           style Normal
-           text "#layout_options_pc_hud"
-           font "gui/fonts/sdf_MetronLight72"
-           "exact text" 0
-           "text halign" center
-           "text valign" center
-          }
-         }
-        }
-        GridSpacerWidgetClass hud_settings_content {
+        GridSpacerWidgetClass screen_settings_content {
          ignorepointer 1
          color 0 0 0 0.549
          position 0 0
@@ -624,9 +99,8 @@ FrameWidgetClass game_tab_root {
          "Size To Content V" 1
          Columns 1
          {
-          FrameWidgetClass hud_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
+          FrameWidgetClass display_mode_setting_container {
+           ignorepointer 0
            position 0 0
            size 1 30
            hexactpos 1
@@ -634,7 +108,7 @@ FrameWidgetClass game_tab_root {
            hexactsize 0
            vexactsize 1
            {
-            GridSpacerWidgetClass hud_setting {
+            GridSpacerWidgetClass display_mode_setting {
              ignorepointer 0
              color 0 0 0 0
              position 0 0
@@ -651,7 +125,7 @@ FrameWidgetClass game_tab_root {
              Columns 2
              Rows 1
              {
-              FrameWidgetClass hud_setting_panel {
+              FrameWidgetClass display_mode_setting_panel {
                ignorepointer 1
                position 0 0
                size 0.5 0.6
@@ -660,7 +134,7 @@ FrameWidgetClass game_tab_root {
                hexactsize 0
                vexactsize 0
                {
-                TextWidgetClass hud_setting_label {
+                TextWidgetClass display_mode_setting_label {
                  ignorepointer 1
                  size 1 0.55
                  valign center_ref
@@ -668,7 +142,7 @@ FrameWidgetClass game_tab_root {
                  vexactpos 1
                  hexactsize 0
                  vexactsize 0
-                 text "#layout_options_pc_show_hud"
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_screen_settings_root_screen_settings_content_display_mode_setting_container_display_mode_setting_display_mode_setting_panel_display_mode_setting_label0"
                  font "gui/fonts/sdf_MetronLight24"
                  "text offset" 8 0
                  "exact text" 0
@@ -677,7 +151,7 @@ FrameWidgetClass game_tab_root {
                 }
                }
               }
-              FrameWidgetClass hud_setting_option {
+              FrameWidgetClass display_mode_setting_option {
                ignorepointer 1
                position 0 0
                size 0.5 1
@@ -688,7 +162,7 @@ FrameWidgetClass game_tab_root {
               }
              }
             }
-            PanelWidgetClass hud_setting_disable {
+            PanelWidgetClass display_mode_setting_disable {
              visible 0
              ignorepointer 1
              color 0.1569 0.1569 0.1569 0.902
@@ -702,9 +176,8 @@ FrameWidgetClass game_tab_root {
             }
            }
           }
-          FrameWidgetClass hud_brightness_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
+          FrameWidgetClass resolution_setting_container {
+           ignorepointer 0
            position 0 0
            size 1 30
            hexactpos 1
@@ -712,7 +185,7 @@ FrameWidgetClass game_tab_root {
            hexactsize 0
            vexactsize 1
            {
-            GridSpacerWidgetClass hud_brightness_setting {
+            GridSpacerWidgetClass resolution_setting {
              ignorepointer 0
              color 0 0 0 0
              position 0 0
@@ -729,7 +202,7 @@ FrameWidgetClass game_tab_root {
              Columns 2
              Rows 1
              {
-              FrameWidgetClass hud_brightness_setting_panel {
+              FrameWidgetClass resolution_setting_panel {
                ignorepointer 1
                position 0 0
                size 0.5 0.6
@@ -738,7 +211,7 @@ FrameWidgetClass game_tab_root {
                hexactsize 0
                vexactsize 0
                {
-                TextWidgetClass hud_brightness_setting_label {
+                TextWidgetClass resolution_setting_label {
                  ignorepointer 1
                  size 1 0.55
                  valign center_ref
@@ -746,7 +219,7 @@ FrameWidgetClass game_tab_root {
                  vexactpos 1
                  hexactsize 0
                  vexactsize 0
-                 text "#layout_options_pc_hud_brightness"
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_screen_settings_root_screen_settings_content_resolution_setting_container_resolution_setting_resolution_setting_panel_resolution_setting_label0"
                  font "gui/fonts/sdf_MetronLight24"
                  "text offset" 8 0
                  "exact text" 0
@@ -755,7 +228,7 @@ FrameWidgetClass game_tab_root {
                 }
                }
               }
-              FrameWidgetClass hud_brightness_setting_option {
+              FrameWidgetClass resolution_setting_option {
                ignorepointer 1
                position 0 0
                size 0.5 1
@@ -766,7 +239,7 @@ FrameWidgetClass game_tab_root {
               }
              }
             }
-            PanelWidgetClass hud_brightness_setting_disable {
+            PanelWidgetClass resolution_setting_disable {
              visible 0
              ignorepointer 1
              color 0.1569 0.1569 0.1569 0.902
@@ -780,9 +253,8 @@ FrameWidgetClass game_tab_root {
             }
            }
           }
-          FrameWidgetClass crosshair_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
+          FrameWidgetClass brightness_setting_container {
+           ignorepointer 0
            position 0 0
            size 1 30
            hexactpos 1
@@ -790,7 +262,7 @@ FrameWidgetClass game_tab_root {
            hexactsize 0
            vexactsize 1
            {
-            GridSpacerWidgetClass crosshair_setting {
+            GridSpacerWidgetClass brightness_setting {
              ignorepointer 0
              color 0 0 0 0
              position 0 0
@@ -807,7 +279,7 @@ FrameWidgetClass game_tab_root {
              Columns 2
              Rows 1
              {
-              FrameWidgetClass crosshair_setting_panel {
+              FrameWidgetClass brightness_setting_panel {
                ignorepointer 1
                position 0 0
                size 0.5 0.6
@@ -816,7 +288,7 @@ FrameWidgetClass game_tab_root {
                hexactsize 0
                vexactsize 0
                {
-                TextWidgetClass crosshair_setting_label {
+                TextWidgetClass brightness_setting_label {
                  ignorepointer 1
                  size 1 0.55
                  valign center_ref
@@ -824,7 +296,7 @@ FrameWidgetClass game_tab_root {
                  vexactpos 1
                  hexactsize 0
                  vexactsize 0
-                 text "#layout_options_xbox_show_crosshair"
+                 text "#options_video_brightness_label"
                  font "gui/fonts/sdf_MetronLight24"
                  "text offset" 8 0
                  "exact text" 0
@@ -833,7 +305,7 @@ FrameWidgetClass game_tab_root {
                 }
                }
               }
-              FrameWidgetClass crosshair_setting_option {
+              FrameWidgetClass brightness_setting_option {
                ignorepointer 1
                position 0 0
                size 0.5 1
@@ -844,7 +316,7 @@ FrameWidgetClass game_tab_root {
               }
              }
             }
-            PanelWidgetClass crosshair_setting_disable {
+            PanelWidgetClass brightness_setting_disable {
              visible 0
              ignorepointer 1
              color 0.1569 0.1569 0.1569 0.902
@@ -858,9 +330,8 @@ FrameWidgetClass game_tab_root {
             }
            }
           }
-          FrameWidgetClass quickbar_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
+          FrameWidgetClass vsync_setting_container {
+           ignorepointer 0
            position 0 0
            size 1 30
            hexactpos 1
@@ -868,7 +339,7 @@ FrameWidgetClass game_tab_root {
            hexactsize 0
            vexactsize 1
            {
-            GridSpacerWidgetClass quickbar_setting {
+            GridSpacerWidgetClass vsync_setting {
              ignorepointer 0
              color 0 0 0 0
              position 0 0
@@ -885,7 +356,7 @@ FrameWidgetClass game_tab_root {
              Columns 2
              Rows 1
              {
-              FrameWidgetClass quickbar_setting_panel {
+              FrameWidgetClass vsync_setting_panel {
                ignorepointer 1
                position 0 0
                size 0.5 0.6
@@ -894,7 +365,7 @@ FrameWidgetClass game_tab_root {
                hexactsize 0
                vexactsize 0
                {
-                TextWidgetClass quickbar_setting_label {
+                TextWidgetClass vsync_setting_label {
                  ignorepointer 1
                  size 1 0.55
                  valign center_ref
@@ -902,7 +373,7 @@ FrameWidgetClass game_tab_root {
                  vexactpos 1
                  hexactsize 0
                  vexactsize 0
-                 text "#layout_options_pc_show_quickbar"
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_screen_settings_root_screen_settings_content_vsync_setting_container_vsync_setting_vsync_setting_panel_vsync_setting_label0"
                  font "gui/fonts/sdf_MetronLight24"
                  "text offset" 8 0
                  "exact text" 0
@@ -911,7 +382,7 @@ FrameWidgetClass game_tab_root {
                 }
                }
               }
-              FrameWidgetClass quickbar_setting_option {
+              FrameWidgetClass vsync_setting_option {
                ignorepointer 1
                position 0 0
                size 0.5 1
@@ -922,7 +393,7 @@ FrameWidgetClass game_tab_root {
               }
              }
             }
-            PanelWidgetClass quickbar_setting_disable {
+            PanelWidgetClass vsync_setting_disable {
              visible 0
              ignorepointer 1
              color 0.1569 0.1569 0.1569 0.902
@@ -936,9 +407,9 @@ FrameWidgetClass game_tab_root {
             }
            }
           }
-          FrameWidgetClass hud_vehicle_setting_container {
-           ignorepointer 1
-           color 0 0 0 0
+          FrameWidgetClass color_depth_setting_container {
+           visible 0
+           ignorepointer 0
            position 0 0
            size 1 30
            hexactpos 1
@@ -946,7 +417,7 @@ FrameWidgetClass game_tab_root {
            hexactsize 0
            vexactsize 1
            {
-            GridSpacerWidgetClass hud_vehicle_setting {
+            GridSpacerWidgetClass color_depth_setting {
              ignorepointer 0
              color 0 0 0 0
              position 0 0
@@ -963,7 +434,7 @@ FrameWidgetClass game_tab_root {
              Columns 2
              Rows 1
              {
-              FrameWidgetClass hud_vehicle_setting_panel {
+              FrameWidgetClass color_depth_setting_panel {
                ignorepointer 1
                position 0 0
                size 0.5 0.6
@@ -972,7 +443,7 @@ FrameWidgetClass game_tab_root {
                hexactsize 0
                vexactsize 0
                {
-                TextWidgetClass hud_vehicle_setting_label {
+                TextWidgetClass color_depth_setting_label {
                  ignorepointer 1
                  size 1 0.55
                  valign center_ref
@@ -980,7 +451,7 @@ FrameWidgetClass game_tab_root {
                  vexactpos 1
                  hexactsize 0
                  vexactsize 0
-                 text "#layout_options_pc_show_vehicle_hud"
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_screen_settings_root_screen_settings_content_color_depth_setting_container_color_depth_setting_color_depth_setting_panel_color_depth_setting_label0"
                  font "gui/fonts/sdf_MetronLight24"
                  "text offset" 8 0
                  "exact text" 0
@@ -989,7 +460,7 @@ FrameWidgetClass game_tab_root {
                 }
                }
               }
-              FrameWidgetClass hud_vehicle_setting_option {
+              FrameWidgetClass color_depth_setting_option {
                ignorepointer 1
                position 0 0
                size 0.5 1
@@ -1000,85 +471,7 @@ FrameWidgetClass game_tab_root {
               }
              }
             }
-            PanelWidgetClass hud_vehicle_setting_disable {
-             visible 0
-             ignorepointer 1
-             color 0.1569 0.1569 0.1569 0.902
-             position 0 0
-             size 1 1
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 0
-             style rover_sim_colorable
-            }
-           }
-          }
-          FrameWidgetClass serverinfo_container {
-           ignorepointer 1
-           color 0 0 0 0
-           position 0 0
-           size 1 30
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           {
-            GridSpacerWidgetClass serverinfo_setting {
-             ignorepointer 0
-             color 0 0 0 0
-             position 0 0
-             size 1 30
-             hexactpos 1
-             vexactpos 1
-             hexactsize 0
-             vexactsize 1
-             style DayZDefaultPanel
-             "no focus" 1
-             Padding 0
-             Margin 0
-             "Size To Content H" 1
-             Columns 2
-             Rows 1
-             {
-              FrameWidgetClass serverinfo_setting_panel {
-               ignorepointer 1
-               position 0 0
-               size 0.5 0.6
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-               {
-                TextWidgetClass serverinfo_setting_label {
-                 ignorepointer 1
-                 size 1 0.55
-                 valign center_ref
-                 hexactpos 1
-                 vexactpos 1
-                 hexactsize 0
-                 vexactsize 0
-                 text "#layout_options_pc_show_serverinfo"
-                 font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 8 0
-                 "exact text" 0
-                 "exact text size" 18
-                 "text valign" center
-                }
-               }
-              }
-              FrameWidgetClass serverinfo_setting_option {
-               ignorepointer 1
-               position 0 0
-               size 0.5 1
-               hexactpos 1
-               vexactpos 1
-               hexactsize 0
-               vexactsize 0
-              }
-             }
-            }
-            PanelWidgetClass serverinfo_setting_disable {
+            PanelWidgetClass color_depth_setting_disable {
              visible 0
              ignorepointer 1
              color 0.1569 0.1569 0.1569 0.902
@@ -1096,7 +489,7 @@ FrameWidgetClass game_tab_root {
         }
        }
       }
-      WrapSpacerWidgetClass chat_settings_root {
+      WrapSpacerWidgetClass overall_settings_root {
        visible 1
        ignorepointer 1
        position 0 0
@@ -1111,7 +504,7 @@ FrameWidgetClass game_tab_root {
        "Size To Content H" 1
        "Size To Content V" 1
        {
-        PanelWidgetClass chat_settings_header {
+        PanelWidgetClass overall_settings_header {
          visible 1
          ignorepointer 1
          color 0 0 0 1
@@ -1123,26 +516,170 @@ FrameWidgetClass game_tab_root {
          vexactsize 1
          style DayZDefaultPanel
          {
-          TextWidgetClass chat_text {
+          TextWidgetClass overall_text {
            visible 1
            ignorepointer 1
            position 0 0
-           size 1 22
+           size 1 0.5
            valign center_ref
            hexactpos 1
            vexactpos 1
            hexactsize 0
-           vexactsize 1
+           vexactsize 0
            style Normal
-           text "#layout_options_pc_chat"
-           font "gui/fonts/sdf_MetronLight72"
+           text "#STR_video_tab_root_video_settings_scroll_video_settings_root_overall_settings_root_overall_settings_header_overall_text0"
+           font "Colorful-UI/gui/fonts/GB-Regular.fnt"
            "exact text" 0
            "text halign" center
            "text valign" center
           }
          }
         }
-        GridSpacerWidgetClass chat_settings_content {
+        GridSpacerWidgetClass overall_settings_content {
+         ignorepointer 1
+         color 0 0 0 0.549
+         position 0 0
+         size 1 1
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 0
+         style DayZDefaultPanel
+         Padding 0
+         Margin 0
+         "Size To Content H" 1
+         "Size To Content V" 1
+         Columns 1
+         Rows 1
+         {
+          FrameWidgetClass overall_quality_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass overall_quality_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass overall_quality_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass overall_quality_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_overall_settings_root_overall_settings_content_overall_quality_setting_container_overall_quality_setting_overall_quality_setting_panel_overall_quality_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass overall_quality_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass overall_quality_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      WrapSpacerWidgetClass scene_settings_root {
+       visible 1
+       ignorepointer 1
+       position 0 0
+       size 1 473
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       "no focus" 1
+       Padding 0
+       Margin 0
+       "Size To Content H" 1
+       "Size To Content V" 1
+       {
+        PanelWidgetClass scene_settings_header {
+         visible 1
+         ignorepointer 1
+         color 0 0 0 1
+         position 0 0
+         size 1 36
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         style DayZDefaultPanel
+         {
+          TextWidgetClass scene_text {
+           visible 1
+           ignorepointer 1
+           position 0 0
+           size 1 0.5
+           valign center_ref
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+           style Normal
+           text "#STR_video_tab_root_video_settings_scroll_video_settings_root_scene_settings_root_scene_settings_header_scene_text0"
+           font "Colorful-UI/gui/fonts/GB-Regular.fnt"
+           "exact text" 0
+           "text halign" center
+           "text valign" center
+          }
+         }
+        }
+        GridSpacerWidgetClass scene_settings_content {
          ignorepointer 1
          color 0 0 0 0.549
          position 0 0
@@ -1159,9 +696,8 @@ FrameWidgetClass game_tab_root {
          "Size To Content V" 1
          Columns 1
          {
-          FrameWidgetClass game_setting_container {
+          FrameWidgetClass visibility_setting_container {
            ignorepointer 1
-           color 0 0 0 0
            position 0 0
            size 1 30
            hexactpos 1
@@ -1169,7 +705,7 @@ FrameWidgetClass game_tab_root {
            hexactsize 0
            vexactsize 1
            {
-            GridSpacerWidgetClass game_setting {
+            GridSpacerWidgetClass visibility_setting {
              ignorepointer 0
              color 0 0 0 0
              position 0 0
@@ -1186,7 +722,7 @@ FrameWidgetClass game_tab_root {
              Columns 2
              Rows 1
              {
-              FrameWidgetClass game_setting_panel {
+              FrameWidgetClass visibility_setting_panel {
                ignorepointer 1
                position 0 0
                size 0.5 0.6
@@ -1195,7 +731,7 @@ FrameWidgetClass game_tab_root {
                hexactsize 0
                vexactsize 0
                {
-                TextWidgetClass game_setting_label {
+                TextWidgetClass visibility_setting_label {
                  ignorepointer 1
                  size 1 0.55
                  valign center_ref
@@ -1203,7 +739,7 @@ FrameWidgetClass game_tab_root {
                  vexactpos 1
                  hexactsize 0
                  vexactsize 0
-                 text "#layout_options_pc_game_messages"
+                 text "#STR_option_video_visibility"
                  font "gui/fonts/sdf_MetronLight24"
                  "text offset" 8 0
                  "exact text" 0
@@ -1212,7 +748,7 @@ FrameWidgetClass game_tab_root {
                 }
                }
               }
-              FrameWidgetClass game_setting_option {
+              FrameWidgetClass visibility_setting_option {
                ignorepointer 1
                position 0 0
                size 0.5 1
@@ -1223,7 +759,7 @@ FrameWidgetClass game_tab_root {
               }
              }
             }
-            PanelWidgetClass game_setting_disable {
+            PanelWidgetClass visibility_setting_disable {
              visible 0
              ignorepointer 1
              color 0.1569 0.1569 0.1569 0.902
@@ -1237,9 +773,8 @@ FrameWidgetClass game_tab_root {
             }
            }
           }
-          FrameWidgetClass admin_setting_container {
+          FrameWidgetClass object_visibility_setting_container {
            ignorepointer 1
-           color 0 0 0 0
            position 0 0
            size 1 30
            hexactpos 1
@@ -1247,7 +782,7 @@ FrameWidgetClass game_tab_root {
            hexactsize 0
            vexactsize 1
            {
-            GridSpacerWidgetClass admin_setting {
+            GridSpacerWidgetClass object_visibility_setting {
              ignorepointer 0
              color 0 0 0 0
              position 0 0
@@ -1264,7 +799,7 @@ FrameWidgetClass game_tab_root {
              Columns 2
              Rows 1
              {
-              FrameWidgetClass admin_setting_panel {
+              FrameWidgetClass object_visiblity_setting_panel {
                ignorepointer 1
                position 0 0
                size 0.5 0.6
@@ -1273,7 +808,7 @@ FrameWidgetClass game_tab_root {
                hexactsize 0
                vexactsize 0
                {
-                TextWidgetClass admin_setting_label {
+                TextWidgetClass object_visibility_setting_label {
                  ignorepointer 1
                  size 1 0.55
                  valign center_ref
@@ -1281,7 +816,7 @@ FrameWidgetClass game_tab_root {
                  vexactpos 1
                  hexactsize 0
                  vexactsize 0
-                 text "#layout_options_pc_admin_mes"
+                 text "#STR_option_video_objectvisibility"
                  font "gui/fonts/sdf_MetronLight24"
                  "text offset" 8 0
                  "exact text" 0
@@ -1290,7 +825,7 @@ FrameWidgetClass game_tab_root {
                 }
                }
               }
-              FrameWidgetClass admin_setting_option {
+              FrameWidgetClass object_visibility_setting_option {
                ignorepointer 1
                position 0 0
                size 0.5 1
@@ -1301,7 +836,7 @@ FrameWidgetClass game_tab_root {
               }
              }
             }
-            PanelWidgetClass admin_setting_disable {
+            PanelWidgetClass object_visibility_setting_disable {
              visible 0
              ignorepointer 1
              color 0.1569 0.1569 0.1569 0.902
@@ -1315,9 +850,8 @@ FrameWidgetClass game_tab_root {
             }
            }
           }
-          FrameWidgetClass player_setting_container {
+          FrameWidgetClass object_detail_setting_container {
            ignorepointer 1
-           color 0 0 0 0
            position 0 0
            size 1 30
            hexactpos 1
@@ -1325,7 +859,7 @@ FrameWidgetClass game_tab_root {
            hexactsize 0
            vexactsize 1
            {
-            GridSpacerWidgetClass player_setting {
+            GridSpacerWidgetClass object_detail_setting {
              ignorepointer 0
              color 0 0 0 0
              position 0 0
@@ -1342,7 +876,7 @@ FrameWidgetClass game_tab_root {
              Columns 2
              Rows 1
              {
-              FrameWidgetClass player_setting_panel {
+              FrameWidgetClass object_detail_setting_panel {
                ignorepointer 1
                position 0 0
                size 0.5 0.6
@@ -1351,7 +885,7 @@ FrameWidgetClass game_tab_root {
                hexactsize 0
                vexactsize 0
                {
-                TextWidgetClass player_setting_label {
+                TextWidgetClass object_detail_setting_label {
                  ignorepointer 1
                  size 1 0.55
                  valign center_ref
@@ -1359,7 +893,7 @@ FrameWidgetClass game_tab_root {
                  vexactpos 1
                  hexactsize 0
                  vexactsize 0
-                 text "#layout_options_pc_player_messages"
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_scene_settings_root_scene_settings_content_object_detail_setting_container_object_detail_setting_object_detail_setting_panel_object_detail_setting_label0"
                  font "gui/fonts/sdf_MetronLight24"
                  "text offset" 8 0
                  "exact text" 0
@@ -1368,7 +902,7 @@ FrameWidgetClass game_tab_root {
                 }
                }
               }
-              FrameWidgetClass player_setting_option {
+              FrameWidgetClass object_detail_setting_option {
                ignorepointer 1
                position 0 0
                size 0.5 1
@@ -1379,7 +913,922 @@ FrameWidgetClass game_tab_root {
               }
              }
             }
-            PanelWidgetClass player_setting_disable {
+            PanelWidgetClass object_detail_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass terrain_detail_setting_container {
+           visible 0
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass terrain_detail_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass terrain_detail_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass terrain_detail_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_scene_settings_root_scene_settings_content_terrain_detail_setting_container_terrain_detail_setting_terrain_detail_setting_panel_terrain_detail_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass terrain_detail_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass terrain_detail_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass texture_detail_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass texture_detail_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass texture_detail_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass texture_detail_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_scene_settings_root_scene_settings_content_texture_detail_setting_container_texture_detail_setting_texture_detail_setting_panel_texture_detail_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass texture_detail_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass texture_detail_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass shadow_detail_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass shadow_detail_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass shadow_detail_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass shadow_detail_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_scene_settings_root_scene_settings_content_shadow_detail_setting_container_shadow_detail_setting_shadow_detail_setting_panel_shadow_detail_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass shadow_detail_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass shadow_detail_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      WrapSpacerWidgetClass rendering_settings_root {
+       visible 1
+       ignorepointer 1
+       position 0 0
+       size 1 473
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       "no focus" 1
+       Padding 0
+       Margin 0
+       "Size To Content H" 1
+       "Size To Content V" 1
+       {
+        PanelWidgetClass rendering_settings_header {
+         visible 1
+         ignorepointer 1
+         color 0 0 0 1
+         position 0 0
+         size 1 36
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         style DayZDefaultPanel
+         {
+          TextWidgetClass rendering_text {
+           visible 1
+           ignorepointer 1
+           position 0 0
+           size 1 0.5
+           valign center_ref
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+           style Normal
+           text "#STR_video_tab_root_video_settings_scroll_video_settings_root_rendering_settings_root_rendering_settings_header_rendering_text0"
+           font "Colorful-UI/gui/fonts/GB-Regular.fnt"
+           "exact text" 0
+           "text halign" center
+           "text valign" center
+          }
+         }
+        }
+        GridSpacerWidgetClass rendering_settings_content {
+         ignorepointer 1
+         color 0 0 0 0.549
+         position 0 0
+         size 1 1
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 0
+         style DayZDefaultPanel
+         "no focus" 1
+         Padding 0
+         Margin 0
+         "Size To Content H" 1
+         "Size To Content V" 1
+         Columns 1
+         {
+          FrameWidgetClass texture_filtering_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass texture_filtering_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass texture_filtering_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass texture_filtering_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_rendering_settings_root_rendering_settings_content_texture_filtering_setting_container_texture_filtering_setting_texture_filtering_setting_panel_texture_filtering_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass texture_filtering_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass texture_filtering_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass terrain_surface_detail_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass terrain_surface_detail_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass terrain_surface_detail_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass terrain_surface_detail_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_rendering_settings_root_rendering_settings_content_terrain_surface_detail_setting_container_terrain_surface_detail_setting_terrain_surface_detail_setting_panel_terrain_surface_detail_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass terrain_surface_detail_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass terrain_surface_detail_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass ppaa_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass ppaa_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass ppaa_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass ppaa_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_rendering_settings_root_rendering_settings_content_ppaa_setting_container_ppaa_setting_ppaa_setting_panel_ppaa_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass ppaa_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass ppaa_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass hwaa_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass hwaa_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass hwaa_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass hwaa_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_rendering_settings_root_rendering_settings_content_hwaa_setting_container_hwaa_setting_hwaa_setting_panel_hwaa_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass hwaa_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass hwaa_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass atoc_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass atoc_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass atoc_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass atoc_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_rendering_settings_root_rendering_settings_content_atoc_setting_container_atoc_setting_atoc_setting_panel_atoc_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass atoc_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass atoc_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass ao_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass ao_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass ao_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass ao_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_rendering_settings_root_rendering_settings_content_ao_setting_container_ao_setting_ao_setting_panel_ao_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass ao_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass ao_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass pp_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass pp_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass pp_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass pp_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_video_tab_root_video_settings_scroll_video_settings_root_rendering_settings_root_rendering_settings_content_pp_setting_container_pp_setting_pp_setting_panel_pp_setting_label0"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass pp_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass pp_setting_disable {
+             visible 0
+             ignorepointer 1
+             color 0.1569 0.1569 0.1569 0.902
+             position 0 0
+             size 1 1
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style rover_sim_colorable
+            }
+           }
+          }
+          FrameWidgetClass ssr_setting_container {
+           ignorepointer 1
+           position 0 0
+           size 1 30
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            GridSpacerWidgetClass ssr_setting {
+             ignorepointer 0
+             color 0 0 0 0
+             position 0 0
+             size 1 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanel
+             "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
+             {
+              FrameWidgetClass ssr_setting_panel {
+               ignorepointer 1
+               position 0 0
+               size 0.5 0.6
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               {
+                TextWidgetClass ssr_setting_label {
+                 ignorepointer 1
+                 size 1 0.55
+                 valign center_ref
+                 hexactpos 1
+                 vexactpos 1
+                 hexactsize 0
+                 vexactsize 0
+                 text "#STR_option_video_ssr_quality"
+                 font "gui/fonts/sdf_MetronLight24"
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
+                 "text valign" center
+                }
+               }
+              }
+              FrameWidgetClass ssr_setting_option {
+               ignorepointer 1
+               position 0 0
+               size 0.5 1
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+              }
+             }
+            }
+            PanelWidgetClass ssr_setting_disable {
              visible 0
              ignorepointer 1
              color 0.1569 0.1569 0.1569 0.902

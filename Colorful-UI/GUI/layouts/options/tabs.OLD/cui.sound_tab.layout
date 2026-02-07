@@ -75,7 +75,7 @@ FrameWidgetClass sound_tab_root {
            vexactsize 0
            style Normal
            text "#STR_sound_tab_header_sound"
-           font "gui/fonts/sdf_MetronLight72"
+           font "Colorful-UI/gui/fonts/GB-Regular.fnt"
            "exact text" 0
            "text halign" center
            "text valign" center
@@ -454,7 +454,7 @@ FrameWidgetClass sound_tab_root {
            vexactsize 0
            style Normal
            text "#STR_sound_tab_voice_header"
-           font "gui/fonts/sdf_MetronLight72"
+           font "Colorful-UI/gui/fonts/GB-Regular.fnt"
            "exact text" 0
            "text halign" center
            "text valign" center
