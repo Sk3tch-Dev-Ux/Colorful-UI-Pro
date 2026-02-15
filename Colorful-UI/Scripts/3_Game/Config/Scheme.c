@@ -53,6 +53,7 @@ class colorScheme
 	static int OptionLine()          { return AccentColor(); }          	// Header color in options
 	static int OptionInputColors()   { return BrandColor(); }           	// Input fields color
 	static int OptionSliderColors()  { return BrandColor(); }           	// Slider color in options
+	static int OptionSelectionText() { return BrandColor(); }           	// Caret color for dropdowns
 	static int OptionCaretColors()   { return BrandColor(); }           	// Caret color for dropdowns
 	static int OptionIconHover()     { return TextHover(); }
 	static int OptionIconNormal()    { return PrimaryText(); } // Or Icons() if that exists

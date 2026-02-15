@@ -280,3 +280,155 @@ modded class OptionSelectorBase extends ScriptedWidgetEventHandler
 		}
 	}
 }
+
+modded class OptionSelectorMultistate extends OptionSelectorBase
+{
+	override void ColorHighlight(Widget w)
+	{
+		if (!w)
+			return;
+
+		int color_pnl = colorScheme.OptionBGHover();
+		int color_lbl = colorScheme.OptionSelectionText();
+
+		ButtonSetColor(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconHover());
+	}
+
+	override void ColorNormal(Widget w)
+	{
+		if (!w)
+			return;
+
+		int color_pnl = UIColor.Transparent();
+		int color_lbl = colorScheme.PrimaryText();
+
+		ButtonSetColor(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconNormal());
+	}
+
+	override void ColorHighlightConsole(Widget w)
+	{
+		if (!w)
+			return;
+
+		int color_pnl = colorScheme.OptionBGHover();
+		int color_lbl = colorScheme.OptionSelectionText();
+
+		ButtonSetColorConsole(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconHover());
+	}
+
+	override void ColorNormalConsole(Widget w)
+	{
+		if (!w)
+			return;
+
+		int color_pnl = UIColor.Transparent();
+		int color_lbl = colorScheme.PrimaryText();
+
+		ButtonSetColorConsole(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconNormal());
+	}
+	
+	void ButtonSetTextColorRecursive(Widget w, int color)
+	{
+		if (!w)
+			return;
+
+		Widget child = w.GetChildren();
+		while (child)
+		{
+			if (child.IsInherited(TextWidget))
+			{
+				child.SetColor(color);
+			}
+			else
+			{
+				ButtonSetTextColorRecursive(child, color);
+			}
+			
+			child = child.GetSibling();
+		}
+	}
+}
+
+modded class OptionSelectorSlider extends OptionSelectorBase
+{
+	override void ColorHighlight(Widget w)
+	{
+		if (!w)
+			return;
+
+		int color_pnl = colorScheme.OptionBGHover();
+		int color_lbl = colorScheme.OptionSelectionText();
+
+		ButtonSetColor(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconHover());
+	}
+
+	override void ColorNormal(Widget w)
+	{
+		if (!w)
+			return;
+
+		int color_pnl = UIColor.Transparent();
+		int color_lbl = colorScheme.PrimaryText();
+
+		ButtonSetColor(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconNormal());
+	}
+
+	override void ColorHighlightConsole(Widget w)
+	{
+		if (!w)
+			return;
+
+		int color_pnl = colorScheme.OptionBGHover();
+		int color_lbl = colorScheme.OptionSelectionText();
+
+		ButtonSetColorConsole(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconHover());
+	}
+
+	override void ColorNormalConsole(Widget w)
+	{
+		if (!w)
+			return;
+
+		int color_pnl = UIColor.Transparent();
+		int color_lbl = colorScheme.PrimaryText();
+
+		ButtonSetColorConsole(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconNormal());
+	}
+	
+	void ButtonSetTextColorRecursive(Widget w, int color)
+	{
+		if (!w)
+			return;
+
+		Widget child = w.GetChildren();
+		while (child)
+		{
+			if (child.IsInherited(TextWidget))
+			{
+				child.SetColor(color);
+			}
+			else
+			{
+				ButtonSetTextColorRecursive(child, color);
+			}
+			
+			child = child.GetSibling();
+		}
+	}
+}
