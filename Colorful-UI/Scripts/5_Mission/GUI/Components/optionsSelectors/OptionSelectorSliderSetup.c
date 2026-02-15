@@ -5,13 +5,20 @@ modded class OptionSelectorSliderSetup extends OptionSelectorBase
 		if (!w)
 			return;
 
+		// Use Brand Color for slider on hover
 		if (m_Slider)
 		{
 			SetFocus(m_Slider);
-			m_Slider.SetColor(colorScheme.OptionBGHover());
+			m_Slider.SetColor(colorScheme.OptionSliderColors());
 		}
 
-		super.ColorHighlight(w);
+		// Custom ColorHighlight logic (replaces super.ColorHighlight)
+		int color_pnl = colorScheme.OptionBGHover();
+		int color_lbl = colorScheme.OptionSelectionText();
+
+		ButtonSetColor(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconHover());
 	}
 
 	override void ColorNormal(Widget w)
@@ -21,10 +28,16 @@ modded class OptionSelectorSliderSetup extends OptionSelectorBase
 
 		if (m_Slider)
 		{
-			m_Slider.SetColor(colorScheme.OptionSliderColors());
+			m_Slider.SetColor(colorScheme.PrimaryText());
 		}
 
-		super.ColorNormal(w);
+		// Custom ColorNormal logic (replaces super.ColorNormal)
+		int color_pnl = UIColor.Transparent();
+		int color_lbl = colorScheme.PrimaryText();
+
+		ButtonSetColor(w, color_pnl);
+		ButtonSetTextColorRecursive(w, color_lbl);
+		ButtonSetIconColor(w, colorScheme.OptionIconNormal());
 	}
 
 	override bool OnMouseEnter(Widget w, int x, int y)
@@ -36,10 +49,12 @@ modded class OptionSelectorSliderSetup extends OptionSelectorBase
 
 			#ifdef PLATFORM_WINDOWS
 			m_ParentClass.OnMouseEnter(m_Root.GetParent().GetParent(), x, y);
+			// Use Brand Color for slider on enter
 			m_Slider.SetColor(colorScheme.OptionSliderColors());
 			#endif
 		}
-
+		
+		ColorHighlight(w); // Ensure our overridden ColorHighlight is called
 		return true;
 	}
 
@@ -55,7 +70,30 @@ modded class OptionSelectorSliderSetup extends OptionSelectorBase
 			OnFocusLost(w, x, y);
 			SetFocus(null);
 		}
-
+		
+		ColorNormal(w); // Ensure our overridden ColorNormal is called
 		return true;
+	}
+	
+	// Helper for recursive coloring
+	void ButtonSetTextColorRecursive(Widget w, int color)
+	{
+		if (!w)
+			return;
+
+		Widget child = w.GetChildren();
+		while (child)
+		{
+			if (child.IsInherited(TextWidget))
+			{
+				child.SetColor(color);
+			}
+			else
+			{
+				ButtonSetTextColorRecursive(child, color);
+			}
+			
+			child = child.GetSibling();
+		}
 	}
 }
