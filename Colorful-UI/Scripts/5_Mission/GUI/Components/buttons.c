@@ -79,7 +79,7 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
             {
                 if (m_IconImageIndex >= 0) m_ImageWidget.SetImage(m_IconImageIndex);
                 m_ImageWidget.Show(true);
-                m_ImageWidget.SetColor(UIColor.White());
+                m_ImageWidget.SetColor(m_TextColor);
             }
 
             m_Button.SetColor(UIColor.Transparent());
@@ -246,6 +246,7 @@ class cuiElmnt
         if (!button) return;
         label = TextWidget.Cast(button.FindAnyWidget(button.GetName() + "_label"));
         icon  = ImageWidget.Cast(button.FindAnyWidget(button.GetName() + "_img"));
+        if (!icon) icon = ImageWidget.Cast(button.FindAnyWidget(button.GetName() + "_image"));
     }
 
     static void proSolidBtn(ButtonWidget button, string text, int bgColor, int hoverBgColor, string clickAction)
@@ -353,12 +354,12 @@ class cuiElmnt
         button.SetText(text);
         TextWidget label; ImageWidget icon; GetParts(button, label, icon);
         if (label) { label.SetText(text); button.SetText(""); }
-        if (icon) icon.SetColor(colorScheme.Icons());
+        if (icon && text != "") icon.SetColor(colorScheme.Icons());
 
         CUIButtonHandler h = new CUIButtonHandler(
             button,
             label,
-            NULL,
+            icon,
             textColor,
             hoverColor,
             "",
@@ -367,6 +368,12 @@ class cuiElmnt
             "",
             0,
         );
+        
+        if (text == "" && icon)
+        {
+            h.SetIconOnly(true, -1);
+        }
+        
         s_Handlers.Insert(h);
     }
 }
