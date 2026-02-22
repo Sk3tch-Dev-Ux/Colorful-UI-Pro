@@ -1,5 +1,8 @@
 modded class MainMenu extends UIScriptedMenu
 {
+	protected ref MainMenuStats m_Stats;
+	protected TextWidget m_PlayerName;
+	protected ButtonWidget m_PrevCharacter, m_NextCharacter;
 	protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_StatisticsBoxBG, m_SurvivorBox, m_Logo;
 	protected ButtonWidget m_Play, m_Exit, m_SettingsBtn, m_TutorialBtn, m_MessageBtn, m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook, m_CharacterBtn;
 	protected Widget m_TopSpacer, m_BottomSpacer;
@@ -35,6 +38,13 @@ modded class MainMenu extends UIScriptedMenu
 
 		m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
 		m_Logo              = ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
+		m_PlayerName        = TextWidget.Cast(layoutRoot.FindAnyWidget("character_name_text"));
+		m_PrevCharacter     = ButtonWidget.Cast(layoutRoot.FindAnyWidget("prev_character"));
+		m_NextCharacter     = ButtonWidget.Cast(layoutRoot.FindAnyWidget("next_character"));
+		
+		Widget stats_root = layoutRoot.FindAnyWidget("StatsBox");
+		if (stats_root)
+			m_Stats = new MainMenuStats(stats_root);
 
 		if (m_StatisticsBoxBG) m_StatisticsBoxBG.SetColor(UIColor.cuiDarkBlue());
 		if (m_SurvivorBox) m_SurvivorBox.SetColor(UIColor.cuiDarkBlue());
@@ -50,6 +60,9 @@ modded class MainMenu extends UIScriptedMenu
 		cuiElmnt.proBtnCB(m_TutorialBtn, "Tutorial", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenTutorials");
 		cuiElmnt.proBtnCB(m_MessageBtn, "Credits", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenCredits");
 		cuiElmnt.proBtnCB(m_CharacterBtn, "", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "OpenMenuCustomizeCharacter");
+		
+		cuiElmnt.proBtnCB(m_PrevCharacter, "", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "PreviousCharacter");
+		cuiElmnt.proBtnCB(m_NextCharacter, "", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "NextCharacter");
 
 		cuiElmnt.proBtnURL(m_PrioQ, "Priority Queue", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.PriorityQ);
 		cuiElmnt.proBtnURL(m_Website, "Visit Website", colorScheme.PrimaryText(), colorScheme.ButtonHover(), CustomURL.Website);
@@ -103,5 +116,67 @@ modded class MainMenu extends UIScriptedMenu
 		if (!m_Logo) m_Logo = ImageWidget.Cast(layoutRoot.FindAnyWidget("Logo"));
 		if (!m_TopShader) m_TopShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("TopShader"));
 		if (!m_BottomShader) m_BottomShader = ImageWidget.Cast(layoutRoot.FindAnyWidget("BottomShader"));
+		
+		if (m_Stats) m_Stats.UpdateStats();
+		OnChangeCharacter(false);
+	}
+	
+	override void Refresh()
+	{
+		super.Refresh();
+		OnChangeCharacter(false);
+	}
+	
+	override void OnChangeCharacter(bool create_character = true)
+	{
+		MissionMainMenu mission = MissionMainMenu.Cast(GetGame().GetMission());
+		if (mission && mission.GetIntroScenePC() && mission.GetIntroScenePC().GetIntroCharacter())
+		{
+			int charID = mission.GetIntroScenePC().GetIntroCharacter().GetCharacterID();
+			if (create_character)
+			{
+				mission.GetIntroScenePC().GetIntroCharacter().CreateNewCharacterById(charID);
+			}
+			
+			string name = mission.GetIntroScenePC().GetIntroCharacter().GetCharacterNameById(charID);
+			CuiLogger.Log("MainMenu.OnChangeCharacter() - CharID: " + charID + " Name: " + name);
+			
+			if (m_PlayerName)
+				m_PlayerName.SetText(name);
+			
+			if (m_Stats) m_Stats.UpdateStats();
+		}
+		else
+		{
+			CuiLogger.Log("MainMenu.OnChangeCharacter() - FAILED: Mission or IntroScene is NULL");
+		}
+	}
+	
+	void NextCharacter()
+	{
+		MissionMainMenu mission = MissionMainMenu.Cast(GetGame().GetMission());
+		if (mission && mission.GetIntroScenePC() && mission.GetIntroScenePC().GetIntroCharacter())
+		{
+			int charID = mission.GetIntroScenePC().GetIntroCharacter().GetNextCharacterID();
+			if (charID != mission.GetIntroScenePC().GetIntroCharacter().GetCharacterID())
+			{
+				mission.GetIntroScenePC().GetIntroCharacter().SetCharacterID(charID);
+				OnChangeCharacter();
+			}
+		}
+	}
+	
+	void PreviousCharacter()
+	{
+		MissionMainMenu mission = MissionMainMenu.Cast(GetGame().GetMission());
+		if (mission && mission.GetIntroScenePC() && mission.GetIntroScenePC().GetIntroCharacter())
+		{
+			int charID = mission.GetIntroScenePC().GetIntroCharacter().GetPrevCharacterID();
+			if (charID != mission.GetIntroScenePC().GetIntroCharacter().GetCharacterID())
+			{
+				mission.GetIntroScenePC().GetIntroCharacter().SetCharacterID(charID);
+				OnChangeCharacter();
+			}
+		}
 	}
 }
