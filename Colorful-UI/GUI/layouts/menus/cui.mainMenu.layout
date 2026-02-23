@@ -1349,20 +1349,6 @@ FrameWidgetClass mainmenu_root {
        "size to text v" 0
        "text valign" center
       }
-      PanelWidgetClass SurvivorDivider {
-       color 0.7569 0.7569 0.7569 1
-       position 0 75
-       size 1 3
-       halign center_ref
-       hexactpos 1
-       vexactpos 1
-       hexactsize 0
-       vexactsize 1
-       scaled 1
-       priority 10
-       style DayZDefaultPanel
-       "no focus" 0
-      }
       GridSpacerWidgetClass character_stats_content {
        ignorepointer 1
        color 0 0 0 0
@@ -1607,6 +1593,22 @@ FrameWidgetClass mainmenu_root {
          }
         }
        }
+      }
+      ImageWidgetClass MenuDivider0 {
+       visible 1
+       ignorepointer 1
+       position 0 75
+       size 1 3
+       halign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       image0 "set:cui image:MenuDivider"
+       mode blend
+       "src alpha" 1
+       "flip u" 1
+       "flip v" 0
       }
      }
     }

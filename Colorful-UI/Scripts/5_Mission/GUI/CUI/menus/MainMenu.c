@@ -3,7 +3,7 @@ modded class MainMenu extends UIScriptedMenu
 	protected ref MainMenuStats m_Stats;
 	protected TextWidget m_PlayerName;
 	protected ButtonWidget m_PrevCharacter, m_NextCharacter;
-	protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_StatisticsBoxBG, m_SurvivorBox, m_Logo;
+	protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider0, m_MenuDivider, m_StatisticsBoxBG, m_SurvivorBox, m_Logo;
 	protected ButtonWidget m_Play, m_Exit, m_SettingsBtn, m_TutorialBtn, m_MessageBtn, m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook, m_CharacterBtn;
 	protected ButtonWidget m_TestBtn0, m_TestBtn1, m_TestBtn2, m_TestBtn3, m_TestBtn4, m_TestBtn5;
 	protected Widget m_TopSpacer, m_BottomSpacer;
@@ -12,7 +12,7 @@ modded class MainMenu extends UIScriptedMenu
 
 	override Widget Init()
 	{
-		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/proto/testing.layout");
+		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/menus/cui.mainMenu.layout");
 
 		m_Play              = ButtonWidget.Cast(layoutRoot.FindAnyWidget("PlayBtn"));
 		m_Exit              = ButtonWidget.Cast(layoutRoot.FindAnyWidget("ExitBtn"));
@@ -35,6 +35,7 @@ modded class MainMenu extends UIScriptedMenu
 		m_SurvivorBox       = layoutRoot.FindAnyWidget("SurvivorBox");
 		m_TopSpacer         = layoutRoot.FindAnyWidget("TopSpacer");
 		m_MenuDivider       = ImageWidget.Cast(layoutRoot.FindAnyWidget("MenuDivider"));
+		m_MenuDivider0      = ImageWidget.Cast(layoutRoot.FindAnyWidget("MenuDivider0"));
 		m_BottomSpacer      = layoutRoot.FindAnyWidget("BottomSpacer");
 
 		m_LoadingBar        = ProgressBarWidget.Cast(layoutRoot.FindAnyWidget("LoadingBar"));
@@ -59,6 +60,7 @@ modded class MainMenu extends UIScriptedMenu
 		if (m_TopShader) m_TopShader.SetColor(colorScheme.TopShader());
 		if (m_BottomShader) m_BottomShader.SetColor(colorScheme.BottomShader());
 		if (m_MenuDivider) m_MenuDivider.SetColor(colorScheme.Separator());
+		if (m_MenuDivider0) m_MenuDivider0.SetColor(colorScheme.Separator());
 		if (m_LoadingBar) m_LoadingBar.SetColor(colorScheme.Loadingbar());
 
 		cuiElmnt.proBtnDC(m_Play, "#main_menu_play", colorScheme.PrimaryText(), colorScheme.ButtonHover(), SERVER_IP, SERVER_PORT);
@@ -88,12 +90,6 @@ modded class MainMenu extends UIScriptedMenu
 		CheckSocials(m_Youtube, SocialURL.Youtube);
 		CheckSocials(m_Reddit, SocialURL.Reddit);
 		CheckSocials(m_Facebook, SocialURL.Facebook);
-
-		cuiElmnt.proSolidBtn(m_TestBtn0, "Solid Button with Icon", colorScheme.BtnSolidBG(), colorScheme.BtnSolidHoverBG(), "");
-		cuiElmnt.proSolidBtn(m_TestBtn1, "Solid Button", colorScheme.BtnSolidBG(), colorScheme.BtnSolidHoverBG(), "");
-		cuiElmnt.proBtnCB(m_TestBtn2, "Text Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "");
-		cuiElmnt.proBtnCB(m_TestBtn3, "Text Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "");
-		cuiElmnt.proIconBtn(m_TestBtn4, -1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "");
 		
 		if (allInvalid && m_MenuDivider)
 		{
