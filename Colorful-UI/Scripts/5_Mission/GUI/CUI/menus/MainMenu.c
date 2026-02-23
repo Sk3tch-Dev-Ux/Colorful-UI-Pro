@@ -5,13 +5,14 @@ modded class MainMenu extends UIScriptedMenu
 	protected ButtonWidget m_PrevCharacter, m_NextCharacter;
 	protected ImageWidget m_TopShader, m_BottomShader, m_MenuDivider, m_StatisticsBoxBG, m_SurvivorBox, m_Logo;
 	protected ButtonWidget m_Play, m_Exit, m_SettingsBtn, m_TutorialBtn, m_MessageBtn, m_PrioQ, m_Website, m_Discord, m_Twitter, m_Youtube, m_Reddit, m_Facebook, m_CharacterBtn;
+	protected ButtonWidget m_TestBtn0, m_TestBtn1, m_TestBtn2, m_TestBtn3, m_TestBtn4, m_TestBtn5;
 	protected Widget m_TopSpacer, m_BottomSpacer;
 	protected ProgressBarWidget m_LoadingBar;
 	protected VideoWidget m_MenuVid;
 
 	override Widget Init()
 	{
-		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/menus/cui.mainMenu.layout");
+		layoutRoot = GetGame().GetWorkspace().CreateWidgets("Colorful-UI/GUI/layouts/proto/testing.layout");
 
 		m_Play              = ButtonWidget.Cast(layoutRoot.FindAnyWidget("PlayBtn"));
 		m_Exit              = ButtonWidget.Cast(layoutRoot.FindAnyWidget("ExitBtn"));
@@ -41,6 +42,13 @@ modded class MainMenu extends UIScriptedMenu
 		m_PlayerName        = TextWidget.Cast(layoutRoot.FindAnyWidget("character_name_text"));
 		m_PrevCharacter     = ButtonWidget.Cast(layoutRoot.FindAnyWidget("prev_character"));
 		m_NextCharacter     = ButtonWidget.Cast(layoutRoot.FindAnyWidget("next_character"));
+
+		m_TestBtn0          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn0"));
+		m_TestBtn1          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn1"));
+		m_TestBtn2          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn2"));
+		m_TestBtn3          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn3"));
+		m_TestBtn4          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn4"));
+		m_TestBtn5          = ButtonWidget.Cast(layoutRoot.FindAnyWidget("testBtn5"));
 		
 		Widget stats_root = layoutRoot.FindAnyWidget("StatsBox");
 		if (stats_root)
@@ -80,6 +88,12 @@ modded class MainMenu extends UIScriptedMenu
 		CheckSocials(m_Youtube, SocialURL.Youtube);
 		CheckSocials(m_Reddit, SocialURL.Reddit);
 		CheckSocials(m_Facebook, SocialURL.Facebook);
+
+		cuiElmnt.proSolidBtn(m_TestBtn0, "Solid Button with Icon", colorScheme.BtnSolidBG(), colorScheme.BtnSolidHoverBG(), "");
+		cuiElmnt.proSolidBtn(m_TestBtn1, "Solid Button", colorScheme.BtnSolidBG(), colorScheme.BtnSolidHoverBG(), "");
+		cuiElmnt.proBtnCB(m_TestBtn2, "Text Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "");
+		cuiElmnt.proBtnCB(m_TestBtn3, "Text Button", colorScheme.PrimaryText(), colorScheme.ButtonHover(), this, "");
+		cuiElmnt.proIconBtn(m_TestBtn4, -1, colorScheme.PrimaryText(), colorScheme.ButtonHover(), "");
 		
 		if (allInvalid && m_MenuDivider)
 		{

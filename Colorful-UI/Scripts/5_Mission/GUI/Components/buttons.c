@@ -225,7 +225,8 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
         }
     }
 }
-
+// NOTE: THese are not the final elements.  This was just a quick shit way of getting thing together for a release candadite. 
+// I schlocked it together and will be putting something more appropriate after the release candadite.  
 class cuiElmnt
 {
     static ref array<ref CUIButtonHandler> s_Handlers = new array<ref CUIButtonHandler>();
@@ -354,12 +355,18 @@ class cuiElmnt
         button.SetText(text);
         TextWidget label; ImageWidget icon; GetParts(button, label, icon);
         if (label) { label.SetText(text); button.SetText(""); }
-        if (icon && text != "") icon.SetColor(colorScheme.Icons());
+        
+        ImageWidget handlerIcon = icon;
+        if (icon && text != "") 
+        {
+            icon.SetColor(hoverColor);
+            handlerIcon = NULL; // Match proBtnURL: Handler handles text, script handles icon color
+        }
 
         CUIButtonHandler h = new CUIButtonHandler(
             button,
             label,
-            icon,
+            handlerIcon,
             textColor,
             hoverColor,
             "",
