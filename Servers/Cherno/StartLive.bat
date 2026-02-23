@@ -29,7 +29,7 @@ for /f "tokens=1* delims== eol=#" %%i in (..\..\Utils\Shared\Globals.cfg)  do (
 ::  The Mods Section below are for mods that are specific to this server only. If you want to test with multiple maps,
 ::  and or servers, you will need to edit the globals.cfg in the Util/Shared folder.
 ::  SET "MODS=P:\Mods\Server_Specific_Mod;"
-SET ""
+SET "MODS="
 
 :: ====================================================================================================================
 ::  NO NEED TO MODIFY ANYTHING ELSE, UNLESS YOU KNOW WHAT YOU'RE DOING!!!
@@ -46,7 +46,8 @@ SET "PROFILES=%PROJECTDIR%\Servers\Cherno\Profiles"
 ::  If you need to use server side mods you will need to add this line to the start local server "-mod=%GLOBALSERVERMODS%"
 :: ====================================================================================================================
 
-:: Start local server.
-@REM start /D "%GAMEDIR%\" DayZ_x64.exe -server -filePatching "-mod=%GLOBALMODS%%MODS%" "-profiles=%PROFILES%" "-mission=%MISSIONDIR%" "-config=%SERVERCFG%" "-newErrorsAreWarnings=1"
-:: Play on local server.
-start /D "%GAMEDIR%\" DayZ_x64.exe "-profiles=%CLIENTLOGSDIR%" "-mod=%GLOBALMODS%%MODS%" -filePatching -connect=127.0.0.1 -port=2302 "-newErrorsAreWarnings=1"
+:: Run Log Burner to clean up old logs
+call "..\..\Utils\Batch\LogBurner.cmd"
+
+:: Start live server.
+start /D "%SERVERDIR%\" DayZServer_x64.exe -server -port=2302 "-mod=%GLOBALMODS%%MODS%" "-profiles=%PROFILES%" "-mission=%MISSIONDIR%" "-config=%SERVERCFG%" -nosplash -noBenchmark -noPause -nolauncher

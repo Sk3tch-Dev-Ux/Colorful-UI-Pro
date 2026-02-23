@@ -67,6 +67,8 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     private void ApplyBaseStyles()
     {
         if (!m_Button) return;
+        
+        if ((m_Button.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER) return;
 
         if (m_IconOnly)
         {
@@ -77,7 +79,7 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
             {
                 if (m_IconImageIndex >= 0) m_ImageWidget.SetImage(m_IconImageIndex);
                 m_ImageWidget.Show(true);
-                m_ImageWidget.SetColor(UIColor.White());
+                m_ImageWidget.SetColor(m_TextColor);
             }
 
             m_Button.SetColor(UIColor.Transparent());
@@ -120,6 +122,8 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     private void ApplyHoverStyles()
     {
         if (!m_Button) return;
+
+        if ((m_Button.GetFlags() & WidgetFlags.IGNOREPOINTER) == WidgetFlags.IGNOREPOINTER) return;
 
         if (m_IconOnly)
         {
@@ -221,7 +225,8 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
         }
     }
 }
-
+// NOTE: THese are not the final elements.  This was just a quick shit way of getting thing together for a release candadite. 
+// I schlocked it together and will be putting something more appropriate after the release candadite.  
 class cuiElmnt
 {
     static ref array<ref CUIButtonHandler> s_Handlers = new array<ref CUIButtonHandler>();
@@ -242,6 +247,7 @@ class cuiElmnt
         if (!button) return;
         label = TextWidget.Cast(button.FindAnyWidget(button.GetName() + "_label"));
         icon  = ImageWidget.Cast(button.FindAnyWidget(button.GetName() + "_img"));
+        if (!icon) icon = ImageWidget.Cast(button.FindAnyWidget(button.GetName() + "_image"));
     }
 
     static void proSolidBtn(ButtonWidget button, string text, int bgColor, int hoverBgColor, string clickAction)
@@ -349,12 +355,18 @@ class cuiElmnt
         button.SetText(text);
         TextWidget label; ImageWidget icon; GetParts(button, label, icon);
         if (label) { label.SetText(text); button.SetText(""); }
-        if (icon) icon.SetColor(colorScheme.Icons());
+        
+        ImageWidget handlerIcon = icon;
+        if (icon && text != "") 
+        {
+            icon.SetColor(hoverColor);
+            handlerIcon = NULL; // Match proBtnURL: Handler handles text, script handles icon color
+        }
 
         CUIButtonHandler h = new CUIButtonHandler(
             button,
             label,
-            NULL,
+            handlerIcon,
             textColor,
             hoverColor,
             "",
@@ -363,6 +375,12 @@ class cuiElmnt
             "",
             0,
         );
+        
+        if (text == "" && icon)
+        {
+            h.SetIconOnly(true, -1);
+        }
+        
         s_Handlers.Insert(h);
     }
 }

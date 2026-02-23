@@ -667,8 +667,7 @@ FrameWidgetClass character_creation_root {
      visible 1
      ignorepointer 1
      keepsafezone 1
-     position 0 0
-     size 293 143
+     size 293 163
      halign right_ref
      valign bottom_ref
      hexactpos 0
@@ -707,7 +706,7 @@ FrameWidgetClass character_creation_root {
         ButtonWidgetClass ApplyBtn {
          color 0 0 0 0
          position 0 0
-         size 293 62
+         size 293 50
          halign right_ref
          valign center_ref
          hexactpos 1
@@ -791,6 +790,16 @@ FrameWidgetClass character_creation_root {
         }
        }
       }
+      FrameWidgetClass TopSpacer {
+       visible 1
+       ignorepointer 1
+       position 174.92999 0.3113
+       size 1 15
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+      }
       ImageWidgetClass MenuDivider {
        visible 1
        ignorepointer 1
@@ -805,6 +814,16 @@ FrameWidgetClass character_creation_root {
        "src alpha" 1
        "flip u" 1
        "flip v" 0
+      }
+      FrameWidgetClass BottomSpacer {
+       visible 1
+       ignorepointer 1
+       position 174.92999 0.3113
+       size 1 15
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
       }
       WrapSpacerWidgetClass top {
        ignorepointer 1
@@ -827,7 +846,7 @@ FrameWidgetClass character_creation_root {
          visible 1
          color 0 0 0 0
          position 0 0
-         size 293 46
+         size 293 40
          halign right_ref
          valign center_ref
          hexactpos 1
@@ -861,7 +880,7 @@ FrameWidgetClass character_creation_root {
            "exact text" 1
            "exact text size" 24
            "size to text h" 1
-           "size to text v" 1
+           "size to text v" 0
            "text halign" right
            "text valign" center
           }
@@ -870,7 +889,7 @@ FrameWidgetClass character_creation_root {
         ButtonWidgetClass BackBtn {
          color 0 0 0 0
          position 0 0
-         size 293 30
+         size 293 40
          halign right_ref
          valign center_ref
          hexactpos 1
@@ -914,8 +933,9 @@ FrameWidgetClass character_creation_root {
      }
     }
     TextWidgetClass CharacterCreationTextWidget {
+     clipchildren 0
      ignorepointer 1
-     size 0.35 50
+     size 0.33 50
      halign right_ref
      hexactpos 0
      vexactpos 1
