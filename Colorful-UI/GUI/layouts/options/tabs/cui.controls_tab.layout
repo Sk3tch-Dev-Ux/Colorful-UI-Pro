@@ -188,7 +188,7 @@ FrameWidgetClass controls_tab_root {
           ButtonWidgetClass mouse_invert_container {
            ignorepointer 0
            position 0 0
-           size 1 40
+           size 1 30
            hexactpos 1
            vexactpos 1
            hexactsize 0
@@ -198,22 +198,27 @@ FrameWidgetClass controls_tab_root {
            "next up" ""
            "next down" ""
            {
-            PanelWidgetClass mouse_invert_setting {
+            GridSpacerWidgetClass mouse_invert_setting {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
-             size 1 1
+             size 1 30
              hexactpos 1
              vexactpos 1
              hexactsize 0
-             vexactsize 0
+             vexactsize 1
              style DayZDefaultPanel
              "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
              {
               FrameWidgetClass mouse_invert_setting_panel {
                ignorepointer 1
                position 0 0
-               size 0.5 1
+               size 0.5 0.6
                hexactpos 1
                vexactpos 1
                hexactsize 0
@@ -222,7 +227,7 @@ FrameWidgetClass controls_tab_root {
                 TextWidgetClass mouse_invert_setting_label {
                  clipchildren 0
                  ignorepointer 1
-                 size 1 1
+                 size 1 0.6
                  valign center_ref
                  hexactpos 1
                  vexactpos 1
@@ -230,23 +235,21 @@ FrameWidgetClass controls_tab_root {
                  vexactsize 0
                  text "#STR_Invert_Vertical"
                  font "gui/fonts/sdf_MetronLight24"
-                 "text offset" 24 0
-                 "exact text" 1
-                 "exact text size" 16
+                 "text offset" 8 0
+                 "exact text" 0
+                 "exact text size" 18
                  "text valign" center
                 }
                }
               }
               FrameWidgetClass mouse_invert_setting_option {
                ignorepointer 1
-               position 20 0
-               size 0.47 30
-               halign right_ref
-               valign center_ref
+               position 0 0
+               size 0.5 1
                hexactpos 1
                vexactpos 1
                hexactsize 0
-               vexactsize 1
+               vexactsize 0
               }
              }
             }
@@ -290,7 +293,7 @@ FrameWidgetClass controls_tab_root {
            "next up" ""
            "next down" ""
            {
-            PanelWidgetClass mouse_vsensitivity_setting {
+            GridSpacerWidgetClass mouse_vsensitivity_setting {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
@@ -301,6 +304,11 @@ FrameWidgetClass controls_tab_root {
              vexactsize 1
              style DayZDefaultPanel
              "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
              {
               FrameWidgetClass mouse_vsensitivity_setting_panel {
                ignorepointer 1
@@ -331,7 +339,7 @@ FrameWidgetClass controls_tab_root {
               }
               FrameWidgetClass mouse_vsensitivity_setting_option {
                ignorepointer 1
-               position 0.5 0
+               position 0 0
                size 0.5 1
                hexactpos 1
                vexactpos 1
@@ -367,7 +375,7 @@ FrameWidgetClass controls_tab_root {
            "next up" ""
            "next down" ""
            {
-            PanelWidgetClass mouse_hsensitivity_setting {
+            GridSpacerWidgetClass mouse_hsensitivity_setting {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
@@ -378,6 +386,11 @@ FrameWidgetClass controls_tab_root {
              vexactsize 1
              style DayZDefaultPanel
              "no focus" 1
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             Columns 2
+             Rows 1
              {
               FrameWidgetClass mouse_hsensitivity_setting_panel {
                ignorepointer 1
@@ -408,7 +421,7 @@ FrameWidgetClass controls_tab_root {
               }
               FrameWidgetClass mouse_hsensitivity_setting_option {
                ignorepointer 1
-               position 0.5 0
+               position 0 0
                size 0.5 1
                hexactpos 1
                vexactpos 1
@@ -457,7 +470,7 @@ FrameWidgetClass controls_tab_root {
            "next up" ""
            "next down" ""
            {
-            PanelWidgetClass mouse_aimmod_vsensitivity_setting {
+            GridSpacerWidgetClass mouse_aimmod_vsensitivity_setting {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
@@ -467,6 +480,10 @@ FrameWidgetClass controls_tab_root {
              hexactsize 0
              vexactsize 1
              style DayZDefaultPanel
+             Padding 0
+             Margin 0
+             Columns 2
+             Rows 1
              {
               FrameWidgetClass mouse_aimmod_vsensitivity_setting_panel {
                ignorepointer 1
@@ -535,7 +552,7 @@ FrameWidgetClass controls_tab_root {
            "next up" ""
            "next down" ""
            {
-            PanelWidgetClass mouse_aimmod_hsensitivity_setting {
+            GridSpacerWidgetClass mouse_aimmod_hsensitivity_setting {
              ignorepointer 1
              color 0 0 0 0
              position 0 0
@@ -545,6 +562,10 @@ FrameWidgetClass controls_tab_root {
              hexactsize 0
              vexactsize 1
              style DayZDefaultPanel
+             Padding 0
+             Margin 0
+             Columns 2
+             Rows 1
              {
               FrameWidgetClass mouse_aimmod_hsensitivity_setting_panel {
                ignorepointer 1
