@@ -217,7 +217,7 @@ class CUIButtonHandler : ScriptedWidgetEventHandler
     {
         if (m_ServerIP != "" && m_ServerPort > 0)
         {
-            GetGame().GetUIManager().CloseAll();
+            // GetGame().GetUIManager().CloseAll();
             DayZGame game = DayZGame.Cast(GetGame());
             if (game) {
                 game.ConnectFromJoin(m_ServerIP, m_ServerPort);
