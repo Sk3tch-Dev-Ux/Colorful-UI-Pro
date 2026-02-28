@@ -85,6 +85,6 @@ class SocialURL {
 }
 
 // Menu IDs
-const int COLORFUL_EXIT		    = 666;
-const int COLORFUL_CONFIGURE    = 667;
-const int COLORFUL_DEFAULTS     = 668;
+const int COLORFUL_EXIT		 = 666;
+const int COLORFUL_CONFIGURE = 667;
+const int COLORFUL_DEFAULTS  = 668;
