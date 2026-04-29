@@ -11,7 +11,7 @@ static bool RandomDeathScreens = false;  // If set to true, a random game over v
 
 // Server Information 
 // (Possibly Buggy in the CUI Buttons. Not yet tested on live servers)
-static const string SERVER_IP = "127.0.0.1";
+static const string SERVER_IP = "91.229.114.40";
 static const int SERVER_PORT = 2302;
 
 // Loading Screens

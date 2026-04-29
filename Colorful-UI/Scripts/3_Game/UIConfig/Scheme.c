@@ -2,10 +2,10 @@
 // Adjust these settings to align with your desired theme and aesthetics.
 class colorScheme 
 {
-	// Brand Specific 
-	static int BrandColor()          { return ARGB(255, 255, 204, 102); }   
-	static int AccentColor()         { return ARGB(255, 100, 35, 35); }  
-	static int TertiaryColor()       { return ARGB(255, 204, 255, 204); }
+	// Brand Specific - Axiom theme (orange accent on white/black)
+	static int BrandColor()          { return ARGB(255, 232, 85, 26); }    // Axiom orange
+	static int AccentColor()         { return ARGB(255, 180, 60, 15); }    // Darker orange for paired accents
+	static int TertiaryColor()       { return ARGB(255, 255, 255, 255); }  // Axiom white
 
 	// Base Typography 
 	static int PrimaryText()         { return UIColor.White(); }        // Primary text color
